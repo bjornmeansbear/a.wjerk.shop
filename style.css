@@ -1,0 +1,206 @@
+*, *:before, *:after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+@keyframes grayToColor {
+  0%   { filter: grayscale(100%); }
+  100% { filter: grayscale(0%); }
+}
+
+@keyframes redToGreen {
+  0%   { color: red; }
+  25%  { color: orange; }
+  50%  { color: yellow; }
+  80%  { color: green; }
+  100% { color: blue; }
+}
+
+.listReset {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header */
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+header .logo {
+  display: flex;
+  flex: 3;
+  background-color: black;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+header .logo .earth {
+  background-image: url(https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57723/globe_west_540.jpg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  animation: grayToColor 30s;
+}
+
+header .logo .ring {
+  animation: redToGreen 30s;
+  color: blue;
+  display: block;
+  width: 78%;
+  height: 0;
+  padding-bottom: 74%;
+  border: 0.3rem dotted currentcolor;
+  border-radius: 100%;
+  margin: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+header .blurb {
+  display: flex;
+  flex-direction: column;
+  flex: 6;
+  padding: 1em;
+  font-size: 1.75rem;
+  border-left: 1px solid;
+}
+
+header h1 {
+  margin: 0 0 1rem;
+  font-size: 3em;
+}
+
+header .blurb p {
+  margin: 0;
+  max-width: 50rem;
+}
+
+header nav {
+  flex: 3 100%;
+}
+
+header nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+
+header nav ul li {
+  border-left: 1px solid;
+  flex: 1;
+}
+
+header nav ul li:first-child {
+  border-left: none;
+}
+
+header nav a {
+  display: block;
+  padding: 1em;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+header nav a:hover {
+  background-color: blue;
+  color: white;
+}
+
+/* Main */
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid;
+  width: 100%;
+  min-height: 20rem;
+  overflow: hidden;
+}
+
+.row:hover { background: blue; color: white; }
+.row.no-hover:hover { background: initial; color: initial; }
+
+.row .imageWrapper {
+  display: flex;
+  flex: 3;
+  border-right: 1px solid;
+  min-height: 20rem;
+  height: 100%;
+  position: relative;
+}
+
+.row:nth-child(odd) .imageWrapper {
+  order: 2;
+  border-right: none;
+  border-left: 1px solid;
+}
+
+.row .imageWrapper img {
+  display: block;
+  width: 100%;
+  min-height: 20rem;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+}
+
+.row .imageWrapper .ontop {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -43%);
+  rotate: 4deg;
+  width: auto;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+}
+
+.row .blurb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  flex: 4;
+}
+
+.row .blurb h2 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.row .blurb p {
+  font-size: 2rem;
+  font-weight: 300;
+  max-width: 36rem;
+}
+
+/* Footer */
+
+footer {
+  display: flex;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+footer ul { flex: 1; }
+footer a { color: inherit; }
