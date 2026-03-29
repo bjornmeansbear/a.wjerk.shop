@@ -139,6 +139,16 @@ main {
 .row:hover { background: blue; color: white; }
 .row.no-hover:hover { background: initial; color: initial; }
 
+a.skittles {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  width: 100%;
+  align-items: center;
+  min-height: auto;
+  overflow: hidden;
+}
+
 .row .imageWrapper {
   display: flex;
   flex: 3;
