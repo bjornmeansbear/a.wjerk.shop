@@ -10,7 +10,7 @@ CURRENT_YEAR=$(date +%Y)
 
 # Determine file set to include in page size metric.
 # Add more local files here (e.g. local images) as required.
-# FILES=$(find . -name "*.html" -o -name "*.css" -o -name "*.png" | grep -v case-study-template.html | tr '\n' ' ')
+# FILES=$(find . -name "*.html" -o -name "*.css" -o -name "*.png" | grep -v case-study-template.html | grep -v case-studies.html | tr '\n' ' ')
 
 BYTES=0
 for f in index.html style.css 3Plogo.png; do
