@@ -163,6 +163,10 @@ main {
   border-left: 1px solid;
 }
 
+.row:last-child {
+  border-bottom: none;
+}
+
 .row .imageWrapper img {
   display: block;
   width: 100%;
@@ -209,6 +213,7 @@ footer {
   display: flex;
   padding: 2rem;
   gap: 2rem;
+  border-top: 1px solid;
 }
 
 footer ul { flex: 1; }
