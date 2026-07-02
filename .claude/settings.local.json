@@ -38,7 +38,8 @@
       "Bash(git fetch *)",
       "Bash(git merge *)",
       "Bash(git push *)",
-      "Bash(node dither.js i/chairness.webp i/chairness-dither.png 800)"
+      "Bash(node dither.js i/chairness.webp i/chairness-dither.png 800)",
+      "Bash(grep -n -B1 -A8 \"^\\\\.row, \\\\.row > a\\\\|^\\\\.row {\" style.css)"
     ]
   }
 }
