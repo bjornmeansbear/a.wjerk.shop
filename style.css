@@ -221,3 +221,159 @@ footer {
 footer ul { flex: 1; }
 footer a { color: inherit; }
 footer ul p { margin: 0; }
+
+/* Case study detail pages */
+
+.caseStudyDetail {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid;
+}
+
+.caseStudyDetail .imageWrapper {
+  display: flex;
+  flex: 1 1 24rem;
+  border-right: 1px solid;
+  min-height: 20rem;
+  position: relative;
+  background-color: var(--tint, #000);
+}
+
+.caseStudyDetail .imageWrapper img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 20rem;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+}
+
+.caseStudyDetail .content {
+  flex: 1 1 24rem;
+  padding: 2rem;
+  max-width: 38rem;
+}
+
+.caseStudyDetail .content h1 {
+  font-size: 2.25rem;
+  margin: 0 0 1rem;
+}
+
+.caseStudyDetail .content .dek {
+  font-size: 1.375rem;
+  font-weight: 300;
+  margin: 0;
+}
+
+/* Text-first body: images are evidence, not the argument (SPEC.md §5) */
+.caseStudyBody {
+  max-width: 38rem;
+  margin: 0 auto;
+  padding: 2rem;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+.caseStudyBody h2 {
+  font-size: 1.375rem;
+  margin: 2.5rem 0 1rem;
+}
+
+.caseStudyBody figure {
+  margin: 2rem 0;
+  border: 1px solid;
+}
+
+.caseStudyBody figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.caseStudyBody figcaption {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  border-top: 1px solid;
+}
+
+.caseStudyBody dl {
+  margin: 1.5rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+
+.caseStudyBody dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.caseStudyBody dt:first-child {
+  margin-top: 0;
+}
+
+.caseStudyBody dd {
+  margin: 0.25rem 0 0;
+}
+
+/* Ongoing/process-log pattern: a repeatable dated-entry list for projects
+   that are more about the process than a single finished output (e.g.
+   Chair-ness's one-chair-a-week format). Add a new <li> per entry. */
+.processLog {
+  list-style: none;
+  margin: 2rem 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.processLog li {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 1.25rem;
+}
+
+.processLog figure {
+  margin: 0;
+  border: 1px solid;
+}
+
+.processLog img {
+  display: block;
+  width: 100%;
+  height: auto;
+  mix-blend-mode: multiply;
+}
+
+.processLog .entryMeta {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.5rem;
+}
+
+.processLog p {
+  margin: 0;
+}
+
+@media (max-width: 36rem) {
+  .processLog li {
+    grid-template-columns: 1fr;
+  }
+}
+
+.backLink {
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+/* Deliberately visible focus ring (SPEC.md §5) — thick enough to read as
+   part of the brutalist aesthetic rather than a default-browser afterthought. */
+a:focus-visible {
+  outline: 0.25rem solid blue;
+  outline-offset: 2px;
+}

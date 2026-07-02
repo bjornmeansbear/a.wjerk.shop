@@ -39,11 +39,20 @@ const OFFSETS = [
 
 const tmpGray = path.join(os.tmpdir(), `dither-gray-${process.pid}.png`);
 try {
+  // -background white -alpha remove flattens transparency onto white before
+  // anything else. Without it, ImageMagick composites transparent pixels
+  // onto black by default, which silently breaks the mix-blend-mode:multiply
+  // + --tint technique in style.css (black never lets the tint show through,
+  // so a transparent source produces a solid-black tile background).
+  //
   // -normalize stretches the tonal range to fill 0-255 before dithering.
   // Without it, source photos that don't already span the full range (e.g.
   // a light background with only subtle midtones) collapse almost entirely
   // to white under a flat 50% threshold, losing real detail.
-  execFileSync('magick', [input, '-resize', `${width}x`, '-colorspace', 'Gray', '-normalize', '-depth', '8', tmpGray]);
+  execFileSync('magick', [
+    input, '-background', 'white', '-alpha', 'remove',
+    '-resize', `${width}x`, '-colorspace', 'Gray', '-normalize', '-depth', '8', tmpGray,
+  ]);
 
   const dims = execFileSync('magick', ['identify', '-format', '%w %h', tmpGray], { encoding: 'utf8' });
   const [w, h] = dims.trim().split(/\s+/).map(Number);
