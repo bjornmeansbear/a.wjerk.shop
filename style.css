@@ -41,7 +41,7 @@ header .logo {
 }
 
 header .logo .earth {
-  background-image: url(https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57723/globe_west_540.jpg);
+  background-image: url(./i/globe_west_540.jpg);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -155,6 +155,7 @@ main {
   min-height: 20rem;
   height: 100%;
   position: relative;
+  background-color: var(--tint, #000);
 }
 
 .row:nth-child(odd) .imageWrapper {
@@ -174,6 +175,7 @@ main {
   height: 100%;
   object-fit: cover;
   position: relative;
+  mix-blend-mode: multiply;
 }
 
 .row .imageWrapper .ontop {

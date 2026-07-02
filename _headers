@@ -1,0 +1,26 @@
+# Cloudflare Pages response headers. Ignored by GitHub Pages (current host) —
+# safe to keep in the repo ahead of the Cloudflare migration.
+#
+# NOT using `immutable` / long max-age yet: that's only safe for
+# content-hashed filenames (SPEC.md §3), and this site doesn't hash
+# filenames yet. Static-name assets (3Plogo.png, style.css, etc.) need to
+# stay revalidate-able or an edit won't show up for cached visitors.
+# Revisit once the hashed-asset image pipeline lands.
+
+/*.css
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/*.png
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/*.jpg
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/*.jpeg
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/*.svg
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
