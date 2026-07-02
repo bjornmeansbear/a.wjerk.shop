@@ -24,7 +24,8 @@ body {
   padding: 0;
 }
 
-/* Header */
+/* Header — base rules are the mobile (stacked) layout; the min-width query
+   near the bottom of this file adds the side-by-side desktop treatment. */
 
 header {
   display: flex;
@@ -33,7 +34,8 @@ header {
 
 header .logo {
   display: flex;
-  flex: 3;
+  flex-basis: 100%;
+  min-height: 12rem;
   background-color: black;
   align-items: center;
   justify-content: center;
@@ -69,10 +71,9 @@ header .logo .ring {
 header .blurb {
   display: flex;
   flex-direction: column;
-  flex: 6;
   padding: 1em;
-  font-size: 1.75rem;
-  border-left: 1px solid;
+  font-size: 1.25rem;
+  border-top: 1px solid;
 }
 
 header h1 {
@@ -91,6 +92,7 @@ header nav {
 
 header nav ul {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
   border-top: 1px solid;
@@ -99,11 +101,15 @@ header nav ul {
 
 header nav ul li {
   border-left: 1px solid;
-  flex: 1;
+  flex: 1 1 50%;
 }
 
-header nav ul li:first-child {
+header nav ul li:nth-child(odd) {
   border-left: none;
+}
+
+header nav ul li:nth-child(n+3) {
+  border-top: 1px solid;
 }
 
 header nav a {
@@ -120,7 +126,7 @@ header nav a:hover {
   color: white;
 }
 
-/* Main */
+/* Main — same mobile-first approach: base is a single stacked column. */
 
 main {
   display: flex;
@@ -129,6 +135,7 @@ main {
 
 .row, .row > a {
   display: flex;
+  flex-direction: column;
   align-items: center;
   width: 100%;
   overflow: hidden;
@@ -150,18 +157,12 @@ main {
 
 .row .imageWrapper {
   display: flex;
-  flex: 3;
-  border-right: 1px solid;
+  width: 100%;
+  border-bottom: 1px solid;
   min-height: 20rem;
   height: 100%;
   position: relative;
   background-color: var(--tint, #000);
-}
-
-.row:nth-child(odd) .imageWrapper {
-  order: 2;
-  border-right: none;
-  border-left: 1px solid;
 }
 
 .row:last-child {
@@ -193,8 +194,7 @@ main {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 2rem;
-  flex: 4;
+  padding: 1.5rem;
 }
 
 .row .blurb h2 {
@@ -204,22 +204,24 @@ main {
 }
 
 .row .blurb p {
-  font-size: 2rem;
+  font-size: 1.375rem;
   font-weight: 300;
   max-width: 36rem;
 }
 
-/* Footer */
+/* Footer — stacked by default; touch-target padding on links applies at
+   every viewport, not just mobile (it was undersized everywhere before). */
 
 footer {
   display: flex;
-  padding: 2rem;
-  gap: 2rem;
+  flex-direction: column;
+  padding: 1.5rem;
+  gap: 1.5rem;
   border-top: 1px solid;
 }
 
 footer ul { flex: 1; }
-footer a { color: inherit; }
+footer a { color: inherit; display: inline-block; padding: 0.75rem 0; }
 footer ul p { margin: 0; }
 
 /* Case study detail pages */
@@ -233,7 +235,7 @@ footer ul p { margin: 0; }
 .caseStudyDetail .imageWrapper {
   display: flex;
   flex: 1 1 24rem;
-  border-right: 1px solid;
+  border-bottom: 1px solid;
   min-height: 20rem;
   position: relative;
   background-color: var(--tint, #000);
@@ -255,12 +257,12 @@ footer ul p { margin: 0; }
 }
 
 .caseStudyDetail .content h1 {
-  font-size: 2.25rem;
+  font-size: 1.75rem;
   margin: 0 0 1rem;
 }
 
 .caseStudyDetail .content .dek {
-  font-size: 1.375rem;
+  font-size: 1.25rem;
   font-weight: 300;
   margin: 0;
 }
@@ -269,7 +271,7 @@ footer ul p { margin: 0; }
 .caseStudyBody {
   max-width: 38rem;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1.5rem;
   font-size: 1.0625rem;
   line-height: 1.6;
 }
@@ -321,7 +323,8 @@ footer ul p { margin: 0; }
 
 /* Ongoing/process-log pattern: a repeatable dated-entry list for projects
    that are more about the process than a single finished output (e.g.
-   Chair-ness's one-chair-a-week format). Add a new <li> per entry. */
+   Chair-ness's one-chair-a-week format). Add a new <li> per entry. Base is
+   a single column; the min-width query below adds the two-column layout. */
 .processLog {
   list-style: none;
   margin: 2rem 0;
@@ -333,7 +336,7 @@ footer ul p { margin: 0; }
 
 .processLog li {
   display: grid;
-  grid-template-columns: 9rem 1fr;
+  grid-template-columns: 1fr;
   gap: 1.25rem;
 }
 
@@ -360,12 +363,6 @@ footer ul p { margin: 0; }
   margin: 0;
 }
 
-@media (max-width: 36rem) {
-  .processLog li {
-    grid-template-columns: 1fr;
-  }
-}
-
 .backLink {
   display: inline-block;
   margin-top: 1rem;
@@ -376,4 +373,97 @@ footer ul p { margin: 0; }
 a:focus-visible {
   outline: 0.25rem solid blue;
   outline-offset: 2px;
+}
+
+/* ============================================================================
+   Progressive enhancement from here up: everything above is the mobile
+   baseline; this query layers on the side-by-side desktop treatment once
+   there's enough width for it to actually read well.
+   ============================================================================ */
+@media (min-width: 40rem) {
+  header .logo {
+    flex: 3;
+    flex-basis: 0;
+    min-height: 0;
+  }
+
+  header .blurb {
+    flex: 6;
+    font-size: 1.75rem;
+    border-top: none;
+    border-left: 1px solid;
+  }
+
+  header nav ul {
+    flex-wrap: nowrap;
+  }
+
+  header nav ul li {
+    flex: 1;
+  }
+
+  header nav ul li:nth-child(n+3) {
+    border-top: none;
+  }
+
+  header nav ul li:first-child {
+    border-left: none;
+  }
+
+  header nav ul li:not(:first-child) {
+    border-left: 1px solid;
+  }
+
+  .row, .row > a {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .row .imageWrapper {
+    flex: 3;
+    border-bottom: none;
+    border-right: 1px solid;
+  }
+
+  .row:nth-child(odd) .imageWrapper {
+    order: 2;
+    border-right: none;
+    border-left: 1px solid;
+  }
+
+  .row .blurb {
+    flex: 4;
+    padding: 2rem;
+  }
+
+  .row .blurb p {
+    font-size: 2rem;
+  }
+
+  footer {
+    flex-direction: row;
+    padding: 2rem;
+    gap: 2rem;
+  }
+
+  .caseStudyDetail .imageWrapper {
+    border-bottom: none;
+    border-right: 1px solid;
+  }
+
+  .caseStudyDetail .content h1 {
+    font-size: 2.25rem;
+  }
+
+  .caseStudyDetail .content .dek {
+    font-size: 1.375rem;
+  }
+
+  .caseStudyBody {
+    padding: 2rem;
+  }
+
+  .processLog li {
+    grid-template-columns: 9rem 1fr;
+  }
 }
