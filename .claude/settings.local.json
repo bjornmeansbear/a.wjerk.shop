@@ -34,7 +34,10 @@
       "Read(//tmp/**)",
       "Bash(npx playwright *)",
       "Bash(node debug.js)",
-      "Bash(curl -sL -o \"globe_west_540.jpg\" \"https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57723/globe_west_540.jpg\")"
+      "Bash(curl -sL -o \"globe_west_540.jpg\" \"https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57723/globe_west_540.jpg\")",
+      "Bash(git fetch *)",
+      "Bash(git merge *)",
+      "Bash(git push *)"
     ]
   }
 }
