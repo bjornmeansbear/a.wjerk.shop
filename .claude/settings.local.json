@@ -1,7 +1,40 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:a.wjerk.shop)"
+      "WebFetch(domain:a.wjerk.shop)",
+      "Bash(sh build.sh)",
+      "Bash(convert -version)",
+      "Bash(magick -version)",
+      "Bash(brew list *)",
+      "Read(//opt/homebrew/bin/**)",
+      "Bash(brew install *)",
+      "Bash(magick -list dither)",
+      "Bash(brew search *)",
+      "Bash(brew info *)",
+      "Bash(curl -sL -o \"thumb_classic_med_bjornard_kristian_spontaneouslamp3.jpg\" \"https://assets.mica.edu/files/resources/thumb_classic_med_bjornard_kristian_spontaneouslamp3.jpg\")",
+      "Bash(curl -sL -o \"52467753725_83a94e0906_c.jpg\" \"https://live.staticflickr.com/65535/52467753725_83a94e0906_c.jpg\")",
+      "Bash(curl -sL -o \"52467753730_bdcaaab921_z.jpg\" \"https://live.staticflickr.com/65535/52467753730_bdcaaab921_z.jpg\")",
+      "Bash(curl -sL -o \"51368358350_fa4e139cc3_c.jpg\" \"https://live.staticflickr.com/65535/51368358350_fa4e139cc3_c.jpg\")",
+      "Bash(curl -sL -o \"9055685895_34d9e39f20_c.jpg\" \"https://live.staticflickr.com/7404/9055685895_34d9e39f20_c.jpg\")",
+      "WebFetch(domain:surma.dev)",
+      "WebFetch(domain:beyondloom.com)",
+      "WebFetch(domain:news.ycombinator.com)",
+      "Bash(node dither.js 3Plogo.png i/3Plogo-dither.png 800)",
+      "Bash(magick identify *)",
+      "Bash(sh dither-images.sh)",
+      "Bash(magick i/51367568813_9a30354224_z.jpg -resize 800x -colorspace Gray -normalize -depth 8 /tmp/test-normalize.png)",
+      "Bash(node -e ' *)",
+      "Bash(node dither.js i/51367568813_9a30354224_z.jpg i/sustainabilitist-dither.png 800)",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(npx --yes playwright --version)",
+      "Bash(npx --yes playwright install chromium --with-deps)",
+      "Bash(node screenshot.js)",
+      "Bash(npm install *)",
+      "Read(//tmp/**)",
+      "Bash(npx playwright *)",
+      "Bash(node debug.js)",
+      "Bash(curl -sL -o \"globe_west_540.jpg\" \"https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57723/globe_west_540.jpg\")"
     ]
   }
 }
