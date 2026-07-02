@@ -104,7 +104,11 @@ function pickSrcsetCandidate(srcset) {
 }
 
 // ---------------------------------------------------------------- pass 1
-function collectAssets(html, htmlDir) {
+function collectAssets(rawHtml, htmlDir) {
+  // Strip HTML comments first: templates like the "PROJECT ROW TEMPLATE" /
+  // "PROCESS LOG ENTRY TEMPLATE" blocks intentionally live in comments with
+  // placeholder src="[[...]]" values that aren't real assets.
+  const html = rawHtml.replace(/<!--[\s\S]*?-->/g, '');
   const refs = new Set();
 
   // stylesheets, preloads, modulepreload

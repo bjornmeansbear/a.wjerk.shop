@@ -37,7 +37,8 @@
       "Bash(curl -sL -o \"globe_west_540.jpg\" \"https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57723/globe_west_540.jpg\")",
       "Bash(git fetch *)",
       "Bash(git merge *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(node dither.js i/chairness.webp i/chairness-dither.png 800)"
     ]
   }
 }
