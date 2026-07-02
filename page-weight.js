@@ -3,12 +3,12 @@
  * page-weight.js — page-weight stat generator
  *
  * This is a static hand-written HTML site (no SvelteKit/Vite build step —
- * see SPEC.md history). Run AFTER build.sh, against the repo root itself:
- * the *.html files there are the deployed pages. Two passes:
+ * see SPEC.md history). Run by build.sh AFTER it assembles build/, against
+ * that build/ directory — never against source. Two passes:
  *
- *   PASS 1: walk every .html file in BUILD_DIR (skipping SKIP_FILES /
- *           SKIP_DIRS), resolve the assets it references, and compute the
- *           *transfer* size of a typical default-path visit:
+ *   PASS 1: walk every .html file in BUILD_DIR, resolve the assets it
+ *           references, and compute the *transfer* size of a typical
+ *           default-path visit:
  *             - text assets (html/css/js/svg/json) → brotli-compressed size
  *             - binary assets (images/fonts)       → raw file size
  *             - <picture>/srcset → count ONE candidate per image, chosen
@@ -20,13 +20,12 @@
  *               are NOT counted — we can't know their transfer size without
  *               fetching them, so pages using them will under-report until
  *               those images are self-hosted per SPEC.md §3/§6
- *   PASS 2: re-render footer stat elements from their permanent
- *           data-pw-template="..." attribute (never overwritten), so this
- *           script is idempotent and safe to run before every deploy —
- *           unlike a one-shot destructive %TOKEN% replaceAll, which would
- *           consume the token on first run and go stale on every run after:
+ *   PASS 2: string-replace footer placeholder tokens in build/*.html:
  *             %PAGE_WEIGHT%  → that page's transfer size, human-readable
  *             %SITE_WEIGHT%  → whole-site total, human-readable
+ *           This is destructive, but that's fine here: build/ is a fresh,
+ *           disposable copy (see build.sh STEP 1-2) regenerated from
+ *           source every run, so source's tokens are never touched.
  *
  * Output: BUILD_DIR/page-weight-manifest.json
  *   { generated, coefficientNote, pages: { "/route": bytes }, totalBytes }
@@ -44,15 +43,12 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 
 // ---------------------------------------------------------------- config
-const BUILD_DIR = process.argv[2] ?? '.';
+const BUILD_DIR = process.argv[2] ?? 'build';
 const TYPICAL_VIEWPORT_WIDTH = 800; // px — srcset candidate selection
 const COUNT_LAZY = true;            // include loading="lazy" images
 const TEXT_EXT = new Set(['.html', '.css', '.js', '.mjs', '.svg', '.json', '.xml', '.txt', '.webmanifest']);
 const PAGE_TOKEN = '%PAGE_WEIGHT%';
 const SITE_TOKEN = '%SITE_WEIGHT%';
-// repo root doubles as "build dir" — exclude non-page files/dirs
-const SKIP_DIRS = new Set(['.git', 'node_modules', '.claude', '.vscode']);
-const SKIP_FILES = new Set(['case-study-template.html']); // has unresolved {{TOKENS}}, not a deployed page
 
 // ---------------------------------------------------------------- helpers
 const brotliSize = (buf) =>
@@ -142,7 +138,6 @@ function collectAssets(rawHtml, htmlDir) {
 
 function* walkHtml(dir) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (SKIP_DIRS.has(entry.name) || SKIP_FILES.has(entry.name)) continue;
     const p = path.join(dir, entry.name);
     if (entry.isDirectory()) yield* walkHtml(p);
     else if (entry.name.endsWith('.html')) yield p;
@@ -172,11 +167,8 @@ for (const htmlPath of walkHtml(BUILD_DIR)) {
   siteTotal += pageBytes;
 }
 
-// pass 2: re-render from the permanent data-pw-template="..." attribute.
-// The template (containing literal %PAGE_WEIGHT%/%SITE_WEIGHT%) is never
-// overwritten — only the element's visible text is — so this is safe to
-// run before every deploy, unlike a one-shot destructive replaceAll.
-const TEMPLATE_RE = /data-pw-template="([^"]*)">([^<]*)</g;
+// pass 2: token replacement — destructive, but build/ is disposable (see
+// header comment), so this never touches source.
 for (const htmlPath of walkHtml(BUILD_DIR)) {
   const route =
     '/' +
@@ -186,14 +178,11 @@ for (const htmlPath of walkHtml(BUILD_DIR)) {
       .replace(/\.html$/, '')
       .replace(/\\/g, '/');
   const html = fs.readFileSync(htmlPath, 'utf8');
-  if (!html.includes('data-pw-template=')) continue;
-  const rendered = html.replace(TEMPLATE_RE, (_, template) => {
-    const text = template
-      .replaceAll(PAGE_TOKEN, humanBytes(pages[route] ?? 0))
-      .replaceAll(SITE_TOKEN, humanBytes(siteTotal));
-    return `data-pw-template="${template}">${text}<`;
-  });
-  if (rendered !== html) fs.writeFileSync(htmlPath, rendered);
+  if (!html.includes(PAGE_TOKEN) && !html.includes(SITE_TOKEN)) continue;
+  const rendered = html
+    .replaceAll(PAGE_TOKEN, humanBytes(pages[route] ?? 0))
+    .replaceAll(SITE_TOKEN, humanBytes(siteTotal));
+  fs.writeFileSync(htmlPath, rendered);
 }
 
 const manifest = {
