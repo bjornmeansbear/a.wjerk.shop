@@ -39,7 +39,11 @@
       "Bash(git merge *)",
       "Bash(git push *)",
       "Bash(node dither.js i/chairness.webp i/chairness-dither.png 800)",
-      "Bash(grep -n -B1 -A8 \"^\\\\.row, \\\\.row > a\\\\|^\\\\.row {\" style.css)"
+      "Bash(grep -n -B1 -A8 \"^\\\\.row, \\\\.row > a\\\\|^\\\\.row {\" style.css)",
+      "Bash(git -C /Users/kbjornard/Code/a.wjerk.shop log --oneline -15)",
+      "Bash(git -C /Users/kbjornard/Code/a.wjerk.shop status)",
+      "Bash(git -C /Users/kbjornard/Code/a.wjerk.shop diff .claude/settings.local.json)",
+      "WebFetch(domain:www.romellogoodman.com)"
     ]
   }
 }
