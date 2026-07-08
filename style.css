@@ -242,7 +242,6 @@ footer {
 }
 
 footer ul { flex: 1; }
-footer a { color: inherit; display: inline-block; padding: 0.75rem 0; }
 footer ul p { margin: 0; }
 
 /* Case study detail pages */
@@ -385,8 +384,18 @@ footer ul p { margin: 0; }
 }
 
 .backLink {
-  display: inline-block;
-  margin-top: 1rem;
+  display: block;
+  padding: 1em 2em;
+  border-top: 1px solid;
+  font-weight: bold;
+  text-decoration: none;
+  color: inherit;
+  flex-basis: 100%;
+}
+
+.backLink:hover {
+  background-color: blue;
+  color: white;
 }
 
 /* Deliberately visible focus ring (SPEC.md §5) — thick enough to read as
