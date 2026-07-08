@@ -100,8 +100,10 @@ header nav ul {
 }
 
 header nav ul li {
+  display: flex;
   border-left: 1px solid;
   flex: 1 1 50%;
+  height: inherit;
 }
 
 header nav ul li:nth-child(odd) {
@@ -119,6 +121,7 @@ header nav a {
   text-align: center;
   text-decoration: none;
   color: inherit;
+  height: 100%;
 }
 
 header nav a:hover {
@@ -146,8 +149,7 @@ main {
   min-height: 20rem;
 }
 
-.row:hover { background: blue; color: white; border-bottom-color: black; }
-.row.no-hover:hover { background: initial; color: initial; }
+.row > a:hover { background: blue; color: white; }
 
 .row > a {
   color: inherit;
@@ -382,24 +384,42 @@ a:focus-visible {
    ============================================================================ */
 @media (min-width: 40rem) {
   header .logo {
-    flex: 3;
+    flex: 2;
     flex-basis: 0;
     min-height: 0;
   }
 
   header .blurb {
-    flex: 6;
-    font-size: 1.75rem;
+    flex: 7;
+    font-size: 1.25rem;
     border-top: none;
     border-left: 1px solid;
   }
 
   header nav ul {
     flex-wrap: nowrap;
+
   }
 
   header nav ul li {
+    display: flex;
     flex: 1;
+    align-items: center;    /* Centers text vertically */
+    justify-content: center; /* Centers text horizontally */
+    align-self: stretch;
+  }
+
+  header nav a {
+    display: flex;
+    align-items: center;    /* Centers text vertically */
+    justify-content: center; /* Centers text horizontally */
+    padding: 1em;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+    width: 100%;
   }
 
   header nav ul li:nth-child(n+3) {
@@ -432,12 +452,12 @@ a:focus-visible {
   }
 
   .row .blurb {
-    flex: 4;
+    flex: 5;
     padding: 2rem;
   }
 
   .row .blurb p {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   footer {
@@ -452,6 +472,56 @@ a:focus-visible {
   }
 
   .caseStudyDetail .content h1 {
+    font-size: 1.5rem;
+  }
+
+  .caseStudyDetail .content .dek {
+    font-size: 1rem;
+  }
+
+  .caseStudyBody {
+    padding: 1.5rem;
+  }
+
+  .processLog li {
+    grid-template-columns: 9rem 1fr;
+  }
+}
+
+/* ============================================================================
+   Progressive enhancement from here up: everything above is the mobile
+   baseline; this query layers on the side-by-side desktop treatment once
+   there's enough width for it to actually read well.
+   ============================================================================ */
+@media (min-width: 55rem) {
+  header .logo {
+    flex: 3;
+  }
+
+  header .blurb {
+    flex: 6;
+    font-size: 1.75rem;
+  }
+
+  .row .imageWrapper {
+    flex: 3;
+  }
+
+  .row .blurb {
+    flex: 6;
+  }
+
+  .row .blurb p {
+    font-size: 2rem;
+  }
+
+  footer {
+    flex-direction: row;
+    padding: 2rem;
+    gap: 2rem;
+  }
+
+  .caseStudyDetail .content h1 {
     font-size: 2.25rem;
   }
 
@@ -461,9 +531,5 @@ a:focus-visible {
 
   .caseStudyBody {
     padding: 2rem;
-  }
-
-  .processLog li {
-    grid-template-columns: 9rem 1fr;
   }
 }
