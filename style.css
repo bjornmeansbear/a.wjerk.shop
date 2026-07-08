@@ -86,6 +86,25 @@ header .blurb p {
   max-width: 50rem;
 }
 
+/* tweaked smaller header for non-homepage pages! */
+.case-study header {
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.case-study header .logo  {
+  height: 4em;
+  flex-basis: initial;
+  align-items: initial;
+  background-color: transparent;
+}
+
+.case-study header .logo img {
+  height: auto;
+  width: auto;
+}
+
 header nav {
   flex: 3 100%;
 }
@@ -394,6 +413,15 @@ a:focus-visible {
     font-size: 1.25rem;
     border-top: none;
     border-left: 1px solid;
+  }
+
+  /* tweaked smaller header for non-homepage pages! */
+  .case-study header .logo  {
+    flex: 1;
+  }
+  /* tweaked smaller header for non-homepage pages! */
+  .case-study header .blurb  {
+    flex: 5;
   }
 
   header nav ul {
