@@ -430,7 +430,7 @@ a:focus-visible {
   }
   /* tweaked smaller header for non-homepage pages! */
   .case-study header .blurb  {
-    flex: 5;
+    flex: 9;
   }
 
   header nav ul {
