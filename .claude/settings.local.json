@@ -44,7 +44,9 @@
       "Bash(git -C /Users/kbjornard/Code/a.wjerk.shop status)",
       "Bash(git -C /Users/kbjornard/Code/a.wjerk.shop diff .claude/settings.local.json)",
       "WebFetch(domain:www.romellogoodman.com)",
-      "Bash(git diff *)"
+      "Bash(git diff *)",
+      "Bash(python3 -c ' *)",
+      "Bash(node dither.js i/case-study-solarpunk-boombox/cs-spbb-11-D000D3F6-9E57-465E-AB8F-50F41BCB7378_1_105_c.jpeg i/solarpunk-boombox-dither.png 800)"
     ]
   }
 }

@@ -183,7 +183,7 @@ main {
   min-height: 20rem;
   height: 100%;
   position: relative;
-  background-color: var(--tint, #000);
+  background-color: var(--tint, #fff);
 }
 
 .row:last-child {
@@ -258,7 +258,7 @@ footer ul p { margin: 0; }
   border-bottom: 1px solid;
   min-height: 20rem;
   position: relative;
-  background-color: var(--tint, #000);
+  background-color: var(--tint, #fff);
 }
 
 .caseStudyDetail .imageWrapper img {
