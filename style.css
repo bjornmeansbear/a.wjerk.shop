@@ -287,7 +287,14 @@ footer ul p { margin: 0; }
   margin: 0;
 }
 
-/* Text-first body: images are evidence, not the argument (SPEC.md §5) */
+/* Text-first body: images are evidence, not the argument (SPEC.md §5).
+   Base is a single stacked column — caseStudyText then caseStudyGallery, in
+   that order — matching the rest of the site's mobile-first approach. The
+   wide-viewport query further down splits them into a sticky text column
+   beside an image rail: 50/50 with one image column for a few photos, or
+   33/33/33 once there are enough photos (3+) to fill two columns. Figure
+   captions carry the context on their own, so images don't need to sit
+   pinned next to the paragraph that mentions them. */
 .caseStudyBody {
   max-width: 38rem;
   margin: 0 auto;
@@ -301,8 +308,15 @@ footer ul p { margin: 0; }
   margin: 2.5rem 0 1rem;
 }
 
+.caseStudyGallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
 .caseStudyBody figure {
-  margin: 2rem 0;
+  margin: 0;
   border: 1px solid;
 }
 
@@ -567,6 +581,34 @@ a:focus-visible {
   }
 
   .caseStudyBody {
-    padding: 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
+    max-width: 72rem;
+    padding: 3rem;
+  }
+
+  .caseStudyText {
+    flex: 1;
+    min-width: 0;
+    position: sticky;
+    top: 2rem;
+  }
+
+  .caseStudyGallery {
+    flex: 1;
+    min-width: 0;
+    margin-top: 0;
+  }
+
+  /* 3+ photos: widen the gallery to two-thirds and split it into two
+     columns (33/33/33 overall). Fewer than that, it stays a single column
+     at 50/50 with the text — self-adjusting as photos are added, no
+     manual toggle needed per page. */
+  .caseStudyGallery:has(figure:nth-child(3)) {
+    flex: 2;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-content: start;
   }
 }

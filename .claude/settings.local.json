@@ -49,7 +49,22 @@
       "Bash(node dither.js i/case-study-solarpunk-boombox/cs-spbb-11-D000D3F6-9E57-465E-AB8F-50F41BCB7378_1_105_c.jpeg i/solarpunk-boombox-dither.png 800)",
       "WebSearch",
       "WebFetch(domain:ohnotype.co)",
-      "Bash(git rm *)"
+      "Bash(git rm *)",
+      "Bash(cd /Users/kbjornard/Code/a.wjerk.shop *)",
+      "Bash(kill %1)",
+      "Bash(node -e \"require\\('playwright'\\)\")",
+      "Bash(python3 -c \"import playwright\")",
+      "Read(//usr/bin/**)",
+      "Bash(pip3 show *)",
+      "Bash(timeout 20 npx --yes playwright --version)",
+      "Bash(mkdir -p /tmp/pw-check)",
+      "Bash(npm init *)",
+      "Read(//private/tmp/**)",
+      "Bash(find / -maxdepth 6 -iname \"*chromium*\" -path \"*ms-playwright*\")",
+      "Read(//Users/kbjornard/.cache/**)"
+    ],
+    "additionalDirectories": [
+      "/tmp"
     ]
   }
 }
