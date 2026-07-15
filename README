@@ -25,7 +25,7 @@ Raw, hand-written HTML and CSS. No framework, no client-side JS, no webfonts. `S
 
 - **Curly quotes and apostrophes** in all running text — never straight quotes. Literal UTF-8 characters, not HTML entities (the file's already UTF-8).
 - **Case study page anatomy:** `caseStudyDetail` (hero image + h1 + `.dek`), then `article.caseStudyBody`. If a page has 3+ photos, wrap the prose in `.caseStudyText` and the figures in `.caseStudyGallery` — this triggers a two-column desktop layout automatically. Fewer than 3 photos (or none), skip the wrapper divs entirely and let it stay a single column; the CSS is scoped with `:has()` so it won't try to split a page that isn't structured for it.
-- **`--tint` custom property** on `.imageWrapper` colors dithered/B&W images via `mix-blend-mode: multiply`. Full-color photos should either omit `--tint` (defaults to white, a no-op under multiply) or set it explicitly to `#fff`.
+- **`--tint` custom property** on `.imageWrapper` colors dithered/B&W images via `mix-blend-mode: multiply`. Full-color photos should either omit `--tint` (defaults to white, a no-op under multiply) or set it explicitly to `#fff`. Homepage tints are drawn from Kristian's shared 11-hue Wjerk/OOKB color scale (currently living in the `onething` repo, destined for its own repo) — one hue per row, step 5/6 for legibility under the multiply blend. Pick a new hue from that scale for new rows rather than eyeballing a color.
 - **Prev/next nav** (`.caseNav`) sits above the "Back to Case Studies" link on every case study page, in the same order projects appear on the index, wrapping around from the last project back to the first.
 - **`<cite>`** for referencing a project's own title inline (e.g. `Green Acres`), not `<em>`, going forward — most existing pages still use `<em>` for this and haven't been swept yet.
 
@@ -40,3 +40,21 @@ Live and built out: Chair-ness, Solarpunk Boombox, 3P: People Processing Plastic
 - Reciprocal links: a few case studies (Ecovention Europe, Spontaneous Lamp) link back to The Sustainabilitist Principles as their throughline source; worth continuing that pattern as new connections surface.
 - Cloudflare edge-cache tuning — `_headers` specifies `max-age=3600` for CSS/images, but Cloudflare Pages has been observed serving `max-age=14400`; worth a look if stale-asset reports come up again after a deploy.
 - The original `SPEC.md` plan (AVIF/srcset image ladders, dark-mode-by-default, `prefers-reduced-data` handling) is still aspirational — none of it is implemented yet.
+- The shared color palette (currently a handful of files in `onething`) is meant to become its own repo, consumed by `a.wjerk.shop`, `onething`, and eventually OOKB/the store — right now it's just referenced by hex value here, not actually imported from anywhere.
+
+---
+
+New palette mapping applied across index.html and case-study-chairness.html:
+
+Row	Hue/step	Hex
+Chair-ness	brown-6	#58514E
+Solarpunk Boombox	yellow-5	#7F7800
+3P	blue-5	#647A78
+Spontaneous Lamp	orange-5	#AD5848
+MICA Admissions	pink-7	#740025
+Carbon Sequestering Book	green-6	#455B2C
+Green Acres → Ecovention	dark-gray-6	#4D5454
+Sustainabilitist Principles	purple-6	#66475E
+The Libre Designer	light-gray-6	#495842
+Contact	gray-6	#535348
+About	red-6	#8E2A2F
