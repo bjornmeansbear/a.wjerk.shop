@@ -1,0 +1,42 @@
+# a.wjerk.shop
+
+Portfolio site for **Wjerk**, a climate design studio run by Kristian Bjørnard. Live at [a.wjerk.shop](https://a.wjerk.shop/), hosted on Cloudflare Pages.
+
+The site is itself an argument: sustainability, accessibility, and design quality should be one system, not competing constraints. See `SPEC.md` for the fuller design philosophy and rationale.
+
+## Stack
+
+Raw, hand-written HTML and CSS. No framework, no client-side JS, no webfonts. `SPEC.md` originally scoped this as a SvelteKit build with an AVIF/srcset image ladder and a dark-mode default — none of that got built. What exists instead is simpler: static HTML files, one stylesheet, a handful of Node/shell scripts that run at build time, and Cloudflare Pages serving the output. `SPEC.md` is worth reading as a record of the thinking, not as documentation of the current build.
+
+## Repo structure
+
+- `index.html` — homepage, one `<section class="row">` per case study, linking out to each detail page
+- `case-study-*.html` — one file per project (see below)
+- `case-study-template.html` — starting point for a new case study; has unresolved `{{TOKENS}}`, not meant to be deployed directly
+- `style.css` — the entire stylesheet, mobile-first (base rules are the mobile layout; `@media (min-width: 40rem/55rem)` layers on wider treatments)
+- `i/` — images, mostly dithered PNGs plus a few per-project subfolders for real photos
+- `build.sh` — assembles `build/` (gitignored) for deploy: copies deployable files, strips the template, stamps the footer year, and runs `page-weight.js`. This is the Cloudflare Pages build command.
+- `page-weight.js` — computes each page's actual transfer weight and stamps the `%PAGE_WEIGHT%` / `%SITE_WEIGHT%` footer tokens into `build/` only (source keeps the literal tokens)
+- `dither.js` — Atkinson-dithers a source image to a 1-bit PNG (`node dither.js <input> <output.png> [width]`); used for every homepage tile and several case-study heroes
+- `dither-images.sh` / `generate-case-studies.sh` — batch helpers around the two scripts above
+- `_headers` — Cloudflare Pages response headers (cache control per asset type)
+
+## Design conventions worth knowing before editing
+
+- **Curly quotes and apostrophes** in all running text — never straight quotes. Literal UTF-8 characters, not HTML entities (the file's already UTF-8).
+- **Case study page anatomy:** `caseStudyDetail` (hero image + h1 + `.dek`), then `article.caseStudyBody`. If a page has 3+ photos, wrap the prose in `.caseStudyText` and the figures in `.caseStudyGallery` — this triggers a two-column desktop layout automatically. Fewer than 3 photos (or none), skip the wrapper divs entirely and let it stay a single column; the CSS is scoped with `:has()` so it won't try to split a page that isn't structured for it.
+- **`--tint` custom property** on `.imageWrapper` colors dithered/B&W images via `mix-blend-mode: multiply`. Full-color photos should either omit `--tint` (defaults to white, a no-op under multiply) or set it explicitly to `#fff`.
+- **Prev/next nav** (`.caseNav`) sits above the "Back to Case Studies" link on every case study page, in the same order projects appear on the index, wrapping around from the last project back to the first.
+- **`<cite>`** for referencing a project's own title inline (e.g. `Green Acres`), not `<em>`, going forward — most existing pages still use `<em>` for this and haven't been swept yet.
+
+## Case studies
+
+Live and built out: Chair-ness, Solarpunk Boombox, 3P: People Processing Plastic, Spontaneous Lamps, MICA Graduate Admissions Materials, A Carbon Sequestering Book, Green Acres → Ecovention Europe, The Sustainabilitist Principles, The Libre Designer.
+
+## On the horizon
+
+- More photos: several case studies are still leaning on placeholder or low-res thumbnail images (3P's gallery is web-thumbnail resolution; The Libre Designer has no tool screenshots yet).
+- Sweep remaining `<em>` project-title references over to `<cite>` as those pages get touched again.
+- Reciprocal links: a few case studies (Ecovention Europe, Spontaneous Lamp) link back to The Sustainabilitist Principles as their throughline source; worth continuing that pattern as new connections surface.
+- Cloudflare edge-cache tuning — `_headers` specifies `max-age=3600` for CSS/images, but Cloudflare Pages has been observed serving `max-age=14400`; worth a look if stale-asset reports come up again after a deploy.
+- The original `SPEC.md` plan (AVIF/srcset image ladders, dark-mode-by-default, `prefers-reduced-data` handling) is still aspirational — none of it is implemented yet.

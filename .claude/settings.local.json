@@ -70,12 +70,19 @@
       "Bash(node libre-shot.js)",
       "Bash(node verify-all.js)",
       "Bash(sips -g pixelWidth -g pixelHeight \"/Users/kbjornard/Code/a.wjerk.shop/i/case-study-libre-designer/201907120244-LibreNotGratis.svg.png\")",
-      "Bash(node dither.js i/case-study-libre-designer/201907120244-LibreNotGratis.svg.png i/libre-designer-dither.png 800)"
+      "Bash(node dither.js i/case-study-libre-designer/201907120244-LibreNotGratis.svg.png i/libre-designer-dither.png 800)",
+      "Bash(curl -s \"https://a.wjerk.shop/case-study-libre-designer.html\" -o /tmp/live-libre.html -D /tmp/live-libre-headers.txt)",
+      "Bash(curl -sL \"https://a.wjerk.shop/case-study-libre-designer.html\" -o /tmp/live-libre.html)",
+      "Bash(echo \"diff exit: $?\")",
+      "Bash(curl -sL \"https://a.wjerk.shop/style.css\" -o /tmp/live-style.css)",
+      "Bash(curl -sIL \"https://a.wjerk.shop/style.css\")",
+      "Bash(rm -f /tmp/live-libre.html /tmp/live-libre-headers.txt /tmp/live-style.css)"
     ],
     "additionalDirectories": [
       "/tmp",
       "/tmp/pw-check",
-      "/private/tmp/pw-check"
+      "/private/tmp/pw-check",
+      "/private/tmp"
     ]
   }
 }
