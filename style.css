@@ -401,6 +401,11 @@ footer ul p { margin: 0; }
    the 40rem query below; "back to all" always spans the full width beneath
    them, closing out the page. */
 .caseNav {
+  /* try to get it below everything else and right above the footer */
+  clear: both;
+  float: none;
+  position: relative;
+  /**/
   display: flex;
   flex-wrap: wrap;
   flex-basis: 100%;
