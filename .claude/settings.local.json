@@ -76,7 +76,8 @@
       "Bash(echo \"diff exit: $?\")",
       "Bash(curl -sL \"https://a.wjerk.shop/style.css\" -o /tmp/live-style.css)",
       "Bash(curl -sIL \"https://a.wjerk.shop/style.css\")",
-      "Bash(rm -f /tmp/live-libre.html /tmp/live-libre-headers.txt /tmp/live-style.css)"
+      "Bash(rm -f /tmp/live-libre.html /tmp/live-libre-headers.txt /tmp/live-style.css)",
+      "Bash(curl -sL \"https://a.wjerk.shop/style.css\" -o /tmp/live-style2.css)"
     ],
     "additionalDirectories": [
       "/tmp",
