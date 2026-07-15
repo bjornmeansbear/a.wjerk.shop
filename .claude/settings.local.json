@@ -77,7 +77,13 @@
       "Bash(curl -sL \"https://a.wjerk.shop/style.css\" -o /tmp/live-style.css)",
       "Bash(curl -sIL \"https://a.wjerk.shop/style.css\")",
       "Bash(rm -f /tmp/live-libre.html /tmp/live-libre-headers.txt /tmp/live-style.css)",
-      "Bash(curl -sL \"https://a.wjerk.shop/style.css\" -o /tmp/live-style2.css)"
+      "Bash(curl -sL \"https://a.wjerk.shop/style.css\" -o /tmp/live-style2.css)",
+      "Bash(ls -la /Users/kbjornard/Code/onething/ 2>/dev/null | head -20)",
+      "Read(//Users/kbjornard/Code/onething/**)",
+      "Bash(grep -o '#[0-9a-fA-F]\\\\{6\\\\}' /Users/kbjornard/Code/onething/palette-1.html | sort -u | head -40 *)",
+      "Bash(wc -l /Users/kbjornard/Code/onething/palette-1.html /Users/kbjornard/Code/onething/palette-2.html /Users/kbjornard/Code/onething/palette-docs.html)",
+      "Bash(node palette-shot.js)",
+      "Read(//private/tmp/pw-check/**)"
     ],
     "additionalDirectories": [
       "/tmp",
