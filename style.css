@@ -397,6 +397,37 @@ footer ul p { margin: 0; }
   margin: 0;
 }
 
+/* End-of-page nav: prev/next stacked full-width on mobile, side by side at
+   the 40rem query below; "back to all" always spans the full width beneath
+   them, closing out the page. */
+.caseNav {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+}
+
+.prevLink,
+.nextLink {
+  display: block;
+  flex: 1 1 100%;
+  box-sizing: border-box;
+  padding: 1em 2em;
+  border-top: 1px solid;
+  font-weight: bold;
+  text-decoration: none;
+  color: inherit;
+}
+
+.nextLink {
+  text-align: right;
+}
+
+.prevLink:hover,
+.nextLink:hover {
+  background-color: blue;
+  color: white;
+}
+
 .backLink {
   display: block;
   padding: 1em 2em;
@@ -425,6 +456,15 @@ a:focus-visible {
    there's enough width for it to actually read well.
    ============================================================================ */
 @media (min-width: 40rem) {
+  .prevLink,
+  .nextLink {
+    flex: 1 1 50%;
+  }
+
+  .nextLink {
+    border-left: 1px solid;
+  }
+
   header .logo {
     flex: 2;
     flex-basis: 0;
@@ -580,7 +620,11 @@ a:focus-visible {
     font-size: 1.375rem;
   }
 
-  .caseStudyBody {
+  /* Only pages with an actual caseStudyText/caseStudyGallery split (i.e.
+     ones with enough photos to warrant it) get the wide two-column
+     treatment. Text-only pages keep the single centered column at every
+     viewport width — nothing to split them against. */
+  .caseStudyBody:has(> .caseStudyText) {
     display: flex;
     align-items: flex-start;
     gap: 3rem;

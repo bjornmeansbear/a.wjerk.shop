@@ -64,10 +64,18 @@
       "Read(//Users/kbjornard/.cache/**)",
       "Bash(xxd)",
       "Bash(python3)",
-      "Bash(perl -i -pe \"s/\\(?<=[a-zA-Z]\\)'\\(?=[a-zA-Z]\\)/\\\\x{2019}/g\" case-study-solarpunk-boombox.html)"
+      "Bash(perl -i -pe \"s/\\(?<=[a-zA-Z]\\)'\\(?=[a-zA-Z]\\)/\\\\x{2019}/g\" case-study-solarpunk-boombox.html)",
+      "Bash(node nav-shot.js)",
+      "Bash(node shot3p.js)",
+      "Bash(node libre-shot.js)",
+      "Bash(node verify-all.js)",
+      "Bash(sips -g pixelWidth -g pixelHeight \"/Users/kbjornard/Code/a.wjerk.shop/i/case-study-libre-designer/201907120244-LibreNotGratis.svg.png\")",
+      "Bash(node dither.js i/case-study-libre-designer/201907120244-LibreNotGratis.svg.png i/libre-designer-dither.png 800)"
     ],
     "additionalDirectories": [
-      "/tmp"
+      "/tmp",
+      "/tmp/pw-check",
+      "/private/tmp/pw-check"
     ]
   }
 }
