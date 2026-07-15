@@ -61,7 +61,10 @@
       "Bash(npm init *)",
       "Read(//private/tmp/**)",
       "Bash(find / -maxdepth 6 -iname \"*chromium*\" -path \"*ms-playwright*\")",
-      "Read(//Users/kbjornard/.cache/**)"
+      "Read(//Users/kbjornard/.cache/**)",
+      "Bash(xxd)",
+      "Bash(python3)",
+      "Bash(perl -i -pe \"s/\\(?<=[a-zA-Z]\\)'\\(?=[a-zA-Z]\\)/\\\\x{2019}/g\" case-study-solarpunk-boombox.html)"
     ],
     "additionalDirectories": [
       "/tmp"
