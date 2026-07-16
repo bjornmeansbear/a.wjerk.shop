@@ -83,7 +83,8 @@
       "Bash(grep -o '#[0-9a-fA-F]\\\\{6\\\\}' /Users/kbjornard/Code/onething/palette-1.html | sort -u | head -40 *)",
       "Bash(wc -l /Users/kbjornard/Code/onething/palette-1.html /Users/kbjornard/Code/onething/palette-2.html /Users/kbjornard/Code/onething/palette-docs.html)",
       "Bash(node palette-shot.js)",
-      "Read(//private/tmp/pw-check/**)"
+      "Read(//private/tmp/pw-check/**)",
+      "Bash(node palette-shot2.js)"
     ],
     "additionalDirectories": [
       "/tmp",
