@@ -46,15 +46,16 @@ Live and built out: Chair-ness, Solarpunk Boombox, 3P: People Processing Plastic
 
 New palette mapping applied across index.html and case-study-chairness.html:
 
-Row	Hue/step	Hex
-Chair-ness	brown-6	#58514E
-Solarpunk Boombox	yellow-5	#7F7800
-3P	blue-5	#647A78
-Spontaneous Lamp	orange-5	#AD5848
-MICA Admissions	pink-7	#740025
-Carbon Sequestering Book	green-6	#455B2C
-Green Acres → Ecovention	dark-gray-6	#4D5454
-Sustainabilitist Principles	purple-6	#66475E
-The Libre Designer	light-gray-6	#495842
-Contact	gray-6	#535348
-About	red-6	#8E2A2F
+Row	Token	Hex
+Chair-ness	brown-5	#7A736F
+Solarpunk Boombox	yellow-4	#A29C43
+3P	blue-4	#899D9B
+Spontaneous Lamp	orange-4	#D08070
+MICA Admissions	pink-3	#FF81A9
+Carbon Sequestering Book	green-4	#89A271
+Green Acres → Ecovention	dark-gray-4	#939A9A
+Sustainabilitist Principles	purple-4	#AE8CA5
+The Libre Designer	light-gray-5	#6A7A62
+Contact	gray-4	#99998D
+About	red-4	#DE7473
+
