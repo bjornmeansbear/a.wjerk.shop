@@ -84,7 +84,10 @@
       "Bash(wc -l /Users/kbjornard/Code/onething/palette-1.html /Users/kbjornard/Code/onething/palette-2.html /Users/kbjornard/Code/onething/palette-docs.html)",
       "Bash(node palette-shot.js)",
       "Read(//private/tmp/pw-check/**)",
-      "Bash(node palette-shot2.js)"
+      "Bash(node palette-shot2.js)",
+      "Bash(curl -sL \"https://bjornpaedia.wjerk.shop/\" -o /tmp/bjornpaedia-root.html)",
+      "Bash(grep -o 'href=\"[^\"]*[Bb]au[Ee]rden[^\"]*\"' /tmp/bjornpaedia-root.html | sort -u *)",
+      "Bash(curl -sL \"https://bjornpaedia.wjerk.shop/static/BauErden.html\" -o /tmp/bauerden.html)"
     ],
     "additionalDirectories": [
       "/tmp",
