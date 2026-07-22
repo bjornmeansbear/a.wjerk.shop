@@ -93,7 +93,8 @@
       "Bash(curl -sL \"https://s3.amazonaws.com/images.icompendium.com/sites/erinbar1/bgr/10212590_0202511182247-TemperedGlass-Interior-ANDCOVER-spreads-images-12.jpg?6fea7ce45cd594ef14225cca4b9b84d7\" -o /tmp/dotg-spread12.jpg)",
       "Bash(magick i/case-study-drawing-on-tempered-glass/spread-13.jpg -resize 1600x -quality 85 i/case-study-drawing-on-tempered-glass/spread-13.jpg)",
       "Bash(sips -g pixelWidth -g pixelHeight i/case-study-drawing-on-tempered-glass/spread-13.jpg)",
-      "Bash(node dither.js i/case-study-drawing-on-tempered-glass/cover.jpg i/drawing-on-tempered-glass-dither.png 800)"
+      "Bash(node dither.js i/case-study-drawing-on-tempered-glass/cover.jpg i/drawing-on-tempered-glass-dither.png 800)",
+      "Bash(node dotg-shot.js)"
     ],
     "additionalDirectories": [
       "/tmp",
