@@ -87,7 +87,13 @@
       "Bash(node palette-shot2.js)",
       "Bash(curl -sL \"https://bjornpaedia.wjerk.shop/\" -o /tmp/bjornpaedia-root.html)",
       "Bash(grep -o 'href=\"[^\"]*[Bb]au[Ee]rden[^\"]*\"' /tmp/bjornpaedia-root.html | sort -u *)",
-      "Bash(curl -sL \"https://bjornpaedia.wjerk.shop/static/BauErden.html\" -o /tmp/bauerden.html)"
+      "Bash(curl -sL \"https://bjornpaedia.wjerk.shop/static/BauErden.html\" -o /tmp/bauerden.html)",
+      "Bash(curl -sL \"https://s3.amazonaws.com/images.icompendium.com/sites/erinbar1/bg/10170801_0202511182247-TemperedGlass-Interior-ANDCOVER-spreads-images-0.jpg?4674fd15fd6e0b1c3bb49d056fd49967\" -o /tmp/dotg-cover.jpg)",
+      "Bash(curl -sL \"https://s3.amazonaws.com/images.icompendium.com/sites/erinbar1/orjpg/10212561_0202511182247-TemperedGlass-Interior-ANDCOVER-spreads-images-13.jpg?5813b4ff73edf50171801cbb84511964\" -o /tmp/dotg-spread13.jpg)",
+      "Bash(curl -sL \"https://s3.amazonaws.com/images.icompendium.com/sites/erinbar1/bgr/10212590_0202511182247-TemperedGlass-Interior-ANDCOVER-spreads-images-12.jpg?6fea7ce45cd594ef14225cca4b9b84d7\" -o /tmp/dotg-spread12.jpg)",
+      "Bash(magick i/case-study-drawing-on-tempered-glass/spread-13.jpg -resize 1600x -quality 85 i/case-study-drawing-on-tempered-glass/spread-13.jpg)",
+      "Bash(sips -g pixelWidth -g pixelHeight i/case-study-drawing-on-tempered-glass/spread-13.jpg)",
+      "Bash(node dither.js i/case-study-drawing-on-tempered-glass/cover.jpg i/drawing-on-tempered-glass-dither.png 800)"
     ],
     "additionalDirectories": [
       "/tmp",
