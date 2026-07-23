@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Edit(~/.claude/skills/bjorn-voice/**)",
+      "Bash(cp /Users/kbjornard/.claude/skills/bjorn-voice/SKILL.md /Users/kbjornard/Code/bjorn-voice/SKILL.md && diff /Users/kbjornard/.claude/skills/bjorn-voice/SKILL.md /Users/kbjornard/Code/bjorn-voice/SKILL.md && echo \"IDENTICAL\")",
+      "WebFetch(domain:bjornpaedia.wjerk.shop)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36\" \"https://bjornpaedia.wjerk.shop/static/Agility.html\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36\" \"https://bjornpaedia.wjerk.shop/static/The%2520Sustainabilitist%2520Manifesto.html\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36\" \"https://bjornpaedia.wjerk.shop/static/The%20Sustainabilitist%20Manifesto.html\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" -A \"Mozilla/5.0\" \"https://bjornpaedia.wjerk.shop/#The%20Sustainabilitist%20Principles\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" -A \"Mozilla/5.0\" \"https://bjornpaedia.wjerk.shop/\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" -A \"Mozilla/5.0\" \"https://bjornpaedia.wjerk.shop/static/Thrift.html\")",
+      "Bash(git add *)",
+      "Bash(cat \"$HOME/Library/Application Support/Code/User/settings.json\" 2>/dev/null | grep -i \"format\\\\|wrap\\\\|printWidth\\\\|rewrap\" -A1 -B1)",
+      "Read(//Users/kbjornard/Library/Application Support/Code/User/**)",
+      "Bash(grep -i \"wordWrap\" \"$HOME/Library/Application Support/Code/User/settings.json\" 2>/dev/null)"
+    ],
+    "additionalDirectories": [
+      "/Users/kbjornard/.claude/skills/bjorn-voice",
+      "/Users/kbjornard/Library/Application Support/Code/User"
+    ]
+  }
+}
