@@ -13,7 +13,12 @@
       "Bash(git add *)",
       "Bash(cat \"$HOME/Library/Application Support/Code/User/settings.json\" 2>/dev/null | grep -i \"format\\\\|wrap\\\\|printWidth\\\\|rewrap\" -A1 -B1)",
       "Read(//Users/kbjornard/Library/Application Support/Code/User/**)",
-      "Bash(grep -i \"wordWrap\" \"$HOME/Library/Application Support/Code/User/settings.json\" 2>/dev/null)"
+      "Bash(grep -i \"wordWrap\" \"$HOME/Library/Application Support/Code/User/settings.json\" 2>/dev/null)",
+      "Bash(python3 /private/tmp/claude-503/-Users-kbjornard-Code-a-wjerk-shop/08f2f2dc-5524-4402-b159-04858c39bb05/scratchpad/unwrap_html.py /private/tmp/claude-503/-Users-kbjornard-Code-a-wjerk-shop/08f2f2dc-5524-4402-b159-04858c39bb05/scratchpad/test-twobooks.html)",
+      "Bash(python3 -c ' *)",
+      "Bash(python3 \"/private/tmp/claude-503/-Users-kbjornard-Code-a-wjerk-shop/08f2f2dc-5524-4402-b159-04858c39bb05/scratchpad/unwrap_html.py\" case-study-*.html)",
+      "Bash(awk -F: '{print $1\":\"$2}')",
+      "Bash(echo \"---check for workspace .vscode settings---\" *)"
     ],
     "additionalDirectories": [
       "/Users/kbjornard/.claude/skills/bjorn-voice",
