@@ -78,10 +78,26 @@ Where the commitment actually applies:
 - Each mirror is one command:
   `python3 ~/Code/chair-ness/scripts/fetch_arena.py --channel SLUG --out ~/Code/SLUG`
 
-Slugs are NOT predictable from project names (`wjerk-precious-plastics` is 3P's
-build research), and the `wjerk-` prefix is not a rule — 14 guessed variants
-(`wjerk-chair-ness`, `wjerk-boombox`, `wjerk-grad-book-2021`…) all returned
-nothing. Collect by hand or get a token.
+**Superseded 2026-08-27** — all 518 channels are now indexed in
+`arena-inventory.md`, pulled with a token via `/v3/search?type=Channel&scope=my`.
+No hand collection needed.
+
+The prefixes turned out to be semantic, not decorative:
+
+- `wjerk-` (40) — **client and studio work**, mostly private
+- `lecture-` (26) · `workshop-` (1) — research behind a talk
+- `shirt-` (8) — objects, mostly derived from lectures
+- `project-` (21) — **class briefs from 2020–22**, not portfolio projects
+- unprefixed — personal projects (`chair-ness`, `spontaneous-lamp`,
+  `3p-people-processing-plastic`)
+
+That's why guessing `wjerk-chair-ness` failed: the `wjerk-` namespace is for
+client work, and the personal projects never took a prefix.
+
+Note on the API: v2's authenticated endpoints return **410 Gone** — Are.na is
+winding v2 down (are.na/editorial/on-our-api, May 2026). v3 works, `Authorization:
+Bearer` only, spec at `~/Code/sentence-a-day/openapi`. Public channel reads still
+need no auth at all.
 
 Everything else — add rows as you go:
 
