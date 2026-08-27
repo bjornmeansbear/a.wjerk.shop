@@ -49,6 +49,35 @@ into the case study prose instead.
 `created` dates when the project actually started, independent of when it got
 written up. Worth capturing — it's often better provenance than the prose.
 
+### Visibility: keep them closed (decided 2026-08-27)
+
+Are.na's three settings are not a libre spectrum:
+
+- **open** — anyone can *add* blocks
+- **closed** — anyone can *view*, only you add
+- **private** — nobody can view
+
+Libre is about reading, taking, and forking. `closed` already provides all
+three — the `wjerk-precious-plastics` contents pull fine with no account and no
+token. Switching a channel to `open` grants a reader zero new freedoms and
+grants strangers write access to the research. That's an editorial decision, not
+an access one, and the original reason for closing them stands: controlled
+research, nothing appearing in it unnoticed.
+
+Open source doesn't mean anyone can push to main.
+
+Where the commitment actually applies:
+
+- **`private` channels fail the principle** — they block reading. Audit for
+  these; none of the seven found so far are private
+- **Mirroring is the real libre move.** Are.na has no license field and could
+  change terms or disappear. A local git mirror under CC BY-SA survives all of
+  that. `~/Code/chair-ness` is the model. Depending on a vendor's permission
+  model to carry a libre commitment is renting your principles — the same
+  argument The Libre Designer makes about tools
+- Each mirror is one command:
+  `python3 ~/Code/chair-ness/scripts/fetch_arena.py --channel SLUG --out ~/Code/SLUG`
+
 Slugs are NOT predictable from project names (`wjerk-precious-plastics` is 3P's
 build research), and the `wjerk-` prefix is not a rule — 14 guessed variants
 (`wjerk-chair-ness`, `wjerk-boombox`, `wjerk-grad-book-2021`…) all returned
@@ -85,6 +114,52 @@ normalize them into one vocabulary after.
 | The Sustainabilitist Principles | ? | ? | ? |
 | The Libre Designer | ? | `a-new-design-commons`? | ? (2-way fork, see audit) |
 | Drawing on Tempered Glass | ? | ? | — (nothing in wiki) |
+
+---
+
+## Objects → concepts
+
+Things at stuff.wjerk.shop. An object is an edge off a concept like any other,
+but it's the only one that costs material, so it gets a gate:
+
+**The wear test — would a stranger wear this if they'd never heard of Wjerk?**
+Yes → it's a publication, the object carries the argument. No → it's a business
+card you're charging for. Only the first kind gets made.
+
+| object | status | concept | carries what | case study |
+|---|---|---|---|---|
+| Chair-ness patch | live | ? | the idealized form itself — a semiotic claim you can wear | Chair-ness ✓ linked |
+| Spontaneous Lamp instructions | proposed | ? | how to build one, printed on the thing. CC BY-SA | Spontaneous Lamp |
+| Sustainabilitist principle | proposed | ? | one aphorism per shirt — they were book plates, print is native | Sustainabilitist Principles |
+| 3P resin-code chart | maybe | ? | the codes themselves, or a shirt whose printing demonstrates the process | 3P |
+
+role — what the object *does*:
+
+- `instrument` — it's usable. The lamp instructions: wearing it makes you able
+  to build the thing. The strongest kind
+- `signal` — a position you can wear into a room. The chair-ness patch
+- `edition` — a series from one concept. One principle per shirt
+
+Ruled out (2026-08-27): Carbon Sequestering Book, MICA Admissions, Green Acres →
+EcoVention, Drawing on Tempered Glass. Client work and speculation don't fit on
+a body.
+
+### Reciprocity
+
+Every product links to its case study; every case study links its object with a line naming what it *is*, never a generic "shop" button. "The instructions, printed on a shirt" beats "Buy merch."
+
+### The standing statement (store landing page, write once)
+
+Not a sales pitch — the same register as `methodology.md`. What it says:
+
+1. The object is the publication, not a souvenir of one
+2. Everything else here is free and CC BY-SA — the thinking has no paywall.
+   The shirt costs money because cotton costs cotton
+3. It funds the free part
+4. Print-on-demand, nothing made that nobody wanted — with the real cost
+   (shipping, blank quality) disclosed alongside
+
+Not to be used: "support an independent designer" (inert), "sustainable merch" (the most greenwashed phrase in retail, and the practice argues against it). Sustainability is the disclosure here, never the pitch — same as the page-weight number in the footer.
 
 ---
 
