@@ -5,15 +5,21 @@ here — the next build overwrites it.
 
 Source: `~/Code/chair-ness` (private, github.com/bjornmeansbear/chair-ness)
 
+This page is the **deck** build: one slide at a time, cross-faded, chairs and
+quotes interleaved in a single sequence. The repo can also build an *ambient*
+version — chairs hard-cutting underneath with quote panels surfacing over the
+top — which is what this page used to be. The deck reads calmer; the ambient
+one was too much. See "The ambient alternative" below if you want it back.
+
 ## The whole update
 
 ```sh
 cd ~/Code/chair-ness
 python3 scripts/fetch_arena.py                    # pull new blocks from are.na
 python3 scripts/fetch_vitra_detail.py             # museum metadata + captions
-python3 scripts/build_slideshow.py --ambient --hotlink \
+python3 scripts/build_slideshow.py --hotlink \
   --home-url case-study-chairness.html
-cp slideshow-ambient-web.html ~/Code/a.wjerk.shop/chairness-projection.html
+cp slideshow-web.html ~/Code/a.wjerk.shop/chairness-projection.html
 ```
 
 Then commit here as usual. `build.sh` copies every root `.html` into the
@@ -29,13 +35,15 @@ Skip the two fetches if you have not added anything to are.na since last time.
 - `--home-url case-study-chairness.html` adds the "← Chair-ness" link back to
   the case study. Without it the page is a dead end.
 
+Note there is no `--ambient` here. That flag is what picks the other mode.
+
 ## What the file contains
 
 Self-contained: six OFL typefaces are base64-embedded, and the images are
 fetched from are.na at view time. **No `fonts/` folder or image directory is
 needed in this repo** — the single HTML file is the whole deployment.
 
-About 320 KB of markup, pulling roughly 12 MB of images from are.na.
+About 370 KB of markup, pulling roughly 12 MB of images from are.na.
 
 Note that `page-weight.js` does not follow external URLs, so the footer will
 report this page at around 14 KB — its compressed markup — and not the images.
@@ -56,11 +64,29 @@ title alone.
 ## Tuning
 
 ```sh
---image-ms 900              # slower chair cuts (default 600)
---chairs-between-text 5     # more frequent quotes (default 7)
---max-tilt 4                # calmer card rotation (default 7)
+--image-seconds 4.5         # faster chair changes (default 5)
 --text-max-seconds 12       # shorter dwell on long quotes (default 16)
+--text-min-seconds 5        # shorter floor on short quotes (default 6)
+--images-per-quote 4        # quotes come round more often (default 5)
 ```
+
+Chairs hold a flat `--image-seconds` each. Quotes are timed by length instead —
+a base beat plus reading time, clamped between `--text-min-seconds` and
+`--text-max-seconds` — so a long passage is not rushed and a short one does not
+strand.
 
 `python3 scripts/pacing.py` in the chair-ness repo reports how long a loop runs
 and whether images have to repeat to fit every quote.
+
+## The ambient alternative
+
+The other mode, if this one ever wants replacing:
+
+```sh
+python3 scripts/build_slideshow.py --ambient --hotlink \
+  --home-url case-study-chairness.html
+cp slideshow-ambient-web.html ~/Code/a.wjerk.shop/chairness-projection.html
+```
+
+Its own knobs: `--image-ms` (chair cut, default 600), `--chairs-between-text`
+(default 7), `--max-tilt` (card rotation, default 7).
