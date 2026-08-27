@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAPE: Create Anywhere, Publish Everywhere - Wjerk: A Climate Design Studio</title>
+  <meta name="description"
+    content="A decade of content infrastructure built with Kai Curry. Content structured so it implies nothing about how it looks — then rendered to a website, a widget, or a print-ready booklet from one source.">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body class="case-study">
+
+  <header>
+    <div class="logo">
+      <img src="i/alternateEarthRingsLogo.png" alt="Gray Earth Marble with Rings of Hope radiating outward" />
+    </div>
+    <div class="blurb">
+      <p><strong>Wjerk.</strong> <small>A Climate Design Studio. <small>Designing for the Welfare of All
+            Life.<sup>‡</sup></small></small></p>
+    </div>
+    <nav>
+      <ul class="listReset">
+        <li><a href="index.html#work">Case Studies</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="https://bjornpaedia.wjerk.shop/">Notes &amp; Ideas</a></li>
+        <li><a href="https://stuff.wjerk.shop/">Store</a></li>
+        <li><a href="https://buttondown.com/bjornmeansbear">Newsletter</a></li>
+      </ul>
+    </nav>
+
+  </header>
+
+    <main>
+    <section class="caseStudyDetail">
+      <div class="imageWrapper">
+        <!-- TODO image: a screenshot of the CAPE query builder, or of a site built on it.
+             Kristian is digging these up (2026-08-27). Until then this page is text-first,
+             which is on-spec for this site. Follow SPEC.md §3 when adding: AVIF ladder,
+             explicit width/height, loading="lazy", fetchpriority="high" on the LCP image. -->
+      </div>
+      <div class="content">
+        <h1>CAPE</h1>
+        <p class="dek"><cite>Create Anywhere, Publish Everywhere.</cite> Roughly a decade of content
+          infrastructure, built with developer <strong>Kai Curry</strong>. Software, service, and philosophy
+          in one: your content stays wherever it already lives, and CAPE finds it, reformats it, and delivers
+          it wherever it is needed — a web page, a widget on someone else’s site, or a print-ready conference
+          booklet. Approximately 2012–2023.</p>
+      </div>
+    </section>
+
+    <article class="caseStudyBody">
+      <p>The problem that started it was dull and specific. A conference website had a database of sessions,
+        speakers, and times. The printed programme for the same conference was an InDesign file. Every time
+        the website changed, someone re-typed the change into InDesign. The two documents described the same
+        event and knew nothing about each other.</p>
+
+      <p>So: generate the booklet from the database. Same content, second output. Nobody re-types anything.</p>
+
+      <p>That is the whole idea, and it generalises further than it first appears. If a booklet can be an
+        output of the content rather than a copy of it, so can a web page, an email, a widget, a feed, a
+        poster. What has to be true is that the content itself carries no assumptions about where it will
+        end up.</p>
+
+      <h2>Pure content</h2>
+
+      <p>We called that <cite>pure content</cite>: content structured so that it doesn’t try to imply — at all,
+        if we could manage it — what it should look like or be used for. Semantic, structural, rich in
+        metadata, and silent about presentation.</p>
+
+      <p>Most tools work against this. Word processors wrap text in formatting that is hard to strip out
+        again. Desktop publishing locks content inside layout files no other workflow can read. WYSIWYG
+        editors bloat text with markup that makes it hard to move. Content in those formats withers where it
+        sits, chained to a file format, a storage method, or a style prison of its own making.</p>
+
+      <p>Keep the content pure and the styling becomes an application rather than a property. You can restyle
+        endlessly and never touch the source.</p>
+
+      <h2>What we actually built</h2>
+
+      <p>CAPE had two halves. The first was a search layer across content feeds — Flickr, Instagram, Dropbox,
+        Google Drive, a Git repository, an inventory system, anything with an API or an RSS feed. You defined
+        sources, built filters, previewed results, and saved the query. A saved query was a live feed, and its
+        results could be reordered, removed, or remixed.</p>
+
+      <p>The second half was what happened to those results. Every query had a live feed and a saved feed,
+        available as XML or JSON, or passed through templates. A page could be assembled from a handful of
+        saved queries and a set of display templates. So could an entire site. So could the booklet.</p>
+
+      <p>It generated rather than served. CAPE sat in the background watching feeds, and when something
+        changed it rebuilt the affected pages as static HTML. No database query at request time, no template
+        compile per visitor, nothing to keep warm. Static files on a CDN.</p>
+
+      <h2>Client work</h2>
+
+      <p>It was never only a prototype. Client projects were built on it across the decade, and the philosophy
+        mattered more than the software: whatever a client already used to make content, they kept using.
+        CAPE only wanted the content. That made it possible to divide content creation by who actually
+        handles each kind of thing, and let each part of a site — text, images, video, data — be managed
+        wherever it was managed best.</p>
+
+      <!-- TODO: name specific client projects. sundaysenergy.com appears in the source notes
+           (github.com/sundaysenergy). Kristian to confirm which are OK to name publicly. -->
+
+      <h2>Afterward</h2>
+
+      <p>Most of this is now ordinary. Contentful and its competitors sell content-as-API. Drupal and
+        WordPress both run headless. Static site generators pulling from remote sources are a default rather
+        than an argument. We were doing it before it was easy, which is a mixed thing to be able to say — the
+        ideas were right and the tooling had to be hand-built every time.</p>
+
+      <p>The part that hasn’t become ordinary is the print output. Generating a press-ready document from the
+        same source that produces the website is still unusual, still mostly hand-rolled, and still the thing
+        that made the whole argument concrete for anyone who had ever maintained the same information twice.</p>
+
+      <p>The principle outlived the software, and it is visible in most of what came after. This site is
+        generated from templates. The notes at <a href="https://bjornpaedia.wjerk.shop/">bjornpaedia</a> are
+        rendered from a wiki whose entries are written once and transcluded into many pages. The argument in
+        <a href="case-study-libre-designer.html">The Libre Designer</a> — that a tool you cannot get your work
+        back out of is a risk rather than an inconvenience — is the same argument arriving from the direction
+        of software instead of structure.</p>
+
+      <p>Write it once. Style it as many times as you like. Leave the original alone.</p>
+    </article>
+
+    <nav class="caseNav">
+      <a class="prevLink" href="case-study-libre-designer.html">← The Libre Designer</a>
+      <a class="nextLink" href="case-study-drawing-on-tempered-glass.html">Drawing on Tempered Glass →</a>
+      <a class="backLink" href="index.html#work">← Back to Case Studies</a>
+    </nav>
+  </main>
+
+  <footer>
+    <ul class="listReset">
+      <li>Wjerk. <em class="currentYear">2026</em>.</li>
+      <li>Designing for the welfare of all life since 2003</li>
+      <li>We’re done with bauhaus; it’s time for <a href="https://bjornpaedia.wjerk.shop/static/BauErden.html">BauErden! Design to
+          (re)Build Earth!</a></li>
+      <li><sup>‡</sup>: Evolved from <a href="https://en.wikipedia.org/wiki/Bruce_Mau">Bruce Mau</a>’s <a
+          href="https://www.brucemaudesign.com/work/massive-change">Massive Change</a>.</li>
+    </ul>
+    <ul class="listReset climateInfo">
+      <li>Eco hosting: Estimated annual site energy use is offset.</li>
+      <li>Optimizations: Images compressed + lazy‑loaded; responsive assets reduce bandwidth.</li>
+      <li class="fileSizes">Transparency: Estimated page size: %PAGE_WEIGHT% (%SITE_WEIGHT% full site) — we optimize for
+        minimal load and reuse.</li>
+      <li>—</li>
+      <li>Source: Site source and build files: https://github.com/bjornmeansbear/a.wjerk.shop (Apache 2.0 for code).
+      <li>Content license: Text & design: CC BY‑SA 4.0; images credited where required.</li>
+      <li>Assets: Fonts & images: public domain or CC-licensed; see repository for attribution.</li>
+    </ul>
+    <ul class="listReset">
+      <li><a href="https://www.ookb.co">OOKB: The Old Studio… The Office of Kristian Bjørnard</a></li>
+      <li><a href="https://kristian.bjornard.com">More Archived Work</a></li>
+      <li><a href="https://github.com/bjornmeansbear">GitHub</a></li>
+      <li><a href="https://www.instagram.com/bjornmeansbear">Instagram</a></li>
+      <li>—</li>
+      <li>Inspirations: <a href="https://solar.lowtechmagazine.com/">Low-Tech Magazine</a></li>
+      <li><a href="https://drawdown.org/">Project Drawdown</a></li>
+    </ul>
+    <ul class="listReset">
+      <li><small>Earth in header: <a href="https://visibleearth.nasa.gov/images/57723/the-blue-marble">2002 Blue
+            Marble</a> from NASA’s visible earth catalog.</small></li>
+      <li>—</li>
+      <li><small>Typography: System sans-serif — no webfonts loaded.</small></li>
+    </ul>
+
+  </footer>
+
+</body>
+
+</html>
