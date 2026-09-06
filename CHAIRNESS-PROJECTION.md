@@ -43,12 +43,25 @@ Self-contained: six OFL typefaces are base64-embedded, and the images are
 fetched from are.na at view time. **No `fonts/` folder or image directory is
 needed in this repo** — the single HTML file is the whole deployment.
 
-About 370 KB of markup, pulling roughly 12 MB of images from are.na.
+About 375 KB of markup, pulling roughly **33 MB** of images from are.na
+(measured 2026-09-06 with a browser `Accept`, so WebP where are.na offers it).
 
-Note that `page-weight.js` does not follow external URLs, so the footer will
-report this page at around 14 KB — its compressed markup — and not the images.
-That understates it by a lot. Worth knowing if the transparency line ever gets
-audited.
+Of that, **11 MB is two animated GIFs**. are.na's resizer only handles still
+images — a GIF block's `image_url` falls through to the unresized original on
+`d2w9rnfcy7mm78.cloudfront.net`, so two files carry a third of the page while
+the other 300 average 73 KB each. Worth knowing before adding more GIFs: each
+one costs roughly what seventy photographs cost.
+
+Note that `page-weight.js` does not follow external URLs, so the footer reports
+this page at **188 KB** — its own markup — and not the images. That understates
+the real transfer by roughly 33 MB. Worth knowing if the transparency line ever
+gets audited.
+
+Almost all of that 188 KB is the six embedded typefaces: 219 KB of base64 is
+~160 KB of woff2, and woff2 is already compressed, so it does not shrink again
+in transit. The markup around it is a few KB. `--no-embed-fonts` is the lever
+if that number ever needs to come down — the page then needs the fonts served
+alongside it, which is why the deployment is a single file today.
 
 ## Adding chairs
 
