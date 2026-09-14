@@ -31,7 +31,7 @@ Raw, hand-written HTML and CSS. No framework, no client-side JS, no webfonts. `S
 
 ## Case studies
 
-Live and built out: Chair-ness, Solarpunk Boombox, 3P: People Processing Plastic, Spontaneous Lamps, MICA Graduate Admissions Materials, A Carbon Sequestering Book, Green Acres → Ecovention Europe, The Sustainabilitist Principles, The Libre Designer.
+Live and built out: Chair-ness, Solarpunk Boombox, 3P: People Processing Plastic, Spontaneous Lamps, MICA Graduate Admissions Materials, A Carbon Sequestering Book, Green Acres → Ecovention Europe, The Sustainabilitist Principles, The Libre Designer, CAPE, Drawing on Tempered Glass, Wjeather.
 
 ## On the horizon
 
@@ -56,6 +56,7 @@ Carbon Sequestering Book	green-4	#89A271
 Green Acres → Ecovention	dark-gray-4	#939A9A
 Sustainabilitist Principles	purple-4	#AE8CA5
 The Libre Designer	light-gray-5	#6A7A62
+Wjeather	—	#fff (full-color screenshots, no tint)
 Contact	gray-4	#99998D
 About	red-4	#DE7473
 
