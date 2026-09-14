@@ -16,6 +16,7 @@ i/9055685895_34d9e39f20_c.jpg|i/green-acres-dither.png|800
 i/51367568813_9a30354224_z.jpg|i/sustainabilitist-dither.png|800
 i/14753804954_9d937267b7_c.jpg|i/contact-dither.png|800
 i/7725163876_1bf73f8b73_b.jpg|i/about-dither.png|800
+i/case-study-cape/diagram.webp|i/cape-dither.png|800
 "
 
 echo "$IMAGES" | while IFS='|' read -r src out width; do
