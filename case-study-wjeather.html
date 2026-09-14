@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wjeather - Wjerk: A Climate Design Studio</title>
+  <meta name="description"
+    content="A simple, abstract weather app: the forecast drawn as color, line weight, and angle instead of icons and numbers.">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body class="case-study">
+
+  <header>
+    <div class="logo">
+      <img src="i/alternateEarthRingsLogo.png" alt="Gray Earth Marble with Rings of Hope radiating outward" />
+    </div>
+    <div class="blurb">
+      <p><strong>Wjerk.</strong> <small>A Climate Design Studio. <small>Designing for the Welfare of All
+            Life.<sup>‡</sup></small></small></p>
+    </div>
+    <nav>
+      <ul class="listReset">
+        <li><a href="index.html#work">Case Studies</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="https://bjornpaedia.wjerk.shop/">Notes &amp; Ideas</a></li>
+        <li><a href="https://stuff.wjerk.shop/">Store</a></li>
+        <li><a href="https://buttondown.com/bjornmeansbear">Newsletter</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="caseStudyDetail">
+      <div class="imageWrapper" style="--tint: #fff">
+        <img src="./i/case-study-wjeather/wjeather-hero-gusty-westerly.png" width="720" height="1280"
+          alt="Wjeather screen for a gusty westerly wind: pastel hour-bands, a pink temperature curve, a dashed green humidity line, and gray hatched wind lines that tighten and swing direction band to band"
+          loading="lazy" decoding="async" fetchpriority="high">
+      </div>
+      <div class="content">
+        <h1>Wjeather</h1>
+        <p class="dek"><cite>A Simple, Abstract Weather app.</cite> Twelve hours of forecast drawn as one
+          continuous chart — color, line weight, and angle standing in for sky, temperature, humidity, and
+          wind — instead of the usual grid of icons and numbers. Built solo, SvelteKit on Cloudflare Pages,
+          on real Open-Meteo data.</p>
+      </div>
+    </section>
+
+    <article class="caseStudyBody">
+      <div class="caseStudyText">
+        <p>Most weather apps are a list: an icon, a high, a low, repeated once per day. <cite>Wjeather</cite>
+          asks what a forecast looks like if it’s read the way a map is read, rather than the way a table is
+          read — one screen, top to bottom, now at the top and twelve hours out at the bottom, everything
+          overlaid on the same time axis instead of separated into cards.</p>
+
+        <p>The whole screen is the chart. Sky color fills the background band by band, one band per hour. A
+          pink line traces temperature as a smooth curve. A dashed green line traces humidity on its own fixed
+          scale, 40% at the left edge and 100% at the right — sharing the width, not the axis, so where it
+          crosses the temperature line means nothing on purpose. And gray hatched lines run with the wind:
+          their angle is the compass direction, north up like a map, and their spacing is the speed.</p>
+
+        <h2>Lines that answer their own question</h2>
+        <p>The wind hatching was the part worth explaining on its own. Spacing runs on a simple scale: calm air
+          under 5 km/h draws no lines at all, and by gale force — 60 km/h — the lines sit as close as they’ll
+          get, tightening linearly in between. So yes, a stronger wind does read as a denser pattern, but
+          that’s a static property of each hour’s band, not lines being added. What does animate is a short
+          settle-in drift when the screen first loads or new weather arrives: the lines slide in from the
+          direction the wind is blowing, slow to a stop, and land exactly where they’d sit with no motion at
+          all. Faster wind drifts farther, not just faster, so the distance reads as much as the direction
+          does. It’s under five seconds and skipped entirely under <code>prefers-reduced-motion</code>, so it
+          needed no pause control under WCAG 2.2.2.</p>
+
+        <h2>Color does the rest of the reading</h2>
+        <p>Sky color runs from yellow by day to purple at night, with stars fading in once it’s dark enough to
+          see them. The edges between one hour’s band and the next go soft wherever cloud is building, and
+          always at dawn and dusk — sharp transitions read as sharp weather; the blurred ones read as the sky
+          changing its mind. None of it needs a legend to work at a glance, though a small key is there for
+          the parts that do.</p>
+
+        <h2>Stack</h2>
+        <p>SvelteKit, deployed to Cloudflare Pages, styled with Tailwind. Forecast data is <a
+            href="https://open-meteo.com/">Open-Meteo</a> — free, no key, CC BY 4.0 — fetched down to exactly
+          the fields the screen draws and nothing else. The app asks for the browser’s location and otherwise
+          gets out of the way: no daily cards, no hourly table underneath, just the one chart.</p>
+      </div>
+
+      <div class="caseStudyGallery">
+        <figure>
+          <img src="./i/case-study-wjeather/wjeather-clear-and-calm.png" width="720" height="1280"
+            alt="Clear and calm forecast: yellow day band into a starry purple night, no wind lines at all under 5 km/h"
+            loading="lazy" decoding="async">
+          <figcaption>Calm air under 5 km/h — no hatching drawn</figcaption>
+        </figure>
+
+        <figure>
+          <img src="./i/case-study-wjeather/wjeather-wind-rising.png" width="720" height="1280"
+            alt="Forecast with wind rising from 6 to 45 km/h over twelve hours: hatching starts wide-spaced at the top of the screen and tightens noticeably toward the bottom"
+            loading="lazy" decoding="async">
+          <figcaption>Wind rising hour by hour — the same static spacing scale read top to bottom</figcaption>
+        </figure>
+
+        <figure>
+          <img src="./i/case-study-wjeather/wjeather-storms-by-morning.png" width="720" height="1280"
+            alt="Muggy forecast building to storms: wind direction swings from south to west over the night, so the hatch angle visibly fans and curves band to band"
+            loading="lazy" decoding="async">
+          <figcaption>A veering wind — the hatch angle turns with it, band by band</figcaption>
+        </figure>
+
+        <figure>
+          <img src="./i/case-study-wjeather/wjeather-still-night.png" width="720" height="1280"
+            alt="Fog forming on a still night: deep purple band full of stars, humidity line climbing toward 100%, no wind lines"
+            loading="lazy" decoding="async">
+          <figcaption>A still night — stars out, humidity climbing, nothing moving</figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <nav class="caseNav">
+      <a class="prevLink" href="case-study-drawing-on-tempered-glass.html">← Drawing on Tempered Glass</a>
+      <a class="nextLink" href="case-study-chairness.html">Chair-ness →</a>
+      <a class="backLink" href="index.html#work">← Back to Case Studies</a>
+    </nav>
+  </main>
+
+  <footer>
+    <ul class="listReset">
+      <li>Wjerk. <em class="currentYear">2026</em>.</li>
+      <li>Designing for the welfare of all life since 2003</li>
+      <li>We’re done with bauhaus; it’s time for <a href="https://bjornpaedia.wjerk.shop/static/BauErden.html">BauErden! Design to
+          (re)Build Earth!</a></li>
+      <li><sup>‡</sup>: Evolved from <a href="https://en.wikipedia.org/wiki/Bruce_Mau">Bruce Mau</a>’s <a
+          href="https://www.brucemaudesign.com/work/massive-change">Massive Change</a>.</li>
+    </ul>
+    <ul class="listReset climateInfo">
+      <li>Eco hosting: Estimated annual site energy use is offset.</li>
+      <li>Optimizations: Images compressed + lazy‑loaded; responsive assets reduce bandwidth.</li>
+      <li class="fileSizes">Transparency: Estimated page size: %PAGE_WEIGHT% (%SITE_WEIGHT% full site) — we optimize for
+        minimal load and reuse.</li>
+      <li>—</li>
+      <li>Source: Site source and build files: https://github.com/bjornmeansbear/a.wjerk.shop (Apache 2.0 for code).
+      <li>Content license: Text & design: CC BY‑SA 4.0; images credited where required.</li>
+      <li>Assets: Fonts & images: public domain or CC-licensed; see repository for attribution.</li>
+    </ul>
+    <ul class="listReset">
+      <li><a href="https://kristian.bjornard.com">Archived Work</a></li>
+      <li><a href="https://www.ookb.co">More Archived Work</a></li>
+      <li><a href="https://github.com/bjornmeansbear">GitHub</a></li>
+      <li><a href="https://www.instagram.com/bjornmeansbear">Instagram</a></li>
+      <li>—</li>
+      <li>Inspirations: <a href="https://solar.lowtechmagazine.com/">Low-Tech Magazine</a></li>
+      <li><a href="https://drawdown.org/">Project Drawdown</a></li>
+    </ul>
+    <ul class="listReset">
+      <li><small>Earth in header: <a href="https://visibleearth.nasa.gov/images/57723/the-blue-marble">2002 Blue
+            Marble</a> from NASA’s visible earth catalog.</small></li>
+      <li>—</li>
+      <li><small>Typography: System sans-serif — no webfonts loaded.</small></li>
+    </ul>
+
+  </footer>
+
+</body>
+
+</html>
