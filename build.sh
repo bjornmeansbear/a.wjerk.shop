@@ -44,3 +44,11 @@ echo "Footer year stamped: ${CURRENT_YEAR}"
 # forever, so this is safe to re-run on every deploy.
 # ============================================================================
 node page-weight.js "$BUILD_DIR"
+
+# ============================================================================
+# STEP 5: Stamp the per-page "Elsewhere" block (Live/Shop/Essay/Research
+# links) from connections.json + arena-cache.json into build/ only. Reads a
+# checked-in cache — never calls Are.na itself (see arena-sync.js, run by
+# hand separately). Source keeps the literal %ELSEWHERE% token forever.
+# ============================================================================
+node elsewhere.js "$BUILD_DIR"

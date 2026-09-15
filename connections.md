@@ -20,13 +20,19 @@ Confirmed (block count, visibility, last touched):
 
 | slug | blocks | vis | created | updated | role | about which concept? |
 |---|---|---|---|---|---|---|
-| `chair-ness` | 454 | closed | ? | 2026-08-27 | archive | ? |
-| `3p-people-processing-plastic` | 124 | public | ? | 2026-07-25 | bibliography | ? |
-| `wjerk-precious-plastics` | 115 | closed | 2019-06-25 | 2026-02-17 | sourcing | ? |
-| `wjerk-grad-book-2020` | 340 | closed | 2020-04-17 | 2026-08-27 | working ⚠ | ? |
-| `a-new-design-commons` | 93 | public | ? | 2026-06-03 | ? | ? |
+| `chair-ness` | 454 | closed | ? | 2026-08-27 | archive | semiotics |
+| `3p-people-processing-plastic` | 124 | public | ? | 2026-07-25 | bibliography | circular materials |
+| `wjerk-precious-plastics` | 115 | closed | 2019-06-25 | 2026-02-17 | sourcing | circular materials |
+| `wjerk-grad-book-2020` | 340 | closed | 2020-04-17 | 2026-08-27 | working ⚠ | design education |
+| `a-new-design-commons` | 93 | public | ? | 2026-06-03 | bibliography | the commons & the public domain |
 | `bauerden` | 10 | closed | ? | 2026-08-18 | ? | ? |
-| `spontaneous-lamp` | 6 | closed | ? | 2026-08-24 | moodboard? | ? |
+| `spontaneous-lamp` | 6 | closed | ? | 2026-08-24 | moodboard? | circular materials |
+| `cape-pure-content` | 29 | public | 2018-02-12 | 2023-05-16 | bibliography | open source / libre / F-LOS; circular materials; the commons & the public domain; speculative futures |
+| `flosd-free-libre-open-design` | 874 | public | 2017-12-15 | 2026-08-27 | sourcing | open source / libre / F-LOS |
+| `the-sustainabilitist` | 2957 | public | 2018-01-10 | 2026-08-16 | bibliography | sustainabilitist principles |
+| `carbon-capture-sequester-whatever-reduce-carbon` | 137 | closed | 2019-06-25 | 2026-06-17 | bibliography? | climate |
+| `libre-designer-book` | 119 | public | 2018-05-28 | 2026-08-05 | ? — "a later thing," relation to The Libre Designer still unresolved | ? |
+| `adhocism-lls8uosznfq` | 4 | private | 2026-05-19 | 2026-08-20 | moodboard? (unconfirmed — matches Solarpunk Boombox's "Ad hocism as method" section) | speculative futures? |
 
 role — what the channel is *for*, not what media it holds. A project can have
 several, sequenced over time:
@@ -118,18 +124,20 @@ this table can fill and verify itself.
 Which ideas does each project actually rest on? Names can be rough — we'll
 normalize them into one vocabulary after.
 
-| case study | concepts | are.na | canonical tiddler |
-|---|---|---|---|
-| Chair-ness | ? | `chair-ness` ✓ | ? |
-| Solarpunk Boombox | ? | ? | — (nothing in wiki) |
-| 3P: People Processing Plastic | ? | `wjerk-precious-plastics` ✓ (sourcing, 2019)<br>`3p-people-processing-plastic` ✓ (bibliography) | ? |
-| Spontaneous Lamp | ? | `spontaneous-lamp` ✓ | ? |
-| MICA Graduate Admissions | ? | `wjerk-grad-book-2020` ✓ (working, 2020) ⚠ don't link | ? |
-| A Carbon Sequestering Book | ? | ? | — (nothing in wiki) |
-| Green Acres → EcoVention Europe | ? | ? | ? |
-| The Sustainabilitist Principles | ? | ? | ? |
-| The Libre Designer | ? | `a-new-design-commons`? | ? (2-way fork, see audit) |
-| Drawing on Tempered Glass | ? | ? | — (nothing in wiki) |
+| case study | concepts | are.na | canonical tiddler | live |
+|---|---|---|---|---|
+| Chair-ness | semiotics | `chair-ness` ✓ (archive) | `Chair-ness.tid` | — |
+| Solarpunk Boombox | speculative futures | `adhocism-lls8uosznfq`? (unconfirmed, private, 4 blocks) | — (nothing in wiki) | — |
+| 3P: People Processing Plastic | circular materials | `wjerk-precious-plastics` ✓ (sourcing, 2019)<br>`3p-people-processing-plastic` ✓ (bibliography) | `3p_ People Processing Plastic.tid` | — |
+| Spontaneous Lamp | circular materials | `spontaneous-lamp` ✓ (moodboard) | `Spontaneous Lamps.tid` | — |
+| MICA Graduate Admissions | design education | `wjerk-grad-book-2020` ✓ (working, 2020) ⚠ don't link publicly — provenance only | — (nothing in wiki) | — |
+| A Carbon Sequestering Book | climate | `carbon-capture-sequester-whatever-reduce-carbon` ✓ (bibliography?) | — (nothing in wiki) | — |
+| Green Acres → EcoVention Europe | substrate & materiality | — (none found) | `Green Acres.tid` + `Ecovention Europe.tid` | — |
+| The Sustainabilitist Principles | sustainabilitist principles | `the-sustainabilitist` ✓ (bibliography — "the principles in action," exemplars + further research) | `The Sustainabilitist Principles.tid` | `https://www.thesustainabilitist.com/` |
+| The Libre Designer | open source / libre / F-LOS | `flosd-free-libre-open-design` ✓ (sourcing). `libre-designer-book` also related, role TBD. `a-new-design-commons` is a related but distinct concept ("the libre designer is the character, the new design commons is the studio") — see its own row above | none yet — the two dated "Libre Designer" tiddlers are July 2020 workshop-logistics notes, not the manifesto itself | — |
+| CAPE | open source / libre / F-LOS; circular materials; the commons & the public domain; speculative futures | `cape-pure-content` ✓ (bibliography) | `CAPE.tid` (also `Content is King.tid`, `From Indesign to Pure Content.tid`) | — |
+| Drawing on Tempered Glass | — (none obviously fits) | — (none found) | — (nothing in wiki) | — |
+| Wjeather | substrate & materiality; open source / libre / F-LOS; semiotics | — (none found) | — (nothing in wiki) | `https://wjeather.wjerk.shop/` |
 
 ---
 
@@ -144,10 +152,11 @@ card you're charging for. Only the first kind gets made.
 
 | object | status | concept | carries what | case study |
 |---|---|---|---|---|
-| Chair-ness patch | live | ? | the idealized form itself — a semiotic claim you can wear | Chair-ness ✓ linked |
-| Spontaneous Lamp instructions | proposed | ? | how to build one, printed on the thing. CC BY-SA | Spontaneous Lamp |
-| Sustainabilitist principle | proposed | ? | one aphorism per shirt — they were book plates, print is native | Sustainabilitist Principles |
-| 3P resin-code chart | maybe | ? | the codes themselves, or a shirt whose printing demonstrates the process | 3P |
+| Chair-ness patch | live | semiotics | the idealized form itself — a semiotic claim you can wear | Chair-ness ✓ linked |
+| Spontaneous Lamp instructions | proposed | circular materials | how to build one, printed on the thing. CC BY-SA | Spontaneous Lamp |
+| Sustainabilitist principle | proposed | sustainabilitist principles | one aphorism per shirt — they were book plates, print is native | Sustainabilitist Principles |
+| 3P shirt | live | circular materials | the 3P logo on front, an abstract explanation of the process on back | 3P ✓ linked |
+| 3P resin-code chart | maybe | circular materials | the codes themselves, or a shirt whose printing demonstrates the process | 3P |
 
 role — what the object *does*:
 
@@ -207,19 +216,24 @@ From `~/Code/lectureScripts/MENU.md`. Same question: what concept, what channel.
 
 ## Concept vocabulary
 
-The list to normalize toward, once the columns above are populated. Keep it
-short — eight to twelve. Candidates from existing tiddler tags and repeated
-themes, none of them decided:
+**Settled 2026-09-14.** Every candidate below ended up with a real case study
+or object attached to it while filling in the tables above — none unused, none
+needed adding. Nine terms, within the eight-to-twelve target:
 
-- open source / libre / F-LOS
-- the commons & the public domain
-- circular materials
-- substrate & materiality
-- semiotics
-- speculative futures
-- sustainabilitist principles
-- design education
-- climate
+- open source / libre / F-LOS — The Libre Designer, CAPE
+- the commons & the public domain — CAPE, and *A New Design Commons* as its
+  own related-but-distinct idea off The Libre Designer
+- circular materials — 3P, Spontaneous Lamp, CAPE
+- substrate & materiality — Green Acres → Ecovention Europe, Wjeather
+- semiotics — Chair-ness, Wjeather
+- speculative futures — Solarpunk Boombox, CAPE
+- sustainabilitist principles — The Sustainabilitist Principles
+- design education — MICA Graduate Admissions
+- climate — A Carbon Sequestering Book
 
-Existing tag collisions to resolve while you're in there:
-`NewDesignCommons` (27 tiddlers) vs `NDC00` (24) — same idea, two tags.
+Not every project rests on exactly one — CAPE alone touches four. That's fine;
+the model was always many-to-many.
+
+Still open, deferred (not on the critical path for the Elsewhere block):
+`NewDesignCommons` (27 tiddlers) vs `NDC00` (24) tag collision in the wiki —
+same idea, two tags, needs a wiki-side merge, not a connections.md decision.

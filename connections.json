@@ -1,0 +1,72 @@
+{
+  "_comment": "Source of truth for the per-page Elsewhere block, built from connections.md. Keyed by case-study slug (case-study-<slug>.html). Only include keys that exist for that project — elsewhere.js renders nothing for a missing field. Are.na block counts come from arena-cache.json (arena-sync.js), not from here.",
+
+  "chairness": {
+    "shop": [
+      { "url": "https://stuff.wjerk.shop/products/chair-ness-patch", "label": "The idealized form itself, worn as a patch" }
+    ],
+    "arena": [
+      { "slug": "chair-ness", "role": "archive" }
+    ]
+  },
+
+  "3p": {
+    "shop": [
+      { "url": "https://stuff.wjerk.shop/products/3p-people-processing-plastic", "label": "The logo on front, the process explained on back" }
+    ],
+    "arena": [
+      { "slug": "wjerk-precious-plastics", "role": "sourcing" },
+      { "slug": "3p-people-processing-plastic", "role": "bibliography" }
+    ],
+    "tiddler": "3p: People Processing Plastic"
+  },
+
+  "spontaneous-lamp": {
+    "arena": [
+      { "slug": "spontaneous-lamp", "role": "moodboard" }
+    ],
+    "tiddler": "Spontaneous Lamps"
+  },
+
+  "sustainabilitist-principles": {
+    "live": "https://www.thesustainabilitist.com/",
+    "arena": [
+      { "slug": "the-sustainabilitist", "role": "bibliography" }
+    ],
+    "tiddler": "The Sustainabilitist Principles"
+  },
+
+  "twobooks": {
+    "tiddler": ["Green Acres", "Ecovention Europe"]
+  },
+
+  "cape": {
+    "arena": [
+      { "slug": "cape-pure-content", "role": "bibliography" }
+    ],
+    "tiddler": "CAPE"
+  },
+
+  "libre-designer": {
+    "arena": [
+      { "slug": "flosd-free-libre-open-design", "role": "sourcing" },
+      { "slug": "a-new-design-commons", "role": "bibliography", "note": "A New Design Commons — a related idea, not this project itself" }
+    ]
+  },
+
+  "carbon-sequestering-book": {
+    "arena": [
+      { "slug": "carbon-capture-sequester-whatever-reduce-carbon", "role": "bibliography" }
+    ]
+  },
+
+  "drawing-on-tempered-glass": {
+    "shop": [
+      { "url": "https://www.erinbarach.com/drawing-on-tempered-glass/purchase-options", "label": "Purchase the book" }
+    ]
+  },
+
+  "wjeather": {
+    "live": "https://wjeather.wjerk.shop/"
+  }
+}
