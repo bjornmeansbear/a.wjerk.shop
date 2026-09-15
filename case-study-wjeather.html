@@ -51,18 +51,17 @@
     <article class="caseStudyBody">
       <div class="caseStudyText">
         <p>Most weather apps are a list: an icon, a high, a low, repeated once per day. <cite>Wjeather</cite>
-          asks what a forecast looks like if it’s read the way a map is read, rather than the way a table is
+          asks what a forecast looks like if it’s read the way a painting is read, rather than the way a data table is
           read — one screen, top to bottom, now at the top and twelve hours out at the bottom, everything
-          overlaid on the same time axis instead of separated into cards.</p>
+          overlaid on the same axes instead of separated into cards.</p>
 
-        <p>The whole screen is the chart. Sky color fills the background band by band, one band per hour. A
-          pink line traces temperature as a smooth curve. A dashed green line traces humidity on its own fixed
-          scale, 40% at the left edge and 100% at the right — sharing the width, not the axis, so where it
-          crosses the temperature line means nothing on purpose. And gray hatched lines run with the wind:
+        <p>The whole screen is the chart. Semiotic colors and patterns fill the background bands, one band per hour. A
+          pink line traces the temperature forecast as a smooth curve. A dashed green line traces humidity on its own fixed
+          scale, 40% at the left edge and 100% at the right — sharing the width, not exactly the axis, so where it
+          crosses the temperature line means little, but creates nice visuals. And gray hatched lines run with the wind:
           their angle is the compass direction, north up like a map, and their spacing is the speed.</p>
 
-        <h2>Lines that answer their own question</h2>
-        <p>The wind hatching was the part worth explaining on its own. Spacing runs on a simple scale: calm air
+        <p>The wind hatching is worth explaining on its own. Spacing runs on a simple scale: calm air
           under 5 km/h draws no lines at all, and by gale force — 60 km/h — the lines sit as close as they’ll
           get, tightening linearly in between. So yes, a stronger wind does read as a denser pattern, but
           that’s a static property of each hour’s band, not lines being added. What does animate is a short
@@ -70,20 +69,16 @@
           direction the wind is blowing, slow to a stop, and land exactly where they’d sit with no motion at
           all. Faster wind drifts farther, not just faster, so the distance reads as much as the direction
           does. It’s under five seconds and skipped entirely under <code>prefers-reduced-motion</code>, so it
-          needed no pause control under WCAG 2.2.2.</p>
+          needs no pause control under WCAG 2.2.2. — just because I want you to symbolically decode this, doesn't mean I don't want it to follow some accessibility standards!</p>
 
-        <h2>Color does the rest of the reading</h2>
-        <p>Sky color runs from yellow by day to purple at night, with stars fading in once it’s dark enough to
-          see them. The edges between one hour’s band and the next go soft wherever cloud is building, and
-          always at dawn and dusk — sharp transitions read as sharp weather; the blurred ones read as the sky
-          changing its mind. None of it needs a legend to work at a glance, though a small key is there for
-          the parts that do.</p>
+        <p>Clear skies run from yellow by day to purple at night, with stars fading in once it’s dark enough to
+          see them.</p>
 
         <h2>Stack</h2>
         <p>SvelteKit, deployed to Cloudflare Pages, styled with Tailwind. Forecast data is <a
             href="https://open-meteo.com/">Open-Meteo</a> — free, no key, CC BY 4.0 — fetched down to exactly
           the fields the screen draws and nothing else. The app asks for the browser’s location and otherwise
-          gets out of the way: no daily cards, no hourly table underneath, just the one chart.</p>
+          gets out of the way: no daily cards, no hourly table underneath, just the one chart. As time moves on, the chart updates and you get ever changing new weather paintings.</p>
       </div>
 
       <div class="caseStudyGallery">
