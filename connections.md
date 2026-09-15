@@ -1,8 +1,12 @@
 # Connections
 
 Working file. Hand-collected map of what exists where, across the Wjerk
-properties. Becomes `connections.json` once it's filled in — the build stamps
-an "Elsewhere" block onto each page from it and checks the links still resolve.
+properties. As of 2026-09-15, the case-studies and objects tables below feed
+a real pipeline: `connections.json` (hand-authored from these tables) +
+`arena-cache.json` (from `arena-sync.js`) get stamped into each case-study
+page as an "Elsewhere" block by `elsewhere.js` — see CLAUDE.md's "Elsewhere
+pipeline" section for how the pieces fit together. This file stays the
+narrative "why" doc; no script parses it directly.
 
 The unit that connects things is the **concept**, not the project. A project
 draws on concepts; a concept has a canonical tiddler, a research channel, and
@@ -13,6 +17,43 @@ Fill in what you know, leave `?` where you don't, delete rows that aren't real.
     ✓ = confirmed via API      ? = unknown        — = doesn't exist / n/a
 
 ---
+
+## Open questions (as of 2026-09-15) — pick up here
+
+Everything else in this file is settled enough to build on. These aren't:
+
+1. **`libre-designer-book`** (119 blocks, public) — role and exact
+   relationship to The Libre Designer still unresolved. Your note: "a later
+   thing... still relates."
+2. **`adhocism-lls8uosznfq`** (4 blocks, private) — unconfirmed guess that
+   this is Solarpunk Boombox's channel (it uses "ad hocism as method" as a
+   section heading). Being private, it can't be linked even if confirmed —
+   would need to go public first, or just stay an internal note.
+3. **The Libre Designer has no canonical tiddler yet.** The three tiddler
+   candidates checked are all July 2020 workshop-logistics notes (Zoom setup,
+   GitHub outline, EtherPad link) — not the finished manifesto the case study
+   describes. Either it needs writing, or it exists somewhere in the wiki
+   under a title not yet found.
+4. **`bauerden`** (10 blocks, closed) — role and concept were never filled
+   in, left over from the original draft table.
+5. **`3p.wjerk.shop`** — you said this should exist; confirmed via `curl` on
+   2026-09-15 that it currently does not resolve (compare: `wjeather.wjerk.shop`
+   and `stuff.wjerk.shop` both return 200 fine, so it's not a network issue).
+   You're tracking down the real address.
+6. **Other project URLs not yet audited.** The Sustainabilitist Principles
+   turned out to have a live site (`www.thesustainabilitist.com`, found this
+   session) that wasn't in this file at all. Worth asking, for each remaining
+   case study: is there a live site, a shirt, or another URL not yet captured
+   here? Don't assume the current tables are exhaustive.
+
+Deferred, not blocking anything above:
+
+7. `NewDesignCommons` (27 tiddlers) vs `NDC00` (24) tag collision in the wiki
+   — a wiki-side merge, not a decision for this file.
+8. "Lectures & workshops → concepts" table (17 rows) — out of scope for the
+   Elsewhere block since lectures aren't linked from case-study pages.
+9. The ~500 Are.na channels in `arena-inventory.md` not yet tied to any
+   project, role, or concept.
 
 ## Are.na channels
 
