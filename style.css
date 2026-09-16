@@ -250,6 +250,8 @@ footer ul p { margin: 0; }
   display: flex;
   flex-wrap: wrap;
   border-bottom: 1px solid;
+  width: 100%;
+  max-height: 66vh;
 }
 
 .caseStudyDetail .imageWrapper {
