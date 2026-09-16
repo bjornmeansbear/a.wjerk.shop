@@ -558,6 +558,8 @@ a:focus-visible {
     align-items: center;
   }
 
+  .row { max-height: 57vh; }
+
   .row .imageWrapper {
     flex: 3;
     border-bottom: none;
