@@ -125,6 +125,11 @@ header nav ul li {
   height: inherit;
 }
 
+/* Border-only grid: a 2-column wrapping list has no gutters to draw
+   dividers in, so each cell borrows a border from its neighbor instead —
+   left column drops its left border (screen edge), rows below the first
+   pick up a top border (row separator). The min-width query further down
+   re-derives the same trick for N columns via :first-child/:not(:first-child). */
 header nav ul li:nth-child(odd) {
   border-left: none;
 }
@@ -143,7 +148,14 @@ header nav a {
   height: 100%;
 }
 
-header nav a:hover {
+/* Single hover affordance shared by every link on the site — header nav,
+   home-page rows, and case-study prev/next/back — so the accent color only
+   needs to change in one place. */
+header nav a:hover,
+.row > a:hover,
+.prevLink:hover,
+.nextLink:hover,
+.backLink:hover {
   background-color: blue;
   color: white;
 }
@@ -167,8 +179,6 @@ main {
   border-bottom: 1px solid;
   min-height: 20rem;
 }
-
-.row > a:hover { background: blue; color: white; }
 
 .row > a {
   color: inherit;
@@ -431,51 +441,31 @@ footer ul p { margin: 0; }
    the 40rem query below; "back to all" always spans the full width beneath
    them, closing out the page. */
 .caseNav {
-  /* try to get it below everything else and right above the footer */
-  clear: both;
-  float: none;
-  position: relative;
-  /**/
   display: flex;
   flex-wrap: wrap;
   flex-basis: 100%;
 }
 
 .prevLink,
-.nextLink {
+.nextLink,
+.backLink {
   display: block;
-  flex: 1 1 100%;
-  box-sizing: border-box;
+  flex-basis: 100%;
   padding: 1em 2em;
   border-top: 1px solid;
   font-weight: bold;
   text-decoration: none;
   color: inherit;
+}
+
+.prevLink,
+.nextLink {
+  flex-grow: 1;
+  flex-shrink: 1;
 }
 
 .nextLink {
   text-align: right;
-}
-
-.prevLink:hover,
-.nextLink:hover {
-  background-color: blue;
-  color: white;
-}
-
-.backLink {
-  display: block;
-  padding: 1em 2em;
-  border-top: 1px solid;
-  font-weight: bold;
-  text-decoration: none;
-  color: inherit;
-  flex-basis: 100%;
-}
-
-.backLink:hover {
-  background-color: blue;
-  color: white;
 }
 
 /* Deliberately visible focus ring (SPEC.md §5) — thick enough to read as
@@ -528,23 +518,18 @@ a:focus-visible {
   }
 
   header nav ul li {
-    display: flex;
     flex: 1;
     align-items: center;    /* Centers text vertically */
     justify-content: center; /* Centers text horizontally */
     align-self: stretch;
   }
 
+  /* Only the alignment changes here — padding/font-weight/etc. carry over
+     from the base rule above (same values, so no need to restate them). */
   header nav a {
     display: flex;
     align-items: center;    /* Centers text vertically */
     justify-content: center; /* Centers text horizontally */
-    padding: 1em;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    color: inherit;
-    height: 100%;
     width: 100%;
   }
 
@@ -560,9 +545,10 @@ a:focus-visible {
     border-left: 1px solid;
   }
 
+  /* align-items: center carries over from the base .row rule unchanged;
+     only the direction flips here. */
   .row, .row > a {
     flex-direction: row;
-    align-items: center;
   }
 
   .row { max-height: 57vh; }
@@ -573,6 +559,8 @@ a:focus-visible {
     border-right: 1px solid;
   }
 
+  /* Zebra-stripe the image side: odd rows flip the image to the right
+     instead of adding a distinct visual style per row. */
   .row:nth-child(odd) .imageWrapper {
     order: 2;
     border-right: none;
@@ -617,9 +605,9 @@ a:focus-visible {
 }
 
 /* ============================================================================
-   Progressive enhancement from here up: everything above is the mobile
-   baseline; this query layers on the side-by-side desktop treatment once
-   there's enough width for it to actually read well.
+   A second enhancement step on top of the 40rem query above (both apply at
+   once past this width) — just widening a few proportions further, not
+   re-establishing layout.
    ============================================================================ */
 @media (min-width: 55rem) {
   header .logo {
@@ -631,22 +619,12 @@ a:focus-visible {
     font-size: 1.75rem;
   }
 
-  .row .imageWrapper {
-    flex: 3;
-  }
-
   .row .blurb {
     flex: 6;
   }
 
   .row .blurb p {
     font-size: 2rem;
-  }
-
-  footer {
-    flex-direction: row;
-    padding: 2rem;
-    gap: 2rem;
   }
 
   .caseStudyDetail .content h1 {
