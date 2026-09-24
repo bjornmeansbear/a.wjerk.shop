@@ -259,29 +259,33 @@ footer ul p { margin: 0; }
 /***************************/
 .caseStudyDetail {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap; /* stack on narrow screens instead of squeezing both columns onto one line */
   border-bottom: 1px solid;
   width: 100%;
-  max-height: 66vh;
 }
 
 .caseStudyDetail .imageWrapper {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  max-height: 100%;
+  flex: 0 1 auto; /* hard left, sized to the image — never grows to eat .content's space */
 }
 
 .caseStudyDetail .imageWrapper img {
   display: block;
   width: auto;
-  height: 100%;
-  object-fit: cover;  /* safety net; the rule above means this rarely engages */
-  mix-blend-mode: multiply;
+  height: auto;
+  /* max-height (not height) is what actually gets "66vh, aspect ratio kept":
+     a fixed height plus width:auto can still overflow sideways on a narrow
+     screen, since nothing would be capping the width. max-width/max-height
+     together let the browser pick the largest size that fits both without
+     distorting or cropping the image. */
+  max-height: 66vh;
+  max-width: 100%;
 }
 
 .caseStudyDetail .content {
+  flex: 1 1 20rem; /* fills the remaining space to the image's right */
   padding: 2rem;
+  max-width: 45rem;
 }
 
 .caseStudyDetail .content h1 {
@@ -293,7 +297,6 @@ footer ul p { margin: 0; }
   font-size: 1.25rem;
   font-weight: 300;
   margin: 0;
-  max-width: 45rem;
 }
 
 /* Elsewhere block: Live/Shop/Essay/Research links, stamped in at build time
