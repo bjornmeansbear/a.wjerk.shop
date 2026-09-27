@@ -1,56 +1,62 @@
 {
   "chair-ness": {
     "title": "Chair-ness",
-    "blocks": 551,
+    "blocks": 568,
     "visibility": "public",
-    "checkedAt": "2026-09-15T02:55:59.342Z"
+    "checkedAt": "2026-09-27T19:51:40.987Z"
   },
   "wjerk-precious-plastics": {
     "title": "Wjerk: Precious Plastics",
     "blocks": 114,
     "visibility": "closed",
-    "checkedAt": "2026-09-15T02:55:59.416Z"
+    "checkedAt": "2026-09-27T19:51:41.041Z"
   },
   "3p-people-processing-plastic": {
     "title": "3P: People Processing Plastic",
     "blocks": 123,
     "visibility": "public",
-    "checkedAt": "2026-09-15T02:55:59.492Z"
+    "checkedAt": "2026-09-27T19:51:41.096Z"
   },
   "spontaneous-lamp": {
     "title": "Spontaneous Lamp",
     "blocks": 6,
     "visibility": "closed",
-    "checkedAt": "2026-09-15T02:55:59.544Z"
+    "checkedAt": "2026-09-27T19:51:41.156Z"
   },
   "the-sustainabilitist": {
     "title": "§ The Sustainabilitist",
-    "blocks": 2803,
+    "blocks": 2804,
     "visibility": "public",
-    "checkedAt": "2026-09-15T02:55:59.607Z"
+    "checkedAt": "2026-09-27T19:51:41.238Z"
   },
   "cape-pure-content": {
     "title": "CAPE / Pure Content",
-    "blocks": 26,
+    "blocks": 27,
     "visibility": "public",
-    "checkedAt": "2026-09-15T02:55:59.660Z"
+    "checkedAt": "2026-09-27T19:51:41.336Z"
   },
   "flosd-free-libre-open-design": {
     "title": "£ FLOSD Free Libre Open Design",
-    "blocks": 835,
+    "blocks": 836,
     "visibility": "public",
-    "checkedAt": "2026-09-15T02:55:59.726Z"
+    "checkedAt": "2026-09-27T19:51:41.378Z"
   },
   "a-new-design-commons": {
     "title": "A New Design Commons",
     "blocks": 65,
     "visibility": "public",
-    "checkedAt": "2026-09-15T02:55:59.781Z"
+    "checkedAt": "2026-09-27T19:51:41.423Z"
+  },
+  "carbon-sequestering-book": {
+    "title": "Carbon Sequestering Book",
+    "blocks": 22,
+    "visibility": "closed",
+    "checkedAt": "2026-09-27T19:51:41.484Z"
   },
   "carbon-capture-sequester-whatever-reduce-carbon": {
     "title": "Carbon Capture, Sequester, whatever (reduce carbon)",
-    "blocks": 136,
+    "blocks": 137,
     "visibility": "closed",
-    "checkedAt": "2026-09-15T02:55:59.858Z"
+    "checkedAt": "2026-09-27T19:51:41.557Z"
   }
 }

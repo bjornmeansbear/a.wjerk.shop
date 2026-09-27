@@ -172,7 +172,7 @@ normalize them into one vocabulary after.
 | 3P: People Processing Plastic | circular materials | `wjerk-precious-plastics` ✓ (sourcing, 2019)<br>`3p-people-processing-plastic` ✓ (bibliography) | `3p_ People Processing Plastic.tid` | — |
 | Spontaneous Lamp | circular materials | `spontaneous-lamp` ✓ (moodboard) | `Spontaneous Lamps.tid` | — |
 | MICA Graduate Admissions | design education | `wjerk-grad-book-2020` ✓ (working, 2020) ⚠ don't link publicly — provenance only | — (nothing in wiki) | — |
-| A Carbon Sequestering Book | climate | `carbon-capture-sequester-whatever-reduce-carbon` ✓ (bibliography?) | — (nothing in wiki) | — |
+| A Carbon Sequestering Book | climate | `carbon-sequestering-book` ✓ (sourcing, made 2026-09-27) + `carbon-capture-sequester-whatever-reduce-carbon` ✓ (bibliography) | — (nothing in wiki) | — |
 | Green Acres → EcoVention Europe | substrate & materiality | — (none found) | `Green Acres.tid` + `Ecovention Europe.tid` | — |
 | The Sustainabilitist Principles | sustainabilitist principles | `the-sustainabilitist` ✓ (bibliography — "the principles in action," exemplars + further research) | `The Sustainabilitist Principles.tid` | `https://www.thesustainabilitist.com/` |
 | The Libre Designer | open source / libre / F-LOS | `flosd-free-libre-open-design` ✓ (sourcing). `libre-designer-book` also related, role TBD. `a-new-design-commons` is a related but distinct concept ("the libre designer is the character, the new design commons is the studio") — see its own row above | none yet — the two dated "Libre Designer" tiddlers are July 2020 workshop-logistics notes, not the manifesto itself | — |
