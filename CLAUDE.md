@@ -61,6 +61,13 @@ include a `length` field, so read block counts from `counts.contents`.
 Personal projects never took a prefix — `chair-ness`, `spontaneous-lamp`,
 `3p-people-processing-plastic`. Guessing `wjerk-chair-ness` will fail.
 
+**Writes** (verified 2026-09-27): `POST /v3/channels` with `{title, visibility}`
+makes the slug from the title. `POST /v3/connections` with
+`{connectable_id, connectable_type: "Block", channel_ids: [id]}` adds an
+existing block to another channel without moving it. `POST /v3/blocks` with
+`{value: url, title, channel_ids}` makes a new block. From Python, set a
+`User-Agent` header: Cloudflare rejects urllib's default with 403/1010.
+
 **Mirroring:** `python3 ~/Code/chair-ness/scripts/fetch_arena.py --channel SLUG
 --out ~/Code/SLUG`. Already parameterized, no edits needed. ⚠ It calls **v2**
 public endpoints — still working, but it will need migrating to v3 when those go.
@@ -116,7 +123,12 @@ everything downstream of that is mechanical.
 ## Related repos
 
 - `~/Code/sentence-a-day` — TiddlyWiki source for bjornpaedia.wjerk.shop; also
-  holds the Are.na openapi spec
+  holds the Are.na openapi spec. Check it before writing anything essay-shaped
+  for a case study — the thinking often already exists. `sad2021tw/tiddlers/`
+  (~1,740 tiddlers; ~1,650 files in the static export; the gap is system tiddlers and unexported drafts) is the main body;
+  `otherIdeas/` and `essayExperiment/` hold standalone essay drafts. Rough
+  essays belong here, not in `lectureScripts`, so they land where they publish.
 - `~/Code/bjornpaedia` — the published static export (deploy target, not source)
 - `~/Code/lectureScripts` — 17 lectures and workshops, unpublished
+  - `projectWriteups/<slug>.md` — one pointer per project (same slug as the case study): where its drafts, notes, and research are, and what's next. Published links stay in `connections.json`; pointers track working state. Update the pointer whenever you create or move something for a project.
 - `~/Code/chair-ness` — Are.na mirror + the projection slideshow source
