@@ -39,12 +39,13 @@ Note there is no `--ambient` here. That flag is what picks the other mode.
 
 ## What the file contains
 
-Self-contained: six OFL typefaces are base64-embedded, and the images are
+Self-contained: 33 OFL font families are base64-embedded, and the images are
 fetched from are.na at view time. **No `fonts/` folder or image directory is
 needed in this repo** — the single HTML file is the whole deployment.
 
-About 375 KB of markup, pulling roughly **33 MB** of images from are.na
-(measured 2026-09-06 with a browser `Accept`, so WebP where are.na offers it).
+About 1.7 MB of markup (1.2 MB gzipped, measured 2026-09-26), pulling roughly
+**33 MB** of images from are.na (measured 2026-09-06 with a browser `Accept`,
+so WebP where are.na offers it).
 
 Of that, **11 MB is two animated GIFs**. are.na's resizer only handles still
 images — a GIF block's `image_url` falls through to the unresized original on
@@ -53,13 +54,13 @@ the other 300 average 73 KB each. Worth knowing before adding more GIFs: each
 one costs roughly what seventy photographs cost.
 
 Note that `page-weight.js` does not follow external URLs, so the footer reports
-this page at **188 KB** — its own markup — and not the images. That understates
+this page at roughly **1.2 MB** — its own markup — and not the images. That understates
 the real transfer by roughly 33 MB. Worth knowing if the transparency line ever
 gets audited.
 
-Almost all of that 188 KB is the six embedded typefaces: 219 KB of base64 is
-~160 KB of woff2, and woff2 is already compressed, so it does not shrink again
-in transit. The markup around it is a few KB. `--no-embed-fonts` is the lever
+Almost all of that is the embedded type: 33 families, ~1.6 MB of base64 over
+~1.2 MB of woff2 (it was 188 KB with six faces until 2026-09-26). woff2 is
+already compressed, so it does not shrink again in transit. The markup around it is a few KB. `--no-embed-fonts` is the lever
 if that number ever needs to come down — the page then needs the fonts served
 alongside it, which is why the deployment is a single file today.
 
