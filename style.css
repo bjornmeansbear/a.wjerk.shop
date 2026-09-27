@@ -31,11 +31,11 @@ body {
 /* Ring color: damaged red → warming → green growth → hopeful blue.
    All kit palette colors at step 2–3 (vivid but warm, not pure hue). */
 @keyframes ringColor {
-  0%   { stroke: rgb(255,185,182); } /* red-2        */
-  25%  { stroke: rgb(236,210,137); } /* goldenrod-2  */
-  50%  { stroke: rgb(241,238,171); } /* yellow-1     */
-  80%  { stroke: rgb(201,222,181); } /* green-2      */
-  100% { stroke: rgb(158,187,243); } /* cornflower-3 */
+  0%   { stroke: rgb(232,103,138); } /* pink-4       */
+  25%  { stroke: rgb(181,149,46);  } /* goldenrod-4  */
+  50%  { stroke: rgb(162,156,67);  } /* yellow-4     */
+  80%  { stroke: rgb(101,126,73);  } /* green-5      */
+  100% { stroke: rgb(83,115,178);  } /* cornflower-5 */
 }
 
 /* Ring grow: dashes start as tiny seed-dots; round linecaps help — each
@@ -79,7 +79,7 @@ header .logo {
   display: flex;
   flex-basis: 100%;
   min-height: 12rem;
-  background-color: var(--wjerk-black);
+  background-color: black;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -88,14 +88,13 @@ header .logo {
 header .logo .earth {
   background: url(./i/globe_west_540.jpg) center / contain no-repeat;
   position: absolute;
-  inset: 0;
+  inset: 5%;
   z-index: 0;
   animation: grayToColor 30s;
 }
 
 header .logo .ring {
-  width: 78%;
-  margin: 1rem;
+  width: 86%;
   position: relative;
   z-index: 1;
   /* Rotate the whole SVG so the circle spins without needing transform-origin
@@ -107,7 +106,7 @@ header .logo .ring {
 header .logo .ring circle {
   fill: none;
   stroke: rgb(201,222,181); /* green-2 — static / reduced-motion state */
-  stroke-width: 2.5;
+  stroke-width: 1.5;
   stroke-linecap: round;    /* short dashes look like seeds; long ones like arcs */
   stroke-dasharray: 10 3;   /* static default (nearly healed) */
   animation:
@@ -449,19 +448,21 @@ footer ul p { margin: 0; }
   border-left-width: 3px;
 }
 
-/* Wide enough for the aside to escape into the right margin:
-   38rem body + 13rem aside + ~3rem gutter each side ≈ 72rem minimum.
-   Negative right margin = aside width (13rem) + body padding (1.5rem) + gap (0.5rem). */
+/* Wide enough for the aside to escape into the right margin (38rem body + aside + ~3rem gutter ≈ 72rem).
+   --aside-w drives both width and the derived negative right margin; top offsets it up without disturbing text reflow. */
 @media (min-width: 72rem) {
   .caseStudyBody .c2cAside {
+    --aside-w: clamp(13rem, 15vw, 30rem);
     float: right;
     clear: right;
-    width: 13rem;
-    margin: 0.25rem -15rem 1.5rem 0;
+    width: var(--aside-w);
+    margin-right: calc(-1 * (var(--aside-w) + 2rem));
     padding: 0.75rem;
     font-size: 0.875rem;
     line-height: 1.5;
     border-left-width: 1px;
+    position: relative;
+    top: calc(-1 * (var(--aside-w) * 3));
   }
 }
 
@@ -692,6 +693,28 @@ header nav a:focus-visible,
     align-items: flex-start;
     gap: 3rem;
     max-width: 72rem;
+    padding: 3rem;
+  }
+
+  /* Multi-section pages: outer body is just a flow wrapper; each section
+     handles its own max-width, padding, and text/gallery split. */
+  .caseStudyBody:has(> section) {
+    max-width: none;
+    padding: 0;
+  }
+
+  .caseStudyPreamble {
+    max-width: 38rem;
+    margin: 0 auto;
+    padding: 3rem 3rem 0;
+  }
+
+  .caseStudyBody > section:has(> .caseStudyText) {
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
+    max-width: 72rem;
+    margin: 0 auto;
     padding: 3rem;
   }
 
