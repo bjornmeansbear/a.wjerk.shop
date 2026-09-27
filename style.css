@@ -389,6 +389,72 @@ footer ul p { margin: 0; }
   border-top: 1px solid;
 }
 
+/* Material/research tables — border-only, no chrome, inherits body type.
+   Used in Carbon Sequestering Book and potentially other research-heavy pages. */
+.caseStudyBody table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  margin: 1.5rem 0;
+}
+
+.caseStudyBody th,
+.caseStudyBody td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid;
+}
+
+.caseStudyBody thead th {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.caseStudyBody td:first-child {
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+/* On narrow screens the table scrolls horizontally rather than squashing */
+.caseStudyBody .tableScroll {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+.caseStudyBody .tableScroll table { margin: 0; }
+
+.caseStudyBody figure {
+  margin: 1.5rem 0;
+}
+
+.caseStudyBody figcaption {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-top: 0.5rem;
+}
+
+.caseStudyBody .diagramSvg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid;
+}
+
+.caseStudyBody .c2cAside {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid;
+  border-left-width: 3px;
+}
+
+.caseStudyBody .c2cAside > :first-child {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.75rem;
+}
+
 .caseStudyBody dl {
   margin: 1.5rem 0;
   padding: 1rem 0;
