@@ -417,12 +417,13 @@ footer ul p { margin: 0; }
   white-space: nowrap;
 }
 
-/* On narrow screens the table scrolls horizontally rather than squashing */
+/* On narrow screens the table scrolls horizontally rather than squashing.
+   Negative margin bleeds the table to the full column width (past the body padding). */
 .caseStudyBody .tableScroll {
   overflow-x: auto;
-  margin: 1.5rem 0;
+  margin: 1.5rem -1.5rem;
 }
-.caseStudyBody .tableScroll table { margin: 0; }
+.caseStudyBody .tableScroll table { margin: 0; width: 100%; }
 
 .caseStudyBody figure {
   margin: 1.5rem 0;
