@@ -50,26 +50,274 @@
     <article class="caseStudyBody">
       <p><em>A Carbon Sequestering Book is speculative — a design fiction, not a built object.</em> The idea: take
         every material that makes up a normal book and make the book carbon-neutral or carbon-negative in how it’s
-        made, without offsetting.</p>
+        made, without offsetting. A book is not one material — it’s a system of components, and each one is a
+        separate problem.</p>
+
+      <h2>The material breakdown</h2>
+      <p>Breaking the object down by component makes clear which parts are solved, which are procurement decisions
+        already being made elsewhere, and which part is the genuine research leap:</p>
+
+      <div class="tableScroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Component</th>
+              <th>Conventional</th>
+              <th>Viable today</th>
+              <th>Still speculative</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Paper / substrate</td>
+              <td>Virgin tree pulp — carbon-positive from harvest and processing</td>
+              <td><a href="https://www.freshpress.studio/">Fresh Press</a>: agricultural waste + perennial prairie
+                grasses — carbon-neutral to carbon-negative</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>Ink carrier (oil)</td>
+              <td>Petroleum-derived mineral oil or linseed</td>
+              <td>Plant-based or algae-derived oils — lower embodied carbon, no fossil extraction</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>Ink pigment (black)</td>
+              <td>Carbon black from incomplete combustion of fossil fuels</td>
+              <td>Algae-derived carbon black — both the oil and the pigment can come from algae, closing the
+                biological loop</td>
+              <td>★ Pigment that forms <em>on the page</em> by drawing CO₂ from the air — the concept’s hard
+                centre</td>
+            </tr>
+            <tr>
+              <td>Binding adhesive</td>
+              <td>PVA (polyvinyl acetate — petroleum-derived)</td>
+              <td>Wheat starch, rice starch, natural hide glue</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>Cover board</td>
+              <td>Virgin fiber board</td>
+              <td>Recycled board or FSC-certified fiber</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>Coating / varnish</td>
+              <td>Petroleum-based UV varnish</td>
+              <td>Water-based varnishes; uncoated surfaces where possible</td>
+              <td>—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <figure>
+        <svg class="diagramSvg" viewBox="0 0 400 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svgBook01Title">
+          <title id="svgBook01Title">Book material cross-section. Six layers from front to back: cover board (FSC fiber, viable today), endpaper, pages (Fresh Press agricultural waste paper, viable), ink overlay (still speculative), endpaper, cover board. Binding at spine uses starch or hide glue, viable today.</title>
+          <rect width="400" height="270" fill="rgb(248,250,231)"/>
+          <text x="12" y="22" style="font:600 9px/1 system-ui,sans-serif;fill:rgb(45,40,38);text-transform:uppercase;letter-spacing:.1em">Material cross-section</text>
+          <!-- Spine / binding -->
+          <rect x="12" y="36" width="12" height="210" fill="rgb(201,222,181)" stroke="rgb(45,40,38)" stroke-width="1"/>
+          <text x="18" y="141" transform="rotate(-90,18,141)" style="font:500 8px system-ui,sans-serif;fill:rgb(45,40,38);text-anchor:middle">Binding</text>
+          <!-- Front cover board -->
+          <rect x="26" y="36" width="150" height="34" fill="rgb(201,222,181)" stroke="rgb(45,40,38)" stroke-width="1"/>
+          <text x="34" y="54" style="font:600 12px system-ui,sans-serif;fill:rgb(45,40,38)">Cover board</text>
+          <text x="34" y="66" style="font:400 9px system-ui,sans-serif;fill:rgb(70,65,60)">FSC or recycled fiber</text>
+          <!-- Front endpaper -->
+          <rect x="26" y="70" width="150" height="9" fill="rgb(201,222,181)" stroke="rgb(45,40,38)" stroke-width="1"/>
+          <!-- Text block / pages -->
+          <rect x="26" y="79" width="150" height="123" fill="rgb(201,222,181)" stroke="rgb(45,40,38)" stroke-width="1"/>
+          <text x="34" y="105" style="font:600 13px system-ui,sans-serif;fill:rgb(45,40,38)">Pages</text>
+          <text x="34" y="119" style="font:400 10px system-ui,sans-serif;fill:rgb(60,55,50)">Fresh Press paper</text>
+          <text x="34" y="131" style="font:400 10px system-ui,sans-serif;fill:rgb(60,55,50)">ag waste + prairie grasses</text>
+          <text x="34" y="143" style="font:400 10px system-ui,sans-serif;fill:rgb(60,55,50)">carbon-neutral to negative</text>
+          <!-- Ink layer — speculative overlay on pages -->
+          <rect x="26" y="79" width="150" height="13" fill="rgb(197,57,101)" fill-opacity=".12" stroke="rgb(197,57,101)" stroke-width="1" stroke-dasharray="5 3"/>
+          <text x="34" y="89" style="font:700 8px system-ui,sans-serif;fill:rgb(197,57,101);text-transform:uppercase;letter-spacing:.08em">★ Ink</text>
+          <!-- Back endpaper -->
+          <rect x="26" y="202" width="150" height="9" fill="rgb(201,222,181)" stroke="rgb(45,40,38)" stroke-width="1"/>
+          <!-- Back cover board -->
+          <rect x="26" y="211" width="150" height="35" fill="rgb(201,222,181)" stroke="rgb(45,40,38)" stroke-width="1"/>
+          <text x="34" y="231" style="font:600 12px system-ui,sans-serif;fill:rgb(45,40,38)">Cover board</text>
+          <!-- Endpaper labels -->
+          <line x1="176" y1="74" x2="184" y2="74" stroke="rgb(45,40,38)" stroke-width="0.75"/>
+          <text x="186" y="77" style="font:400 8.5px system-ui,sans-serif;fill:rgb(100,95,85)">endpaper</text>
+          <line x1="176" y1="206" x2="184" y2="206" stroke="rgb(45,40,38)" stroke-width="0.75"/>
+          <text x="186" y="209" style="font:400 8.5px system-ui,sans-serif;fill:rgb(100,95,85)">endpaper</text>
+          <!-- Ink annotation -->
+          <line x1="176" y1="85" x2="193" y2="85" stroke="rgb(197,57,101)" stroke-width="1" stroke-dasharray="3 2"/>
+          <text x="196" y="83" style="font:700 12px system-ui,sans-serif;fill:rgb(197,57,101)">★ Ink: still speculative</text>
+          <text x="196" y="97" style="font:400 10px system-ui,sans-serif;fill:rgb(45,40,38)">Near-term: algae-derived</text>
+          <text x="196" y="109" style="font:400 10px system-ui,sans-serif;fill:rgb(45,40,38)">ink is real and buildable</text>
+          <text x="196" y="121" style="font:400 9px system-ui,sans-serif;fill:rgb(100,95,85)">Patagonia project: demonstrated</text>
+          <text x="196" y="136" style="font:400 10px system-ui,sans-serif;fill:rgb(197,57,101)">Speculative: CO₂-reactive</text>
+          <text x="196" y="148" style="font:400 10px system-ui,sans-serif;fill:rgb(197,57,101)">pigment on the printed page</text>
+          <text x="196" y="160" style="font:400 9px system-ui,sans-serif;fill:rgb(150,80,80)">not yet buildable</text>
+          <!-- Legend -->
+          <circle cx="12" cy="255" r="5" fill="rgb(201,222,181)" stroke="rgb(45,40,38)" stroke-width="1"/>
+          <text x="22" y="259" style="font:400 10px system-ui,sans-serif;fill:rgb(45,40,38)">Viable today</text>
+          <text x="130" y="259" style="font:700 10px system-ui,sans-serif;fill:rgb(197,57,101)">★</text>
+          <text x="140" y="259" style="font:400 10px system-ui,sans-serif;fill:rgb(197,57,101)">Still speculative</text>
+        </svg>
+        <figcaption>Cross-section from spine to fore-edge. The binding (wheat starch or hide glue at the spine) is also viable today — the ink is the only open question in the stack.</figcaption>
+      </figure>
 
       <h2>Where it started</h2>
       <p>The idea grew out of <a href="https://www.freshpress.studio/">Fresh Press</a>, a project Eric Benson helped
-        start
-        at the University of Illinois Urbana-Champaign: a paper-making facility that replaces tree fiber with
+        start at the University of Illinois Urbana-Champaign: a paper-making facility that replaces tree fiber with
         agricultural waste and perennial prairie grasses. The resulting paper is carbon-neutral or carbon-negative on
         its own. Printing ordinary oil-based ink on top of it felt like squandering that work.</p>
 
-      <h2>The speculation: ink that draws down carbon</h2>
-      <p>There’s real research already into more sustainable inks — carbon black and the oil medium both sourced
-        from algae or plant material instead of petroleum. The more speculative question was different: what if the
-        ink printed clear, and black pigment formed on the page over time, as CO2 was pulled out of the atmosphere
-        and converted right there on the page? Looking into it, the only reactions that can directly capture and
-        split apart atmospheric CO2 are fairly caustic — so this isn’t a short-term, buildable plan. It’s a concept
-        worth continuing to explore, not a working prototype.</p>
+      <h2>The hard part: ink that draws down carbon</h2>
+      <p>Algae-derived inks are a real and near-term option — the oil carrier and the carbon black pigment can both
+        come from algae, replacing petroleum at both steps. Patagonia’s algae ink project demonstrated this is
+        buildable today. That’s meaningful, but it doesn’t make the book carbon-negative. It makes it less bad.</p>
+
+      <figure>
+        <svg class="diagramSvg" viewBox="0 0 400 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svgInk01Title">
+          <title id="svgInk01Title">Two ink systems. Top lane (viable today): algae is grown and harvested, oil and carbon black pigment are extracted, ink is formulated, page is printed. Bottom lane (speculative): CO₂ from air undergoes an unknown reaction and forms pigment directly on the page.</title>
+          <rect width="400" height="190" fill="rgb(248,250,231)"/>
+          <text x="12" y="18" style="font:600 9px/1 system-ui,sans-serif;fill:rgb(45,40,38);text-transform:uppercase;letter-spacing:.1em">Ink systems</text>
+          <!-- Viable lane label -->
+          <text x="12" y="36" style="font:500 9px system-ui,sans-serif;fill:rgb(45,40,38)">Viable today:</text>
+          <!-- Boxes: algae → oil+pigment → ink → page -->
+          <rect x="12" y="42" width="60" height="28" fill="rgb(201,222,181)" stroke="rgb(45,40,38)" stroke-width="1"/>
+          <text x="42" y="54" style="font:500 9px system-ui,sans-serif;fill:rgb(45,40,38);text-anchor:middle">Algae</text>
+          <text x="42" y="65" style="font:400 8px system-ui,sans-serif;fill:rgb(70,65,60);text-anchor:middle">grown</text>
+          <line x1="72" y1="56" x2="80" y2="56" stroke="rgb(45,40,38)" stroke-width="1"/>
+          <polygon points="80,52 88,56 80,60" fill="rgb(45,40,38)"/>
+          <rect x="88" y="42" width="84" height="28" fill="rgb(201,222,181)" stroke="rgb(45,40,38)" stroke-width="1"/>
+          <text x="130" y="54" style="font:500 9px system-ui,sans-serif;fill:rgb(45,40,38);text-anchor:middle">Oil + carbon</text>
+          <text x="130" y="65" style="font:400 8px system-ui,sans-serif;fill:rgb(70,65,60);text-anchor:middle">black pigment</text>
+          <line x1="172" y1="56" x2="180" y2="56" stroke="rgb(45,40,38)" stroke-width="1"/>
+          <polygon points="180,52 188,56 180,60" fill="rgb(45,40,38)"/>
+          <rect x="188" y="42" width="60" height="28" fill="rgb(201,222,181)" stroke="rgb(45,40,38)" stroke-width="1"/>
+          <text x="218" y="56" style="font:500 9px system-ui,sans-serif;fill:rgb(45,40,38);text-anchor:middle">Ink</text>
+          <text x="218" y="66" style="font:400 8px system-ui,sans-serif;fill:rgb(70,65,60);text-anchor:middle">formulated</text>
+          <line x1="248" y1="56" x2="256" y2="56" stroke="rgb(45,40,38)" stroke-width="1"/>
+          <polygon points="256,52 264,56 256,60" fill="rgb(45,40,38)"/>
+          <rect x="264" y="42" width="64" height="28" fill="rgb(201,222,181)" stroke="rgb(45,40,38)" stroke-width="1"/>
+          <text x="296" y="56" style="font:500 9px system-ui,sans-serif;fill:rgb(45,40,38);text-anchor:middle">Printed</text>
+          <text x="296" y="66" style="font:400 8px system-ui,sans-serif;fill:rgb(70,65,60);text-anchor:middle">page</text>
+          <text x="334" y="54" style="font:400 8px system-ui,sans-serif;fill:rgb(100,95,85)">Patagonia</text>
+          <text x="334" y="64" style="font:400 8px system-ui,sans-serif;fill:rgb(100,95,85)">project: ✓</text>
+          <!-- Divider -->
+          <line x1="12" y1="90" x2="388" y2="90" stroke="rgb(45,40,38)" stroke-width="0.75" stroke-dasharray="4 3" opacity=".5"/>
+          <text x="200" y="103" style="font:400 8px system-ui,sans-serif;fill:rgb(120,115,105);text-anchor:middle">— the speculative gap —</text>
+          <line x1="12" y1="108" x2="388" y2="108" stroke="rgb(45,40,38)" stroke-width="0.75" stroke-dasharray="4 3" opacity=".5"/>
+          <!-- Speculative lane label -->
+          <text x="12" y="124" style="font:500 9px system-ui,sans-serif;fill:rgb(197,57,101)">★ Speculative:</text>
+          <!-- Boxes: CO₂ → ??? → develops on page -->
+          <rect x="12" y="130" width="72" height="28" fill="rgb(248,250,231)" stroke="rgb(197,57,101)" stroke-width="1" stroke-dasharray="4 2"/>
+          <text x="48" y="142" style="font:500 9px system-ui,sans-serif;fill:rgb(197,57,101);text-anchor:middle">CO₂ from air</text>
+          <text x="48" y="153" style="font:400 8px system-ui,sans-serif;fill:rgb(197,57,101);text-anchor:middle">ambient</text>
+          <line x1="84" y1="144" x2="92" y2="144" stroke="rgb(197,57,101)" stroke-width="1" stroke-dasharray="3 2"/>
+          <polygon points="92,140 100,144 92,148" fill="rgb(197,57,101)"/>
+          <rect x="100" y="130" width="64" height="28" fill="rgb(248,250,231)" stroke="rgb(197,57,101)" stroke-width="1" stroke-dasharray="4 2"/>
+          <text x="132" y="144" style="font:500 10px system-ui,sans-serif;fill:rgb(197,57,101);text-anchor:middle">???</text>
+          <text x="132" y="154" style="font:400 8px system-ui,sans-serif;fill:rgb(197,57,101);text-anchor:middle">reaction</text>
+          <line x1="164" y1="144" x2="172" y2="144" stroke="rgb(197,57,101)" stroke-width="1" stroke-dasharray="3 2"/>
+          <polygon points="172,140 180,144 172,148" fill="rgb(197,57,101)"/>
+          <rect x="180" y="130" width="96" height="28" fill="rgb(248,250,231)" stroke="rgb(197,57,101)" stroke-width="1" stroke-dasharray="4 2"/>
+          <text x="228" y="142" style="font:500 9px system-ui,sans-serif;fill:rgb(197,57,101);text-anchor:middle">Pigment forms</text>
+          <text x="228" y="153" style="font:400 8px system-ui,sans-serif;fill:rgb(197,57,101);text-anchor:middle">on the page</text>
+          <text x="284" y="136" style="font:400 8px system-ui,sans-serif;fill:rgb(197,57,101)">book darkens</text>
+          <text x="284" y="146" style="font:400 8px system-ui,sans-serif;fill:rgb(197,57,101)">as it sequesters</text>
+          <text x="284" y="156" style="font:400 8px system-ui,sans-serif;fill:rgb(197,57,101)">CO₂ over years</text>
+        </svg>
+        <figcaption>Top: the algae ink biological loop — real, demonstrated. Bottom: the speculative step — a reactive ink that captures atmospheric CO₂ and develops its pigment directly on the page.</figcaption>
+      </figure>
+
+      <p>The genuinely speculative idea is different: ink that prints clear and develops its black pigment over time
+        by drawing CO₂ from the atmosphere — the book gets darker as it sequesters carbon. Two chemical pathways
+        make this imaginable. The first is a pH-sensitive route: CO₂ dissolved in ambient moisture forms weakly
+        acidic carbonic acid, and some natural dyes shift color with acidity — an ink that starts alkaline (clear)
+        and darkens as CO₂ accumulates in its micro-environment could work on those principles. The second, harder
+        pathway is direct atmospheric mineralization: high-pH materials like calcium hydroxide cure by absorbing
+        CO₂ and converting it to calcium carbonate, the same reaction that hardens lime plaster and has been
+        happening in Roman buildings for two millennia. Archival papers are already alkaline-buffered, already
+        absorbing small amounts of CO₂ slowly — the carbon-sequestering book is partly just making that chemistry
+        explicit.</p>
+
+      <p>Neither pathway is a solved product. The pH route responds to CO₂ concentration but doesn’t permanently
+        lock carbon away; the mineralization route would, but the engineering gap between lab chemistry and a
+        functional ink layer is wide. And there are alternative directions — white ink on a dark page, so the
+        <em>atmosphere</em> lightens as carbon leaves it rather than the book darkening as it accumulates. The
+        exact design is less important than the question: <em>this is how design fiction is supposed to work.</em>
+        Making the idea concrete enough that someone wants to answer it is the job.</p>
+
+      <figure>
+        <svg class="diagramSvg" viewBox="0 0 400 175" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svgInk02Title">
+          <title id="svgInk02Title">The developing ink concept shown in three stages: newly printed (nearly invisible marks), two to three years later (medium darkness), and five or more years later (fully dark, readable text). An arrow above shows time and CO₂ accumulating left to right.</title>
+          <rect width="400" height="175" fill="rgb(248,250,231)"/>
+          <text x="12" y="18" style="font:600 9px/1 system-ui,sans-serif;fill:rgb(45,40,38);text-transform:uppercase;letter-spacing:.1em">★ The developing ink — concept</text>
+          <!-- Time arrow -->
+          <line x1="12" y1="30" x2="385" y2="30" stroke="rgb(45,40,38)" stroke-width="1"/>
+          <polygon points="385,26 393,30 385,34" fill="rgb(45,40,38)"/>
+          <text x="140" y="26" style="font:400 8.5px system-ui,sans-serif;fill:rgb(100,95,85)">CO₂ accumulates over time → print darkens</text>
+          <!-- Page 1: newly printed (nearly invisible) -->
+          <rect x="12" y="36" width="108" height="108" fill="rgb(255,255,255)" stroke="rgb(45,40,38)" stroke-width="1"/>
+          <line x1="20" y1="52" x2="112" y2="52" stroke="rgb(45,40,38)" stroke-width="1.5" opacity=".07"/>
+          <line x1="20" y1="62" x2="112" y2="62" stroke="rgb(45,40,38)" stroke-width="1.5" opacity=".07"/>
+          <line x1="20" y1="72" x2="92" y2="72" stroke="rgb(45,40,38)" stroke-width="1.5" opacity=".07"/>
+          <line x1="20" y1="82" x2="112" y2="82" stroke="rgb(45,40,38)" stroke-width="1.5" opacity=".07"/>
+          <line x1="20" y1="92" x2="112" y2="92" stroke="rgb(45,40,38)" stroke-width="1.5" opacity=".07"/>
+          <line x1="20" y1="102" x2="100" y2="102" stroke="rgb(45,40,38)" stroke-width="1.5" opacity=".07"/>
+          <line x1="20" y1="112" x2="112" y2="112" stroke="rgb(45,40,38)" stroke-width="1.5" opacity=".07"/>
+          <line x1="20" y1="122" x2="112" y2="122" stroke="rgb(45,40,38)" stroke-width="1.5" opacity=".07"/>
+          <line x1="20" y1="132" x2="104" y2="132" stroke="rgb(45,40,38)" stroke-width="1.5" opacity=".07"/>
+          <text x="66" y="154" style="font:500 10px system-ui,sans-serif;fill:rgb(45,40,38);text-anchor:middle">Newly printed</text>
+          <text x="66" y="166" style="font:400 8.5px system-ui,sans-serif;fill:rgb(120,115,105);text-anchor:middle">(nearly invisible)</text>
+          <!-- Page 2: 2–3 years (medium) -->
+          <rect x="146" y="36" width="108" height="108" fill="rgb(255,255,255)" stroke="rgb(45,40,38)" stroke-width="1"/>
+          <line x1="154" y1="52" x2="246" y2="52" stroke="rgb(45,40,38)" stroke-width="1.5" opacity=".48"/>
+          <line x1="154" y1="62" x2="246" y2="62" stroke="rgb(45,40,38)" stroke-width="1.5" opacity=".48"/>
+          <line x1="154" y1="72" x2="226" y2="72" stroke="rgb(45,40,38)" stroke-width="1.5" opacity=".48"/>
+          <line x1="154" y1="82" x2="246" y2="82" stroke="rgb(45,40,38)" stroke-width="1.5" opacity=".48"/>
+          <line x1="154" y1="92" x2="246" y2="92" stroke="rgb(45,40,38)" stroke-width="1.5" opacity=".48"/>
+          <line x1="154" y1="102" x2="234" y2="102" stroke="rgb(45,40,38)" stroke-width="1.5" opacity=".48"/>
+          <line x1="154" y1="112" x2="246" y2="112" stroke="rgb(45,40,38)" stroke-width="1.5" opacity=".48"/>
+          <line x1="154" y1="122" x2="246" y2="122" stroke="rgb(45,40,38)" stroke-width="1.5" opacity=".48"/>
+          <line x1="154" y1="132" x2="238" y2="132" stroke="rgb(45,40,38)" stroke-width="1.5" opacity=".48"/>
+          <text x="200" y="154" style="font:500 10px system-ui,sans-serif;fill:rgb(45,40,38);text-anchor:middle">2–3 years</text>
+          <text x="200" y="166" style="font:400 8.5px system-ui,sans-serif;fill:rgb(120,115,105);text-anchor:middle">(developing)</text>
+          <!-- Page 3: 5+ years (full dark) -->
+          <rect x="280" y="36" width="108" height="108" fill="rgb(255,255,255)" stroke="rgb(45,40,38)" stroke-width="1"/>
+          <line x1="288" y1="52" x2="380" y2="52" stroke="rgb(45,40,38)" stroke-width="1.5" opacity="1"/>
+          <line x1="288" y1="62" x2="380" y2="62" stroke="rgb(45,40,38)" stroke-width="1.5" opacity="1"/>
+          <line x1="288" y1="72" x2="360" y2="72" stroke="rgb(45,40,38)" stroke-width="1.5" opacity="1"/>
+          <line x1="288" y1="82" x2="380" y2="82" stroke="rgb(45,40,38)" stroke-width="1.5" opacity="1"/>
+          <line x1="288" y1="92" x2="380" y2="92" stroke="rgb(45,40,38)" stroke-width="1.5" opacity="1"/>
+          <line x1="288" y1="102" x2="368" y2="102" stroke="rgb(45,40,38)" stroke-width="1.5" opacity="1"/>
+          <line x1="288" y1="112" x2="380" y2="112" stroke="rgb(45,40,38)" stroke-width="1.5" opacity="1"/>
+          <line x1="288" y1="122" x2="380" y2="122" stroke="rgb(45,40,38)" stroke-width="1.5" opacity="1"/>
+          <line x1="288" y1="132" x2="372" y2="132" stroke="rgb(45,40,38)" stroke-width="1.5" opacity="1"/>
+          <text x="334" y="154" style="font:500 10px system-ui,sans-serif;fill:rgb(45,40,38);text-anchor:middle">5+ years</text>
+          <text x="334" y="166" style="font:400 8.5px system-ui,sans-serif;fill:rgb(120,115,105);text-anchor:middle">(fully dark)</text>
+        </svg>
+        <figcaption>The developing ink concept: the print starts nearly invisible and darkens over years as CO₂ from the surrounding air is drawn down and fixed as black pigment. The book gets more readable as it sequesters more carbon.</figcaption>
+      </figure>
+
+      <aside class="c2cAside">
+        <p><strong>Precedent: Cradle to Cradle</strong></p>
+        <p>William McDonough and Michael Braungart published <em>Cradle to Cradle</em> in 2002 on fully
+          recyclable polypropylene plastic pages — a "technical nutrient" designed to never become waste.
+          The problem: no commercial collection infrastructure existed to recycle it. The book couldn’t be
+          recycled in practice.</p>
+        <p>Their follow-up, <em>The Upcycle</em> (2013), switched to FSC-certified paper — a "biological
+          nutrient" — accepting that the better choice was the one that actually worked in the real world.
+          The lesson isn’t that the technical nutrient idea was wrong; it’s that the supply chain has to exist.</p>
+        <p>The carbon-sequestering book has the same design question: what’s the right format and context?
+          A mass-market paperback can’t commit to a novel ink supply chain that doesn’t exist yet. A
+          limited-edition artist’s book, an institutional publication, or a research document — where the
+          publisher controls the full material specification — might be where this starts.</p>
+      </aside>
 
       <h2>Where it led</h2>
-      <p>I sent the idea to Eric Benson, who connected me with Marc O’Brien. The conversations that followed are what
-        led to the start of <a href="https://www.climatedesigners.org/">Climate Designers</a>.</p>
+      <p>I sent the idea to Eric Benson, who connected me with Marc O’Brien. The conversations that followed
+        contributed to the founding of <a href="https://www.climatedesigners.org/">Climate Designers</a> — a network
+        now tens of thousands strong, connecting designers working on climate. A speculative book that doesn’t exist
+        helped start an organization that does.</p>
     </article>
     <nav class="caseNav">
       <a class="prevLink" href="case-study-micagradadmissions.html">← MICA Graduate Admissions Materials</a>
