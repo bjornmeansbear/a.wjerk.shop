@@ -466,6 +466,21 @@ footer ul p { margin: 0; }
   }
 }
 
+.caseStudyBody .c2cAside img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 0 0.75rem;
+  border: 1px solid;
+}
+
+.caseStudyBody .c2cAside .affiliateNote {
+  margin: 0.75rem 0 0;
+  padding-top: 0.5rem;
+  border-top: 1px solid;
+  font-size: 0.75rem;
+}
+
 .caseStudyBody .c2cAside > :first-child {
   font-size: 0.75rem;
   text-transform: uppercase;
