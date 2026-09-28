@@ -420,9 +420,20 @@ footer ul p { margin: 0; }
    Negative margin bleeds the table to the full column width (past the body padding). */
 .caseStudyBody .tableScroll {
   overflow-x: auto;
-  margin: 1.5rem -1.5rem;
+  margin: 1.5rem 0;
 }
-.caseStudyBody .tableScroll table { margin: 0; width: 100%; }
+
+@media (min-width: 50rem) {
+  .caseStudyBody .tableScroll {
+  overflow-x: auto;
+  margin-left: clamp(-1.5rem, -7vw, -15rem);
+  margin-right: clamp(-1.5rem, -7vw, -15rem);
+  } 
+}
+
+.caseStudyBody .tableScroll table { 
+  margin: 0; 
+  width: 100%; }
 
 .caseStudyBody figure {
   margin: 1.5rem 0;
@@ -448,8 +459,10 @@ footer ul p { margin: 0; }
   border-left-width: 3px;
 }
 
-/* Wide enough for the aside to escape into the right margin (38rem body + aside + ~3rem gutter ≈ 72rem).
-   --aside-w drives both width and the derived negative right margin; top offsets it up without disturbing text reflow. */
+/* 
+Wide enough for the aside to escape into the right margin (38rem body + aside + ~3rem gutter ≈ 72rem). --aside-w drives both width and the derived negative right margin; top offsets it up without disturbing text reflow. 
+*/
+
 @media (min-width: 72rem) {
   .caseStudyBody .c2cAside {
     --aside-w: clamp(13rem, 15vw, 30rem);
