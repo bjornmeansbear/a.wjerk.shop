@@ -91,3 +91,54 @@ shirt, and what are the actual reasons to send people to the store.
 "name what's in it, why it exists, link it, link what came of it" pattern from
 the Chair-ness projection paragraph, which is what the 3P paragraphs were
 written against.
+
+## 2026-09-30
+
+**Asked:** Get the Slash and Two Books images onto the case studies at sane
+sizes, then review the whole site for anything complex or wonky.
+
+**Done:**
+
+- **Slash (MICA admissions):** 9 spreads as 1600px WebP, one per row
+  (`.caseStudyGallery.single`). 136 MB of JPGs became 1.9 MB.
+- **Two Books:** 7 local WebPs placed inline; the hero and the 410-Gone
+  Flickr image are now local, so the page has no hotlinks.
+- **Footer:** one `_partials/footer.html`, injected by `inject-footer.js`
+  (build step 2b) at a literal `%FOOTER%` token. The build fails if a case
+  study lacks the token. Homepage keeps its own inline footer. Hosting claim
+  now reads "Served from Cloudflare, which matches its network energy use with
+  renewable energy certificates" — Cloudflare's claim is certificate matching,
+  not offsets. Dropped the false "responsive assets" line and the vague
+  "Assets: public domain or CC-licensed" line.
+- **Weight:** header logo 1.15 MB → 32 KB WebP; Libre slide 504 KB → 66 KB.
+  `i/` ships whole, so working files now live in `_source-art/`, which the
+  build never copies. `build.sh` step 6 warns on any file over 1 MB
+  (`chairness-projection.html` is exempt on purpose).
+- Favicon + apple-touch-icon on every page; `_headers` covers `.webp`/`.ico`;
+  `width`/`height` on hotlinked images; table-bleed `clamp()` fixed (negative
+  bounds go most-negative first); logo `multiply` blend onto the page ground.
+- Local preview is in the README: `sh build.sh && python3 -m http.server -d build 8000`.
+
+**Decided:** `<head>` stays per-page. Injecting it would leave source pages
+unstyled when opened from disk, and the heads only differ in description line
+wrapping. No lightbox for the spreads; revisit if phones feel too small.
+
+**Open:**
+
+1. Two Books: five interior spreads are Acrobat screenshots with the window
+   chrome showing. Left out until cropped versions exist.
+2. Chair-ness photos from Chris; Spontaneous Lamp photos (Apple Photos).
+3. Homepage header logo (black block, colour earth, off-palette ring) doesn't
+   match the interior grayscale mark.
+4. Eleven images still hotlink Flickr / `assets.mica.edu`: Carbon Book 4, MICA
+   admissions 5, Spontaneous Lamp 1, Sustainabilitist Principles 1. They
+   resolved on 2026-09-30, but the Two Books one went 410. Copy local as WebP.
+5. White-background images elsewhere on the warm ground — only the header logo
+   is handled. Scan corner pixels to find the rest; use `multiply` only on
+   grayscale marks (it tints colour).
+6. MICA `connections.json` entry — only if there's a bjornpaedia essay to link.
+   The one related channel, `wjerk-grad-book-2020`, is `working` and stays out.
+7. Cape and Spontaneous Lamp had a longer OOKB link label that the shared
+   footer replaced; restore it if it was intentional.
+8. Homepage footer still says "Images lazy‑loaded" and has its own † note;
+   it only shares the hosting line with the case-study footer.
