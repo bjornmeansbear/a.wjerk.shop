@@ -769,4 +769,11 @@ header nav a:focus-visible,
     grid-template-columns: repeat(2, 1fr);
     align-content: start;
   }
+
+  /* Opt-out for galleries of wide spreads: keep the two-thirds width but
+     stack one figure per row, so each reads at full size. */
+  .caseStudyGallery.single:has(figure:nth-child(3)) {
+    display: flex;
+    flex-direction: column;
+  }
 }
