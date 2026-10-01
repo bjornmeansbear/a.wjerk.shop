@@ -31,6 +31,14 @@ cp 3Plogo.png favicon.ico apple-touch-icon.png "$BUILD_DIR"/
 cp -R i "$BUILD_DIR"/
 
 # ============================================================================
+# STEP 2b: Inject the shared case-study footer (_partials/footer.html) in place
+# of each page's literal %FOOTER% token. Must run before the year stamp and
+# page-weight.js — the partial contains tokens those steps fill in. Fails the
+# build if a case-study page is missing the token.
+# ============================================================================
+node inject-footer.js "$BUILD_DIR" || exit 1
+
+# ============================================================================
 # STEP 3: Stamp current year into build/ footers
 # ============================================================================
 for f in "$BUILD_DIR"/*.html; do
@@ -52,3 +60,19 @@ node page-weight.js "$BUILD_DIR"
 # hand separately). Source keeps the literal %ELSEWHERE% token forever.
 # ============================================================================
 node elsewhere.js "$BUILD_DIR"
+
+# ============================================================================
+# STEP 6: Flag heavy files in build/ — warns, never fails the deploy. Catches
+# source art or unoptimized exports that landed somewhere the build copies
+# wholesale (everything under i/ ships). Source art belongs in _source-art/,
+# which the build never touches.
+# ============================================================================
+# chairness-projection.html is a deliberately self-contained deck, opened
+# rarely — exempt from the check.
+HEAVY=$(find "$BUILD_DIR" -type f -size +1000k ! -name chairness-projection.html)
+if [ -n "$HEAVY" ]; then
+  echo "⚠ Files over 1 MB in $BUILD_DIR/:"
+  echo "$HEAVY" | while read -r f; do
+    printf '  %s  %s\n' "$(du -h "$f" | cut -f1)" "$f"
+  done
+fi

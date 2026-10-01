@@ -19,6 +19,12 @@
 /*.jpeg
   Cache-Control: public, max-age=3600, must-revalidate
 
+/*.webp
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/*.ico
+  Cache-Control: public, max-age=3600, must-revalidate
+
 /*.svg
   Cache-Control: public, max-age=3600, must-revalidate
 
