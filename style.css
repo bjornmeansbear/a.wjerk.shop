@@ -67,6 +67,25 @@ body {
   padding: 0;
 }
 
+/* CSS fix of stupid native behavior for <sup> and <sub>
+they break line-heights by default...!!! wtf.
+why natively you wouldn't want to do good typography I don't know */
+sup {
+  vertical-align: baseline; /* Resets the browser's default alignment */
+  position: relative;       /* Allows us to move it manually */
+  top: -0.4em;             /* Shifts it up without pushing the line */
+  font-size: 75%;           /* Keeps it small and proportional */
+  line-height: 0;           /* Prevents it from adding to the line height */
+}
+/* Push superscript UP */
+sup {
+  top: -0.4em;
+}
+/* Pull subscript DOWN */
+sub {
+  top: 0.2em;
+}
+
 /* Header — base rules are the mobile (stacked) layout; the min-width query
    near the bottom of this file adds the side-by-side desktop treatment. */
 
