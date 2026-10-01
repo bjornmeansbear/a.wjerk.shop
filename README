@@ -15,11 +15,23 @@ Raw, hand-written HTML and CSS. No framework, no client-side JS, no webfonts. `S
 - `case-study-template.html` — starting point for a new case study; has unresolved `{{TOKENS}}`, not meant to be deployed directly
 - `style.css` — the entire stylesheet, mobile-first (base rules are the mobile layout; `@media (min-width: 40rem/55rem)` layers on wider treatments)
 - `i/` — images, mostly dithered PNGs plus a few per-project subfolders for real photos
-- `build.sh` — assembles `build/` (gitignored) for deploy: copies deployable files, strips the template, stamps the footer year, and runs `page-weight.js`. This is the Cloudflare Pages build command.
+- `build.sh` — assembles `build/` (gitignored) for deploy: copies deployable files, strips the template, injects the shared footer, stamps the footer year, runs `page-weight.js` and `elsewhere.js`, then warns about any file over 1 MB. This is the Cloudflare Pages build command.
+- `_partials/footer.html` + `inject-footer.js` — the case-study footer lives in one place. Each `case-study-*.html` has a literal `%FOOTER%` token inside `<footer>`; the build swaps in the partial and fails if a case study is missing the token. The homepage keeps its own inline footer (different content).
+- `_source-art/` — working files and originals that must not ship. `build.sh` copies only a named list of root files plus `i/`, so anything under `i/` deploys and anything in `_source-art/` never does.
 - `page-weight.js` — computes each page's actual transfer weight and stamps the `%PAGE_WEIGHT%` / `%SITE_WEIGHT%` footer tokens into `build/` only (source keeps the literal tokens)
 - `dither.js` — Atkinson-dithers a source image to a 1-bit PNG (`node dither.js <input> <output.png> [width]`); used for every homepage tile and several case-study heroes
 - `dither-images.sh` / `generate-case-studies.sh` — batch helpers around the two scripts above
 - `_headers` — Cloudflare Pages response headers (cache control per asset type)
+
+## Previewing locally
+
+Source pages hold literal tokens (`%FOOTER%`, `%PAGE_WEIGHT%`, `%ELSEWHERE%`) that only the build fills in, so a page opened straight from disk shows them as text. To see the real result:
+
+```sh
+sh build.sh && python3 -m http.server -d build 8000
+```
+
+Then open <http://localhost:8000>. Rerun `sh build.sh` after an edit and refresh. For plain text, layout and CSS work, opening the source file directly is fine.
 
 ## Design conventions worth knowing before editing
 
