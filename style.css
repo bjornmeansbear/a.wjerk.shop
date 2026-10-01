@@ -149,6 +149,12 @@ header .blurb p {
   background-color: transparent;
 }
 
+/* The interior mark is a grayscale PNG on opaque white. Multiply maps that
+   white onto the page ground; safe here because nothing in it is colored. */
+.case-study header .logo img {
+  mix-blend-mode: multiply;
+}
+
 header nav {
   flex-basis: 100%;
 }
@@ -426,8 +432,11 @@ footer ul p { margin: 0; }
 @media (min-width: 50rem) {
   .caseStudyBody .tableScroll {
   overflow-x: auto;
-  margin-left: clamp(-1.5rem, -7vw, -15rem);
-  margin-right: clamp(-1.5rem, -7vw, -15rem);
+  /* Bleed to the viewport edge less a 1.5rem gutter, capped so the table is
+     at most 64rem wide. Negative values: the most negative bound goes first. */
+  --bleed: clamp(-14.5rem, calc((35rem - 100vw) / 2 + 1.5rem), -1.5rem);
+  margin-left: var(--bleed);
+  margin-right: var(--bleed);
   } 
 }
 
