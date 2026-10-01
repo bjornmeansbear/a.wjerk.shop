@@ -465,7 +465,7 @@ Wide enough for the aside to escape into the right margin (38rem body + aside + 
 
 @media (min-width: 72rem) {
   .caseStudyBody .c2cAside {
-    --aside-w: clamp(13rem, 15vw, 30rem);
+    --aside-w: clamp(13rem, 18vw, 30rem);
     float: right;
     clear: right;
     width: var(--aside-w);
