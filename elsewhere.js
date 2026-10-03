@@ -35,7 +35,9 @@ const arenaCache = fs.existsSync('arena-cache.json')
   : {};
 
 function essayUrl(title) {
-  return `https://bjornpaedia.wjerk.shop/static/${encodeURIComponent(title)}.html`;
+  // The static export's filenames contain literal "%20" etc., so the server
+  // path needs the title encoded twice (single-encoded URLs 404).
+  return `https://bjornpaedia.wjerk.shop/static/${encodeURIComponent(encodeURIComponent(title))}.html`;
 }
 
 function renderArenaRow(entry) {
