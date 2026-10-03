@@ -37,7 +37,11 @@
   },
 
   "twobooks": {
-    "tiddler": ["Green Acres", "Ecovention Europe"]
+    "shop": [
+      {"url": "https://amzn.to/4hJEpZG", "label": "Green Acres: Artists Farming Fields, Greenhouses and Abandoned Lots"},
+      {"url": "https://amzn.to/3TDNwCX", "label": "Ecovention Europe: Art to Transform Ecologies, 1957–2017"}
+    ],
+    "tiddler": ["Case Study: Green Acres", "Case Study: Ecovention Europe"]
   },
 
   "cape": {

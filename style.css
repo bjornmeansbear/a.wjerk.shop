@@ -368,6 +368,10 @@ footer ul p { margin: 0; }
   margin-right: 0.5em;
 }
 
+.caseStudyDetail .content .elsewhere .affiliateNote {
+  font-size: 0.75rem;
+}
+
 /* Text-first body: images are evidence, not the argument (SPEC.md §5).
    Base is a single stacked column — caseStudyText then caseStudyGallery, in
    that order — matching the rest of the site's mobile-first approach. The

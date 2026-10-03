@@ -55,8 +55,10 @@ function renderRows(entry) {
   if (entry.live) {
     rows.push(`<li><span class="elsewhereLabel">Live</span> <a href="${entry.live}">${entry.live.replace(/^https?:\/\//, '').replace(/\/$/, '')}</a></li>`);
   }
+  const isAmazon = (url) => /^https?:\/\/(amzn\.to|(www\.)?amazon\.com)\//.test(url);
   for (const s of entry.shop ?? []) {
-    rows.push(`<li><span class="elsewhereLabel">Get it</span> <a href="${s.url}">${s.label}</a></li>`);
+    const rel = isAmazon(s.url) ? ' rel="sponsored"' : '';
+    rows.push(`<li><span class="elsewhereLabel">Get it</span> <a href="${s.url}"${rel}>${s.label}</a></li>`);
   }
   const tiddlers = Array.isArray(entry.tiddler) ? entry.tiddler : entry.tiddler ? [entry.tiddler] : [];
   for (const title of tiddlers) {
@@ -65,6 +67,9 @@ function renderRows(entry) {
   for (const a of entry.arena ?? []) {
     const row = renderArenaRow(a);
     if (row) rows.push(row);
+  }
+  if ((entry.shop ?? []).some((s) => isAmazon(s.url))) {
+    rows.push('<li class="affiliateNote">As an Amazon Associate I earn from qualifying purchases.</li>');
   }
   return rows;
 }
