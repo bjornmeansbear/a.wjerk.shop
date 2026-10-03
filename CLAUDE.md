@@ -112,6 +112,7 @@ everything downstream of that is mechanical.
   `wjerk-grad-book-2020`) is never rendered — leave it out of
   `connections.json`'s `arena` array entirely rather than trying to suppress
   it downstream.
+- **Essay URLs are double-encoded** (verified 2026-10-03). The export's files have literal `%20` in their names, so the live path for “The Sustainabilitist Principles” is `The%2520Sustainabilitist%2520Principles.html`. A single-encoded URL 404s. `elsewhere.js` handles this; hand-written links need it too.
 - **Essay links** point at the *published* bjornpaedia static export
   (`~/Code/bjornpaedia/static/<percent-encoded tiddler title>.html`), not the
   source wiki in `~/Code/sentence-a-day`. Verify a tiddler's exact title
