@@ -474,7 +474,7 @@ footer ul p { margin: 0; }
 .caseStudyBody figcaption {
   font-size: 0.75rem;
   opacity: 0.7;
-  margin-top: 0.5rem;
+  margin-top: 0;
 }
 
 .caseStudyBody .diagramSvg {
