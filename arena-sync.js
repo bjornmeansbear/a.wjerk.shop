@@ -92,12 +92,15 @@ async function main() {
     }
   }
 
+  // A partial cache would silently drop the failed channels' links from the
+  // next deploy, so leave the last good file alone.
+  if (failures > 0) {
+    console.warn(`\n⚠ ${failures} channel(s) failed to verify — arena-cache.json NOT updated. Fix connections.json or retry.`);
+    process.exitCode = 1;
+    return;
+  }
   fs.writeFileSync('arena-cache.json', JSON.stringify(cache, null, 2) + '\n');
   console.log(`\narena-cache.json written: ${Object.keys(cache).length} channel(s).`);
-  if (failures > 0) {
-    console.warn(`⚠ ${failures} channel(s) failed to verify — check connections.json before the next deploy.`);
-    process.exitCode = 1;
-  }
 }
 
 main();

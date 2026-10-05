@@ -34,6 +34,11 @@ const arenaCache = fs.existsSync('arena-cache.json')
   ? JSON.parse(fs.readFileSync('arena-cache.json', 'utf8'))
   : {};
 
+const escapeHtml = (str) =>
+  str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+const isAmazon = (url) => /^https?:\/\/(amzn\.to|(www\.)?amazon\.com)\//.test(url);
+
 function essayUrl(title) {
   // The static export's filenames contain literal "%20" etc., so the server
   // path needs the title encoded twice (single-encoded URLs 404).
@@ -48,23 +53,22 @@ function renderArenaRow(entry) {
   }
   const label = ROLE_LABEL[entry.role] ?? 'Research';
   const url = `https://www.are.na/${ARENA_OWNER}/${entry.slug}`;
-  const note = entry.note ? ` (${entry.note})` : '';
+  const note = entry.note ? ` (${escapeHtml(entry.note)})` : '';
   return `<li><span class="elsewhereLabel">${label}</span> <a href="${url}">${cached.blocks} blocks on Are.na</a>${note}</li>`;
 }
 
 function renderRows(entry) {
   const rows = [];
   if (entry.live) {
-    rows.push(`<li><span class="elsewhereLabel">Live</span> <a href="${entry.live}">${entry.live.replace(/^https?:\/\//, '').replace(/\/$/, '')}</a></li>`);
+    rows.push(`<li><span class="elsewhereLabel">Live</span> <a href="${entry.live}">${escapeHtml(entry.live.replace(/^https?:\/\//, '').replace(/\/$/, ''))}</a></li>`);
   }
-  const isAmazon = (url) => /^https?:\/\/(amzn\.to|(www\.)?amazon\.com)\//.test(url);
   for (const s of entry.shop ?? []) {
     const rel = isAmazon(s.url) ? ' rel="sponsored"' : '';
-    rows.push(`<li><span class="elsewhereLabel">Get it</span> <a href="${s.url}"${rel}>${s.label}</a></li>`);
+    rows.push(`<li><span class="elsewhereLabel">Get it</span> <a href="${s.url}"${rel}>${escapeHtml(s.label)}</a></li>`);
   }
   const tiddlers = Array.isArray(entry.tiddler) ? entry.tiddler : entry.tiddler ? [entry.tiddler] : [];
   for (const title of tiddlers) {
-    rows.push(`<li><span class="elsewhereLabel">Essay</span> <a href="${essayUrl(title)}">The full write-up on ${title}</a></li>`);
+    rows.push(`<li><span class="elsewhereLabel">Essay</span> <a href="${essayUrl(title)}">The full write-up on ${escapeHtml(title)}</a></li>`);
   }
   for (const a of entry.arena ?? []) {
     const row = renderArenaRow(a);
@@ -81,11 +85,13 @@ function slugFromFilename(filename) {
   return m ? m[1] : null;
 }
 
+const pageSlugs = new Set();
 let stamped = 0;
 for (const filename of fs.readdirSync(BUILD_DIR)) {
   if (!filename.endsWith('.html')) continue;
   const slug = slugFromFilename(filename);
   if (!slug) continue;
+  pageSlugs.add(slug);
 
   const filePath = path.join(BUILD_DIR, filename);
   const html = fs.readFileSync(filePath, 'utf8');
@@ -95,8 +101,17 @@ for (const filename of fs.readdirSync(BUILD_DIR)) {
   const rows = entry ? renderRows(entry) : [];
   const block = rows.length ? `<ul class="elsewhere">\n        ${rows.join('\n        ')}\n      </ul>` : '';
 
-  fs.writeFileSync(filePath, html.replace(TOKEN, block));
+  // Function replacer: a string would treat "$&" etc. in titles/labels as patterns.
+  fs.writeFileSync(filePath, html.replace(TOKEN, () => block));
   stamped++;
+}
+
+// A key with no page is almost always a typo in connections.json — its links
+// would silently never appear.
+for (const key of Object.keys(connections)) {
+  if (key !== '_comment' && !pageSlugs.has(key)) {
+    console.warn(`  ⚠ elsewhere.js: connections.json key "${key}" matches no case-study-${key}.html page.`);
+  }
 }
 
 console.log(`elsewhere.js: stamped ${stamped} page(s).`);

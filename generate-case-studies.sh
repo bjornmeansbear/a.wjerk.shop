@@ -22,6 +22,12 @@ five-seeds-farm|Five Seeds Farm & Apiary|What kind of website does an Urban Farm
 echo "$CASE_STUDIES" | while IFS='|' read -r slug title description image; do
   if [ -n "$slug" ]; then
     output_file="$OUTPUT_DIR/case-study-$slug.html"
+    # Never overwrite a page that exists — most of these have since been
+    # hand-built, and regenerating would replace them with the bare template.
+    if [ -e "$output_file" ]; then
+      echo "Skipped $output_file (already exists)"
+      continue
+    fi
     sed "s|{{TITLE}}|$title|g; s|{{DESCRIPTION}}|$description|g; s|{{IMAGE}}|$image|g; s|{{SLUG}}|$slug|g" "$TEMPLATE" > "$output_file"
     echo "Generated $output_file"
   fi

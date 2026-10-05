@@ -67,24 +67,16 @@ body {
   padding: 0;
 }
 
-/* CSS fix of stupid native behavior for <sup> and <sub>
-they break line-heights by default...!!! wtf.
-why natively you wouldn't want to do good typography I don't know */
-sup {
-  vertical-align: baseline; /* Resets the browser's default alignment */
-  position: relative;       /* Allows us to move it manually */
-  top: -0.4em;             /* Shifts it up without pushing the line */
-  font-size: 75%;           /* Keeps it small and proportional */
-  line-height: 0;           /* Prevents it from adding to the line height */
+/* Native <sup>/<sub> push line boxes apart. Keep them on the baseline and
+   nudge them with position instead, so line-height stays even. */
+sup, sub {
+  vertical-align: baseline;
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
 }
-/* Push superscript UP */
-sup {
-  top: -0.4em;
-}
-/* Pull subscript DOWN */
-sub {
-  top: 0.2em;
-}
+sup { top: -0.4em; }
+sub { top: 0.2em; }
 
 /* Header — base rules are the mobile (stacked) layout; the min-width query
    near the bottom of this file adds the side-by-side desktop treatment. */
@@ -258,6 +250,9 @@ header nav a:is(:hover, :focus-visible),
   mix-blend-mode: multiply;
 }
 
+/* The tilted poster lying on the tile image. The faint shadow is deliberate
+   and applies to this image only — see RULES.md, "Structure: rules, not
+   chrome", in the design kit. */
 .row .imageWrapper .ontop {
   position: absolute;
   left: 50%;
@@ -267,6 +262,8 @@ header nav a:is(:hover, :focus-visible),
   width: auto;
   height: 100%;
   box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+  background-color: white;
+  mix-blend-mode: multiply;
 }
 
 .row .blurb {
@@ -401,7 +398,7 @@ footer ul p { margin: 0; }
 }
 
 .caseStudyBody figure {
-  margin: 0;
+  margin: 0 0 0.5rem;
   border: 1px solid;
 }
 
@@ -413,7 +410,8 @@ footer ul p { margin: 0; }
 
 .caseStudyBody figcaption {
   padding: 0.75rem 1rem;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
+  opacity: 0.7; /* ink at 70% on the ground: 5.33:1, AA */
   border-top: 1px solid;
 }
 
@@ -445,36 +443,24 @@ footer ul p { margin: 0; }
   white-space: nowrap;
 }
 
-/* On narrow screens the table scrolls horizontally rather than squashing.
-   Negative margin bleeds the table to the full column width (past the body padding). */
+/* On narrow screens the table scrolls horizontally rather than squashing. */
 .caseStudyBody .tableScroll {
   overflow-x: auto;
   margin: 1.5rem 0;
 }
 
+.caseStudyBody .tableScroll table {
+  margin: 0;
+}
+
+/* Wide screens: bleed past the text column to the viewport edge less a
+   1.5rem gutter, capped so the table is at most 64rem wide. Negative
+   values: the most negative bound goes first. */
 @media (min-width: 50rem) {
   .caseStudyBody .tableScroll {
-  overflow-x: auto;
-  /* Bleed to the viewport edge less a 1.5rem gutter, capped so the table is
-     at most 64rem wide. Negative values: the most negative bound goes first. */
-  --bleed: clamp(-14.5rem, calc((35rem - 100vw) / 2 + 1.5rem), -1.5rem);
-  margin-left: var(--bleed);
-  margin-right: var(--bleed);
-  } 
-}
-
-.caseStudyBody .tableScroll table { 
-  margin: 0; 
-  width: 100%; }
-
-.caseStudyBody figure {
-  margin: 0 0 .5rem 0;
-}
-
-.caseStudyBody figcaption {
-  font-size: 0.75rem;
-  opacity: 0.7;
-  margin-top: 0;
+    --bleed: clamp(-14.5rem, calc((35rem - 100vw) / 2 + 1.5rem), -1.5rem);
+    margin-inline: var(--bleed);
+  }
 }
 
 .caseStudyBody .diagramSvg {
@@ -484,6 +470,29 @@ footer ul p { margin: 0; }
   border: 1px solid;
 }
 
+/* Diagram labels. Base = the common label (500 9px ink); modifiers compose.
+   Greys are on white (the SVG ground): dim 9.5, dimmer 6.4, dimmest 4.9. */
+.diagramSvg text {
+  font: 500 9px system-ui, sans-serif;
+  fill: var(--wjerk-black);
+}
+.diagramSvg .lg      { font-size: 10px; }
+.diagramSvg .sm,
+.diagramSvg .xs      { font-weight: 400; }
+.diagramSvg .sm      { font-size: 8px; }
+.diagramSvg .xs      { font-size: 8.5px; }
+.diagramSvg .mid     { text-anchor: middle; }
+.diagramSvg .accent  { fill: var(--pink-5); }
+.diagramSvg .dim     { fill: rgb(70,65,60); }
+.diagramSvg .dimmer  { fill: rgb(100,95,85); }
+.diagramSvg .dimmest { fill: rgb(120,115,105); }
+.diagramSvg .cap {
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
 .caseStudyBody .c2cAside {
   margin: 1.5rem 0;
   padding: 1rem 1.25rem;
@@ -491,9 +500,9 @@ footer ul p { margin: 0; }
   border-left-width: 3px;
 }
 
-/* 
-Wide enough for the aside to escape into the right margin (38rem body + aside + ~3rem gutter ≈ 72rem). --aside-w drives both width and the derived negative right margin; top offsets it up without disturbing text reflow. 
-*/
+/* Wide enough for the aside to escape into the right margin (38rem body +
+   aside + ~3rem gutter ≈ 72rem). --aside-w drives both width and the derived
+   negative right margin; top offsets it up without disturbing text reflow. */
 
 @media (min-width: 72rem) {
   .caseStudyBody .c2cAside {
@@ -662,14 +671,9 @@ header nav a:focus-visible,
     border-left: 1px solid;
   }
 
-  /* tweaked smaller header for non-homepage pages! */
-  .case-study header .logo  {
-    flex: 1;
-  }
-  /* tweaked smaller header for non-homepage pages! */
-  .case-study header .blurb  {
-    flex: 9;
-  }
+  /* smaller header on non-homepage pages */
+  .case-study header .logo  { flex: 1; }
+  .case-study header .blurb { flex: 9; }
 
   header nav ul {
     flex-wrap: nowrap;

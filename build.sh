@@ -7,7 +7,8 @@
 # Cloudflare Pages project settings: build command `sh build.sh`,
 # build output directory `build`, root directory `/`.
 
-cd "$(dirname "$0")" || exit 1
+set -e
+cd "$(dirname "$0")"
 
 BUILD_DIR="build"
 CURRENT_YEAR=$(date +%Y)
@@ -36,13 +37,15 @@ cp -R i "$BUILD_DIR"/
 # page-weight.js — the partial contains tokens those steps fill in. Fails the
 # build if a case-study page is missing the token.
 # ============================================================================
-node inject-footer.js "$BUILD_DIR" || exit 1
+node inject-footer.js "$BUILD_DIR"
 
 # ============================================================================
 # STEP 3: Stamp current year into build/ footers
 # ============================================================================
 for f in "$BUILD_DIR"/*.html; do
-  sed -i '' "s|<em class=\"currentYear\">[0-9]*</em>|<em class=\"currentYear\">${CURRENT_YEAR}</em>|g" "$f"
+  # No `sed -i`: BSD (macOS) and GNU (Cloudflare) disagree on its syntax.
+  sed "s|<em class=\"currentYear\">[0-9]*</em>|<em class=\"currentYear\">${CURRENT_YEAR}</em>|g" "$f" > "$f.tmp"
+  mv "$f.tmp" "$f"
 done
 echo "Footer year stamped: ${CURRENT_YEAR}"
 
