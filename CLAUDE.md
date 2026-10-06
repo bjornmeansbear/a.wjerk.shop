@@ -11,6 +11,14 @@ This file is for facts that cost a session to rediscover.
 The site links out to Are.na research channels, and `connections.md` /
 `arena-inventory.md` track them. Everything below was established 2026-08-27.
 
+**Those two files, plus `CaseStudyIdeation.md`, `CHAIRNESS-PROJECTION.md`, `LOG.md` (running progress log) and
+`_notes/`, live in the private repo `~/Code/a.wjerk.shop-private`**, not here —
+this repo is public and `arena-inventory.md` names private channels (clients,
+family, institutional work). Read them there. Regenerate the inventory on any
+machine with the token via `node arena-inventory.js` (it writes into the
+private repo when it's cloned alongside; the hand-filled `role` and `concept`
+columns are carried over by slug). Never paste private rows into a tracked file.
+
 **Use v3. v2 is being wound down.** Every authenticated v2 endpoint now returns
 `410 Gone` ("Please migrate to the v3 API" — see are.na/editorial/on-our-api,
 May 2026). Public v2 reads still work today but should not be relied on.

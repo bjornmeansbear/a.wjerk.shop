@@ -67,8 +67,8 @@ node elsewhere.js "$BUILD_DIR"
 # ============================================================================
 # STEP 6: Flag heavy files in build/ — warns, never fails the deploy. Catches
 # source art or unoptimized exports that landed somewhere the build copies
-# wholesale (everything under i/ ships). Source art belongs in _source-art/,
-# which the build never touches.
+# wholesale (everything under i/ ships). Source art belongs in the private repo
+# (a.wjerk.shop-private/_source-art/), never in this one.
 # ============================================================================
 # chairness-projection.html is a deliberately self-contained deck, opened
 # rarely — exempt from the check.

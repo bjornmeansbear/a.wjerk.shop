@@ -3,4 +3,5 @@
 node_modules/
 .vscode/
 build/
-.claude/settings.local.json
+.claude/
+arena-inventory.md

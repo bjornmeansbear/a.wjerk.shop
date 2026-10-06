@@ -17,7 +17,7 @@ Raw, hand-written HTML and CSS. No framework, no client-side JS, no webfonts. `S
 - `i/` — images, mostly dithered PNGs plus a few per-project subfolders for real photos
 - `build.sh` — assembles `build/` (gitignored) for deploy: copies deployable files, strips the template, injects the shared footer, stamps the footer year, runs `page-weight.js` and `elsewhere.js`, then warns about any file over 1 MB. This is the Cloudflare Pages build command.
 - `_partials/footer.html` + `inject-footer.js` — the case-study footer lives in one place. Each `case-study-*.html` has a literal `%FOOTER%` token inside `<footer>`; the build swaps in the partial and fails if a case study is missing the token. The homepage keeps its own inline footer (different content).
-- `_source-art/` — working files and originals that must not ship. `build.sh` copies only a named list of root files plus `i/`, so anything under `i/` deploys and anything in `_source-art/` never does.
+- Source art and working notes live in the separate private repo `a.wjerk.shop-private` (cloned at `~/Code/a.wjerk.shop-private`), not here. `build.sh` copies only a named list of root files plus `i/`, so anything under `i/` deploys.
 - `page-weight.js` — computes each page's actual transfer weight and stamps the `%PAGE_WEIGHT%` / `%SITE_WEIGHT%` footer tokens into `build/` only (source keeps the literal tokens)
 - `dither.js` — Atkinson-dithers a source image to a 1-bit PNG (`node dither.js <input> <output.png> [width]`); used for every homepage tile and several case-study heroes
 - `dither-images.sh` / `generate-case-studies.sh` — batch helpers around the two scripts above

@@ -1,5 +1,5 @@
 {
-  "_comment": "Source of truth for the per-page Elsewhere block, built from connections.md. Keyed by case-study slug (case-study-<slug>.html). Only include keys that exist for that project — elsewhere.js renders nothing for a missing field. Are.na block counts come from arena-cache.json (arena-sync.js), not from here.",
+  "_comment": "Source of truth for the per-page Elsewhere block, informed by connections.md (private notes repo, a.wjerk.shop-private) — edited by hand, nothing generates one from the other. Keyed by case-study slug (case-study-<slug>.html). Only include keys that exist for that project — elsewhere.js renders nothing for a missing field. Are.na block counts come from arena-cache.json (arena-sync.js), not from here.",
 
   "chairness": {
     "shop": [
