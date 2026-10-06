@@ -7,7 +7,7 @@ cd "$(dirname "$0")" || exit 1
 
 # source|output|width
 IMAGES="
-3Plogo.png|i/3Plogo-dither.png|800
+i/3Plogo.png|i/3Plogo-dither.png|800
 i/thumb_classic_med_bjornard_kristian_spontaneouslamp3.jpg|i/spontaneous-lamp-dither.png|800
 i/52467753725_83a94e0906_c.jpg|i/slash-dither.png|800
 i/52467753730_bdcaaab921_z.jpg|i/slash-ontop-dither.png|800

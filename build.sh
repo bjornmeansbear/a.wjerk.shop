@@ -28,7 +28,7 @@ cp *.html "$BUILD_DIR"/
 rm "$BUILD_DIR/case-study-template.html"
 cp style.css "$BUILD_DIR"/
 cp _headers "$BUILD_DIR"/
-cp 3Plogo.png favicon.ico apple-touch-icon.png "$BUILD_DIR"/
+cp favicon.ico apple-touch-icon.png "$BUILD_DIR"/
 cp -R i "$BUILD_DIR"/
 
 # ============================================================================

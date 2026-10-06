@@ -6,7 +6,7 @@ OUTPUT_DIR="."
 
 # List of case studies: slug|title|description|image_url
 CASE_STUDIES="
-3p|3P: People Processing Plastic|An Experiment in Plastic Reuse and Recycling: Passionate people performing practical plastic processing, producing prized products, preventing pollution proliferation, and progressing a pristine planet|./3Plogo.png
+3p|3P: People Processing Plastic|An Experiment in Plastic Reuse and Recycling: Passionate people performing practical plastic processing, producing prized products, preventing pollution proliferation, and progressing a pristine planet|./i/3Plogo.png
 spontaneous-lamp|Spontaneous Lamp|Designing with found materials; a lamp that doesn't exist? Foraged Bamboo, found rocks, unused 5 gallon bucket, clip-on lamp, and extension cord.|https://assets.mica.edu/files/resources/thumb_classic_med_bjornard_kristian_spontaneouslamp3.jpg
 slash|Slash: MICA Graduate 2022 Program Guide|Is less really more? We're using fewer pages, minimal ink coverage, and more succinct content to find out!|https://live.staticflickr.com/65535/52467753725_83a94e0906_c.jpg
 mica-grad-admissions|MICA Grad Admissions Mailer|Public domain imagery, open source typefaces, and clever printing tricks combine…|https://live.staticflickr.com/65535/51367350256_a3209269dc_c.jpg
