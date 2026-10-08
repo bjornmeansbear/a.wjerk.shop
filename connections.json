@@ -1,76 +1,204 @@
 {
-  "_comment": "Source of truth for the per-page Elsewhere block, informed by connections.md (private notes repo, a.wjerk.shop-private) — edited by hand, nothing generates one from the other. Keyed by case-study slug (case-study-<slug>.html). Only include keys that exist for that project — elsewhere.js renders nothing for a missing field. Are.na block counts come from arena-cache.json (arena-sync.js), not from here.",
-
+  "_comment": "Source of truth for the per-page Elsewhere block, informed by connections.md (private notes repo, a.wjerk.shop-private) — edited by hand, nothing generates one from the other. Keyed by case-study slug (case-study-<slug>.html). Only include keys that exist for that project — elsewhere.js renders nothing for a missing field. Are.na block counts come from arena-cache.json (arena-sync.js), not from here. The \"tiddler\" key is two-way: elsewhere.js prints an Essay link for each, and sentence-a-day/sad2021tw/scripts/case-study-links.py links each tiddler back here. The \"related\" key is one-way: that script links those tiddlers to the case study, and elsewhere.js ignores it.",
   "chairness": {
+    "tiddler": [
+      "Chair-ness",
+      "Everyone Wants to Design a Chair",
+      "SDCSC001: Why A Chair?",
+      "Response to Why a Chair"
+    ],
     "shop": [
-      { "url": "https://stuff.wjerk.shop/products/chair-ness-patch", "label": "The idealized form itself, worn as a patch" }
+      {
+        "url": "https://stuff.wjerk.shop/products/chair-ness-patch",
+        "label": "The idealized form itself, worn as a patch"
+      }
     ],
     "arena": [
-      { "slug": "chair-ness", "role": "archive" }
+      {
+        "slug": "chair-ness",
+        "role": "archive"
+      }
+    ],
+    "related": [
+      "-ness",
+      "SDCSC100: The Oka Chair",
+      "SDCSC-a100: Detailed analysis of the Okaterra and Oka chair",
+      "Introduction: Hook with the Okaterra chair story",
+      "Oka Chair",
+      "Moderondack Chair",
+      "Navy Chair",
+      "Navy Wood Chair (Amish)",
+      "111 Navy Chair",
+      "Broom Chair",
+      "Coca Cola Bottle Chair",
+      "John Krubsack Harvested Chair",
+      "Peel Chair",
+      "Products of Silviculture Suent chair",
+      "Wassily Chair",
+      "How might we design a chair that gives back at every stage of its life cycle?"
     ]
   },
-
   "3p": {
     "shop": [
-      { "url": "https://stuff.wjerk.shop/products/3p-people-processing-plastic", "label": "The logo on front, the process explained on back" }
+      {
+        "url": "https://stuff.wjerk.shop/products/3p-people-processing-plastic",
+        "label": "The logo on front, the process explained on back"
+      }
     ],
     "arena": [
-      { "slug": "wjerk-precious-plastics", "role": "sourcing" },
-      { "slug": "3p-people-processing-plastic", "role": "bibliography" }
+      {
+        "slug": "wjerk-precious-plastics",
+        "role": "sourcing"
+      },
+      {
+        "slug": "3p-people-processing-plastic",
+        "role": "bibliography"
+      }
     ],
-    "tiddler": "3p: People Processing Plastic"
+    "tiddler": [
+      "3p: People Processing Plastic",
+      "Re-thinking Plastics: Towards a Recycular Economy"
+    ],
+    "related": [
+      "Precious Plastics",
+      "Plasticshed"
+    ]
   },
-
   "spontaneous-lamp": {
     "arena": [
-      { "slug": "spontaneous-lamp", "role": "moodboard" }
+      {
+        "slug": "spontaneous-lamp",
+        "role": "moodboard"
+      }
     ],
-    "tiddler": "Spontaneous Lamps"
+    "tiddler": "Spontaneous Lamps",
+    "related": [
+      "Make/Unmake"
+    ]
   },
-
   "sustainabilitist-principles": {
     "live": "https://www.thesustainabilitist.com/",
     "arena": [
-      { "slug": "the-sustainabilitist", "role": "bibliography" }
+      {
+        "slug": "the-sustainabilitist",
+        "role": "bibliography"
+      }
     ],
-    "tiddler": ["The Sustainabilitist Principles", "Biomimicry at a.wjerk.shop"]
+    "tiddler": [
+      "The Sustainabilitist Principles",
+      "Biomimicry at a.wjerk.shop"
+    ],
+    "related": [
+      "Principle",
+      "The Sustainabilitist",
+      "The Sustainabilitist Manifesto",
+      "Toward a Sustainabilitist Aesthetic",
+      "Thoughts on Sustainabilitist Aesthetics",
+      "Another's Sustainabilitist Principles",
+      "The sustainabilitist principles is an inflection point."
+    ]
   },
-
   "twobooks": {
     "shop": [
-      {"url": "https://amzn.to/4hJEpZG", "label": "Green Acres: Artists Farming Fields, Greenhouses and Abandoned Lots"},
-      {"url": "https://amzn.to/3TDNwCX", "label": "Ecovention Europe: Art to Transform Ecologies, 1957–2017"}
+      {
+        "url": "https://amzn.to/4hJEpZG",
+        "label": "Green Acres: Artists Farming Fields, Greenhouses and Abandoned Lots"
+      },
+      {
+        "url": "https://amzn.to/3TDNwCX",
+        "label": "Ecovention Europe: Art to Transform Ecologies, 1957–2017"
+      }
     ],
-    "tiddler": ["Case Study: Green Acres", "Case Study: Ecovention Europe"]
+    "tiddler": [
+      "Case Study: Green Acres",
+      "Case Study: Ecovention Europe"
+    ],
+    "related": [
+      "Example: Green Acres",
+      "A Final Example: Ecovention Europe",
+      "Green Acres",
+      "Ecovention Europe",
+      "Ecovention",
+      "Sue Spaid"
+    ]
   },
-
   "cape": {
     "arena": [
-      { "slug": "cape-pure-content", "role": "bibliography" }
+      {
+        "slug": "cape-pure-content",
+        "role": "bibliography"
+      }
     ],
-    "tiddler": "CAPE"
-  },
-
-  "libre-designer": {
-    "arena": [
-      { "slug": "flosd-free-libre-open-design", "role": "sourcing" },
-      { "slug": "a-new-design-commons", "role": "bibliography", "note": "A New Design Commons — a related idea, not this project itself" }
+    "tiddler": [
+      "CAPE",
+      "What is CAPE?"
+    ],
+    "related": [
+      "Pure Content",
+      "Create Anywhere Publish Everywhere",
+      "Towards Purer Content",
+      "Content is King",
+      "From Indesign to Pure Content",
+      "Decoupling content from its site",
+      "Striving For Static Sites",
+      "Extra Thoughts on CAPE"
     ]
   },
-
+  "libre-designer": {
+    "tiddler": [
+      "The Libre Designer",
+      "The Libre Designer (020200727)",
+      "The Libre Designer More Thoughts"
+    ],
+    "arena": [
+      {
+        "slug": "flosd-free-libre-open-design",
+        "role": "sourcing"
+      },
+      {
+        "slug": "a-new-design-commons",
+        "role": "bibliography",
+        "note": "A New Design Commons — a related idea, not this project itself"
+      }
+    ],
+    "related": [
+      "TLDZine",
+      "Why Free Culture?",
+      "F/LOS Daily: Towards an Open Source Design",
+      "F/LOS",
+      "F/LOS Designing: A Starter Workshop",
+      "Practical Primer for F/LOS Design",
+      "Pi-Top + AxiDraw = Libre Drawing Machine"
+    ]
+  },
   "carbon-sequestering-book": {
     "arena": [
-      { "slug": "carbon-sequestering-book", "role": "sourcing" },
-      { "slug": "carbon-capture-sequester-whatever-reduce-carbon", "role": "bibliography" }
+      {
+        "slug": "carbon-sequestering-book",
+        "role": "sourcing"
+      },
+      {
+        "slug": "carbon-capture-sequester-whatever-reduce-carbon",
+        "role": "bibliography"
+      }
+    ],
+    "tiddler": "A CO2 Absorbing Book?",
+    "related": [
+      "Project Drawdown",
+      "drawdown",
+      "Carbon",
+      "CO2",
+      "The Carbon Cycle"
     ]
   },
-
   "drawing-on-tempered-glass": {
     "shop": [
-      { "url": "https://www.erinbarach.com/drawing-on-tempered-glass/purchase-options", "label": "Purchase the book" }
+      {
+        "url": "https://www.erinbarach.com/drawing-on-tempered-glass/purchase-options",
+        "label": "Purchase the book"
+      }
     ]
   },
-
   "wjeather": {
     "live": "https://wjeather.wjerk.shop/"
   }

@@ -68,7 +68,9 @@ function renderRows(entry) {
   }
   const tiddlers = Array.isArray(entry.tiddler) ? entry.tiddler : entry.tiddler ? [entry.tiddler] : [];
   for (const title of tiddlers) {
-    rows.push(`<li><span class="elsewhereLabel">Essay</span> <a href="${essayUrl(title)}">The full write-up on ${escapeHtml(title)}</a></li>`);
+    // Just the title: a case study can list several wiki pages, and some are
+    // short notes, so "the full write-up on" was repetitive and not always true.
+    rows.push(`<li><span class="elsewhereLabel">Essay</span> <a href="${essayUrl(title)}">${escapeHtml(title)}</a></li>`);
   }
   for (const a of entry.arena ?? []) {
     const row = renderArenaRow(a);
