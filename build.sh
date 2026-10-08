@@ -1,7 +1,8 @@
 #!/bin/sh
 # WJERK BUILD SCRIPT
 # Purpose: assemble the static site into build/ (source stays untouched),
-#          stamp the footer year and %PAGE_WEIGHT%/%SITE_WEIGHT% tokens.
+#          fill the image list, stamp the footer year and
+#          %PAGE_WEIGHT%/%SITE_WEIGHT% tokens.
 # Usage: sh build.sh
 #
 # Cloudflare Pages project settings: build command `sh build.sh`,
@@ -30,6 +31,15 @@ cp style.css "$BUILD_DIR"/
 cp _headers "$BUILD_DIR"/
 cp favicon.ico apple-touch-icon.png "$BUILD_DIR"/
 cp -R i "$BUILD_DIR"/
+
+# ============================================================================
+# STEP 2a: Fill images.html with a text list of every image file and its
+# size, largest first (the %IMAGE_INDEX% token). Runs here because it needs
+# the copied pages to see which page uses which image, and has to finish
+# before the footer step: images.html carries a %FOOTER% token like the case
+# studies do.
+# ============================================================================
+node image-index.js "$BUILD_DIR"
 
 # ============================================================================
 # STEP 2b: Inject the shared case-study footer (_partials/footer.html) in place

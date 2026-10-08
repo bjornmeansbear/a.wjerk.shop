@@ -166,6 +166,13 @@ header .blurb p {
   mix-blend-mode: multiply;
 }
 
+/* images.html lists the site's images and loads none, so its header has no
+   logo. The blurb's border was the divider between logo and blurb; with no
+   logo there is nothing to divide. */
+.imageIndex header .blurb {
+  border: 0;
+}
+
 header nav {
   flex-basis: 100%;
 }
@@ -441,6 +448,18 @@ footer ul p { margin: 0; }
 .caseStudyBody td:first-child {
   font-weight: bold;
   white-space: nowrap;
+}
+
+.caseStudyBody caption {
+  text-align: left;
+  padding-bottom: 0.5rem;
+}
+
+/* images.html: file paths are long and have no spaces, so let them break
+   anywhere, but keep the column wide enough to read. */
+.imageIndex td:nth-child(2) {
+  overflow-wrap: anywhere;
+  min-width: 14rem;
 }
 
 /* On narrow screens the table scrolls horizontally rather than squashing. */
