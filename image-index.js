@@ -33,6 +33,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import { escapeHtml, humanBytes, walk } from './lib.js';
 
 // ---------------------------------------------------------------- config
 const BUILD_DIR = process.argv[2] ?? 'build';
@@ -45,15 +46,6 @@ const IMAGE_EXT = new Set(['.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg', '.a
 const DITHER_LIST = 'dither-images.sh';
 
 // ---------------------------------------------------------------- helpers
-const escapeHtml = (str) =>
-  str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-
-const humanBytes = (n) => {
-  if (n < 1024) return `${n} B`;
-  if (n < 1024 * 1024) return `${(n / 1024).toFixed(0)} KB`;
-  return `${(n / (1024 * 1024)).toFixed(2)} MB`;
-};
-
 /** turn a file path into a URL path ("a b.png" → "a%20b.png") */
 const toHref = (rel) => rel.split('/').map(encodeURIComponent).join('/');
 
@@ -103,14 +95,6 @@ function dimensions(buf, ext) {
     // a truncated or odd file: fall through and report no dimensions
   }
   return null;
-}
-
-function* walk(dir) {
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    const p = path.join(dir, entry.name);
-    if (entry.isDirectory()) yield* walk(p);
-    else yield p;
-  }
 }
 
 // ---------------------------------------------------------------- step 1

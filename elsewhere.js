@@ -17,6 +17,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import { escapeHtml } from './lib.js';
 
 const BUILD_DIR = process.argv[2] ?? 'build';
 const TOKEN = '%ELSEWHERE%';
@@ -33,9 +34,6 @@ const connections = JSON.parse(fs.readFileSync('connections.json', 'utf8'));
 const arenaCache = fs.existsSync('arena-cache.json')
   ? JSON.parse(fs.readFileSync('arena-cache.json', 'utf8'))
   : {};
-
-const escapeHtml = (str) =>
-  str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 const isAmazon = (url) => /^https?:\/\/(amzn\.to|(www\.)?amazon\.com)\//.test(url);
 
@@ -60,11 +58,11 @@ function renderArenaRow(entry) {
 function renderRows(entry) {
   const rows = [];
   if (entry.live) {
-    rows.push(`<li><span class="elsewhereLabel">Live</span> <a href="${entry.live}">${escapeHtml(entry.live.replace(/^https?:\/\//, '').replace(/\/$/, ''))}</a></li>`);
+    rows.push(`<li><span class="elsewhereLabel">Live</span> <a href="${escapeHtml(entry.live)}">${escapeHtml(entry.live.replace(/^https?:\/\//, '').replace(/\/$/, ''))}</a></li>`);
   }
   for (const s of entry.shop ?? []) {
     const rel = isAmazon(s.url) ? ' rel="sponsored"' : '';
-    rows.push(`<li><span class="elsewhereLabel">Get it</span> <a href="${s.url}"${rel}>${escapeHtml(s.label)}</a></li>`);
+    rows.push(`<li><span class="elsewhereLabel">Get it</span> <a href="${escapeHtml(s.url)}"${rel}>${escapeHtml(s.label)}</a></li>`);
   }
   const tiddlers = Array.isArray(entry.tiddler) ? entry.tiddler : entry.tiddler ? [entry.tiddler] : [];
   for (const title of tiddlers) {

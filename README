@@ -15,13 +15,16 @@ Raw, hand-written HTML and CSS. No framework, no client-side JS, no webfonts. `S
 - `case-study-template.html` — starting point for a new case study; has unresolved `{{TOKENS}}`, not meant to be deployed directly
 - `style.css` — the entire stylesheet, mobile-first (base rules are the mobile layout; `@media (min-width: 40rem/55rem)` layers on wider treatments)
 - `i/` — images, mostly dithered PNGs plus a few per-project subfolders for real photos
-- `build.sh` — assembles `build/` (gitignored) for deploy: copies deployable files, strips the template, injects the shared footer, stamps the footer year, runs `page-weight.js` and `elsewhere.js`, then warns about any file over 1 MB. This is the Cloudflare Pages build command.
+- `build.sh` — assembles `build/` (gitignored) for deploy: copies deployable files, strips the template, injects the shared footer, stamps the footer year, runs `page-weight.js` and `elsewhere.js`, fails if any `%TOKEN%` is left unfilled, then warns about any file over 1 MB. This is the Cloudflare Pages build command.
 - `_partials/footer.html` + `inject-footer.js` — the case-study footer lives in one place. Each `case-study-*.html` has a literal `%FOOTER%` token inside `<footer>`; the build swaps in the partial and fails if a case study is missing the token. The homepage keeps its own inline footer (different content).
 - Source art and working notes live in the separate private repo `a.wjerk.shop-private` (cloned at `~/Code/a.wjerk.shop-private`), not here. `build.sh` copies only a named list of root files plus `i/`, so anything under `i/` deploys.
 - `page-weight.js` — computes each page's actual transfer weight and stamps the `%PAGE_WEIGHT%` / `%SITE_WEIGHT%` footer tokens into `build/` only (source keeps the literal tokens)
 - `images.html` + `image-index.js` — a text list of every image file and its size, largest first, with unused files flagged. `images.html` holds a literal `%IMAGE_INDEX%` token; the build fills it in. The page loads no images (its header has no logo, on purpose). Linked from both footers.
 - `dither.js` — Atkinson-dithers a source image to a 1-bit PNG (`node dither.js <input> <output.png> [width]`); used for every homepage tile and several case-study heroes
-- `dither-images.sh` / `generate-case-studies.sh` — batch helpers around the two scripts above
+- `dither-images.sh` — batch-dithers the homepage tiles (`dither.js` over a list)
+- `new-case-study.sh` — `sh new-case-study.sh <slug> "<Title>" "<Description>" <image>` copies the template to a new page (never overwrites)
+- `lib.js` + `package.json` — shared helpers for the Node scripts, and `"type": "module"` so they run as ES modules on any Node ≥ 20
+- `connections.json` + `elsewhere.js` — per-project “Elsewhere” links, stamped into `build/`; `arena-sync.js` (run by hand) refreshes `arena-cache.json`; `arena-inventory.js` (by hand) lists every Are.na channel. See `CLAUDE.md`.
 - `_headers` — Cloudflare Pages response headers (cache control per asset type)
 
 ## Previewing locally
@@ -55,21 +58,6 @@ Live and built out: Chair-ness, Solarpunk Boombox, 3P: People Processing Plastic
 - The original `SPEC.md` plan (AVIF/srcset image ladders, dark-mode-by-default, `prefers-reduced-data` handling) is still aspirational — none of it is implemented yet.
 - The shared color palette (currently a handful of files in `onething`) is meant to become its own repo, consumed by `a.wjerk.shop`, `onething`, and eventually OOKB/the store — right now it's just referenced by hex value here, not actually imported from anywhere.
 
----
+## Homepage tints
 
-New palette mapping applied across index.html and case-study-chairness.html:
-
-Row	Token	Hex
-Chair-ness	brown-5	#7A736F
-Solarpunk Boombox	yellow-4	#A29C43
-3P	blue-4	#899D9B
-Spontaneous Lamp	orange-4	#D08070
-MICA Admissions	pink-3	#FF81A9
-Carbon Sequestering Book	green-4	#89A271
-Green Acres → Ecovention	dark-gray-4	#939A9A
-Sustainabilitist Principles	purple-4	#AE8CA5
-The Libre Designer	light-gray-5	#6A7A62
-Wjeather	—	#fff (full-color screenshots, no tint)
-Contact	gray-4	#99998D
-About	red-4	#DE7473
-
+Each homepage row’s `--tint` is set inline in `index.html` — that file is the source of truth for the hex values. Row hues come from the shared Wjerk/OOKB scale (step 4–5 for legibility under the multiply blend); a new row should take an unused hue from that scale.

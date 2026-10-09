@@ -1,6 +1,6 @@
 #!/bin/sh
 # Dither homepage grid source images via dither.js (Atkinson, see dither.js
-# header for why). Mirrors generate-case-studies.sh's list-and-loop pattern.
+# header for why). One "source|output|width" per line; image-index.js reads this list too.
 # Usage: sh dither-images.sh
 
 cd "$(dirname "$0")" || exit 1

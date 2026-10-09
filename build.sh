@@ -24,7 +24,7 @@ mkdir "$BUILD_DIR"
 # STEP 2: Copy deployable files into build/
 # ============================================================================
 # case-study-template.html has unresolved {{TOKENS}} — it's a source template
-# for generate-case-studies.sh, not a page to deploy.
+# for new-case-study.sh, not a page to deploy.
 cp *.html "$BUILD_DIR"/
 rm "$BUILD_DIR/case-study-template.html"
 cp style.css "$BUILD_DIR"/
@@ -75,7 +75,19 @@ node page-weight.js "$BUILD_DIR"
 node elsewhere.js "$BUILD_DIR"
 
 # ============================================================================
-# STEP 6: Flag heavy files in build/ — warns, never fails the deploy. Catches
+# STEP 6: Fail if any step left a token behind (a typo'd or unfilled token
+# would otherwise ship as literal text). Skips the deliberately self-contained
+# projection deck.
+# ============================================================================
+LEFT=$(grep -lE '%(FOOTER|PAGE_WEIGHT|SITE_WEIGHT|ELSEWHERE|IMAGE_INDEX)%' "$BUILD_DIR"/*.html || true)
+if [ -n "$LEFT" ]; then
+  echo "✗ Unfilled tokens left in:" >&2
+  echo "$LEFT" >&2
+  exit 1
+fi
+
+# ============================================================================
+# STEP 7: Flag heavy files in build/ — warns, never fails the deploy. Catches
 # source art or unoptimized exports that landed somewhere the build copies
 # wholesale (everything under i/ ships). Source art belongs in the private repo
 # (a.wjerk.shop-private/_source-art/), never in this one.

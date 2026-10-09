@@ -41,6 +41,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
+import { humanBytes, walk } from './lib.js';
 
 // ---------------------------------------------------------------- config
 const BUILD_DIR = process.argv[2] ?? 'build';
@@ -55,12 +56,6 @@ const brotliSize = (buf) =>
   zlib.brotliCompressSync(buf, {
     params: { [zlib.constants.BROTLI_PARAM_QUALITY]: 5 }, // ≈ CDN on-the-fly level
   }).length;
-
-const humanBytes = (n) => {
-  if (n < 1024) return `${n} B`;
-  if (n < 1024 * 1024) return `${(n / 1024).toFixed(0)} KB`;
-  return `${(n / (1024 * 1024)).toFixed(2)} MB`;
-};
 
 /** transfer size of one asset file; returns 0 if missing (warns) */
 const sizeCache = new Map();
@@ -136,13 +131,15 @@ function collectAssets(rawHtml, htmlDir) {
   return total;
 }
 
-function* walkHtml(dir) {
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    const p = path.join(dir, entry.name);
-    if (entry.isDirectory()) yield* walkHtml(p);
-    else if (entry.name.endsWith('.html')) yield p;
-  }
-}
+const htmlFiles = () => [...walk(BUILD_DIR)].filter((p) => p.endsWith('.html'));
+
+const routeOf = (htmlPath) =>
+  '/' +
+  path
+    .relative(BUILD_DIR, htmlPath)
+    .replace(/index\.html$/, '')
+    .replace(/\.html$/, '')
+    .replace(/\\/g, '/');
 
 // ---------------------------------------------------------------- main
 if (!fs.existsSync(BUILD_DIR)) {
@@ -153,30 +150,18 @@ if (!fs.existsSync(BUILD_DIR)) {
 const pages = {};
 let siteTotal = 0;
 
-for (const htmlPath of walkHtml(BUILD_DIR)) {
+for (const htmlPath of htmlFiles()) {
   const html = fs.readFileSync(htmlPath, 'utf8');
   const pageBytes = brotliSize(Buffer.from(html)) + collectAssets(html, path.dirname(htmlPath));
-  const route =
-    '/' +
-    path
-      .relative(BUILD_DIR, htmlPath)
-      .replace(/index\.html$/, '')
-      .replace(/\.html$/, '')
-      .replace(/\\/g, '/');
+  const route = routeOf(htmlPath);
   pages[route] = pageBytes;
   siteTotal += pageBytes;
 }
 
 // pass 2: token replacement — destructive, but build/ is disposable (see
 // header comment), so this never touches source.
-for (const htmlPath of walkHtml(BUILD_DIR)) {
-  const route =
-    '/' +
-    path
-      .relative(BUILD_DIR, htmlPath)
-      .replace(/index\.html$/, '')
-      .replace(/\.html$/, '')
-      .replace(/\\/g, '/');
+for (const htmlPath of htmlFiles()) {
+  const route = routeOf(htmlPath);
   const html = fs.readFileSync(htmlPath, 'utf8');
   if (!html.includes(PAGE_TOKEN) && !html.includes(SITE_TOKEN)) continue;
   const rendered = html

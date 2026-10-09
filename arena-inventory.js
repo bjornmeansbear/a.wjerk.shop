@@ -26,27 +26,17 @@
  */
 
 import fs from 'node:fs';
-
-const API_BASE = 'https://api.are.na/v3';
+import { ARENA_API, arenaToken } from './lib.js';
 // Lives in the private notes repo when it's cloned next to this one; falls back
 // to a gitignored local file otherwise.
 const PRIVATE_DIR = new URL('../a.wjerk.shop-private/', import.meta.url).pathname;
 const OUT = fs.existsSync(PRIVATE_DIR) ? `${PRIVATE_DIR}arena-inventory.md` : 'arena-inventory.md';
 
-function loadEnvToken() {
-  const raw = fs.readFileSync('.env', 'utf8');
-  for (const line of raw.split('\n')) {
-    const m = line.match(/^ARENA_ACCESS_TOKEN=(.+)$/);
-    if (m) return m[1].trim();
-  }
-  throw new Error('ARENA_ACCESS_TOKEN not found in .env');
-}
-
 async function fetchAllChannels(token) {
   const channels = [];
   let page = 1;
   while (page) {
-    const url = `${API_BASE}/search?query=*&type=Channel&scope=my&per=100&page=${page}`;
+    const url = `${ARENA_API}/search?query=*&type=Channel&scope=my&per=100&page=${page}`;
     const res = await fetch(url, {
       headers: { Authorization: `Bearer ${token}`, 'User-Agent': 'a.wjerk.shop arena-inventory.js' },
     });

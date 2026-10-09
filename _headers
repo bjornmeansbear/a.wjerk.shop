@@ -1,5 +1,4 @@
-# Cloudflare Pages response headers. Ignored by GitHub Pages (current host) —
-# safe to keep in the repo ahead of the Cloudflare migration.
+# Cloudflare Pages response headers. Copied into build/ by build.sh.
 #
 # NOT using `immutable` / long max-age yet: that's only safe for
 # content-hashed filenames (SPEC.md §3), and this site doesn't hash

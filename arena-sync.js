@@ -22,17 +22,7 @@
  */
 
 import fs from 'node:fs';
-
-const API_BASE = 'https://api.are.na/v3';
-
-function loadEnvToken() {
-  const raw = fs.readFileSync('.env', 'utf8');
-  for (const line of raw.split('\n')) {
-    const m = line.match(/^ARENA_ACCESS_TOKEN=(.+)$/);
-    if (m) return m[1].trim();
-  }
-  throw new Error('ARENA_ACCESS_TOKEN not found in .env');
-}
+import { ARENA_API, arenaToken } from './lib.js';
 
 function collectSlugs(connections) {
   const slugs = new Set();
@@ -44,7 +34,7 @@ function collectSlugs(connections) {
 }
 
 async function fetchChannel(slug, token) {
-  const res = await fetch(`${API_BASE}/channels/${slug}`, {
+  const res = await fetch(`${ARENA_API}/channels/${slug}`, {
     headers: { Authorization: `Bearer ${token}` },
   });
   if (!res.ok) return { ok: false, status: res.status };
@@ -58,7 +48,7 @@ async function fetchChannel(slug, token) {
 }
 
 async function main() {
-  const token = loadEnvToken();
+  const token = arenaToken();
   const connections = JSON.parse(fs.readFileSync('connections.json', 'utf8'));
   const slugs = collectSlugs(connections);
 
