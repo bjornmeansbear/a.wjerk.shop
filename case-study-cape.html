@@ -7,8 +7,7 @@
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <title>CAPE: Create Anywhere, Publish Everywhere - Wjerk: A Climate Design Studio</title>
-  <meta name="description"
-    content="A decade of content infrastructure built with Kai Curry. Content structured so it implies nothing about how it looks — then rendered to a website, a widget, or a print-ready booklet from one source.">
+  <meta name="description" content="A decade of content infrastructure built with Kai Curry. Content structured so it implies nothing about how it looks — then rendered to a website, a widget, or a print-ready booklet from one source.">
   <link rel="stylesheet" href="./style.css">
 </head>
 
@@ -19,8 +18,7 @@
       <img src="i/alternateEarthRingsLogo.webp" alt="Gray Earth Marble with Rings of Hope radiating outward" />
     </div>
     <div class="blurb">
-      <p><strong>Wjerk.</strong> <small>A Climate Design Studio. <small>Designing for the Welfare of All
-            Life.<sup>‡</sup></small></small></p>
+      <p><strong>Wjerk.</strong> <small>A Climate Design Studio. <small>Designing for the Welfare of All Life.<sup>‡</sup></small></small></p>
     </div>
     <nav>
       <ul class="listReset">
@@ -43,127 +41,66 @@
       </div>
       <div class="content">
         <h1>CAPE</h1>
-        <p class="dek"><cite>Create Anywhere, Publish Everywhere.</cite> Roughly a decade of content
-          infrastructure, built with developer <strong>Kai Curry</strong>. Software, service, and philosophy in one:
-          content stays wherever it already lives, and CAPE finds it, reformats it, and delivers it wherever
-          it is needed — a web page, a widget on someone else’s site, or a print-ready conference booklet.
-          Approximately 2011–2023, with the intensive tool-building in the first few years.</p>
+        <p class="dek"><cite>Create Anywhere, Publish Everywhere.</cite> Roughly a decade of content infrastructure, built with developer <strong>Kai Curry</strong>. Software, service, and philosophy in one: content stays wherever it already lives, and CAPE finds it, reformats it, and delivers it wherever it is needed — a web page, a widget on someone else’s site, or a print-ready conference booklet. Approximately 2011–2023, with the intensive tool-building in the first few years.</p>
         %ELSEWHERE%
       </div>
     </section>
 
     <article class="caseStudyBody">
-      <p>The problem that started it was dull and specific. A conference website had a database of sessions,
-        speakers, and times. The printed programme for the same conference was an InDesign file. Every time
-        the website changed, someone re-typed the change into InDesign. The two documents described the same
-        event and knew nothing about each other.</p>
+      <p>The problem that started it was dull and specific. A conference website had a database of sessions, speakers, and times. The printed programme for the same conference was an InDesign file. Every time the website changed, someone re-typed the change into InDesign. The two documents described the same event and knew nothing about each other.</p>
 
       <p>So: generate the booklet from the database. Same content, second output. Nobody re-types anything.</p>
 
-      <p>That is the whole idea, and it generalises further than it first appears. If a booklet can be an
-        output of the content rather than a copy of it, so can a web page, an email, a widget, a feed, a
-        poster. What has to be true is that the content itself carries no assumptions about where it will
-        end up.</p>
+      <p>That is the whole idea, and it generalises further than it first appears. If a booklet can be an output of the content rather than a copy of it, so can a web page, an email, a widget, a feed, a poster. What has to be true is that the content itself carries no assumptions about where it will end up.</p>
 
       <h2>Pure content</h2>
 
-      <p>We called that <cite>pure content</cite>: content structured so that it doesn’t try to imply — at all,
-        if we could manage it — what it should look like or be used for. Semantic, structural, rich in
-        metadata, and silent about presentation. The end form should dictate the style. The style should
-        never be baked into the content.</p>
+      <p>We called that <cite>pure content</cite>: content structured so that it doesn’t try to imply — at all, if we could manage it — what it should look like or be used for. Semantic, structural, rich in metadata, and silent about presentation. The end form should dictate the style. The style should never be baked into the content.</p>
 
-      <p>The shorthand was <strong>WYSIWYM over WYSIWYG</strong>: what you see is what you <em>mean</em>,
-        rather than what you get.</p>
+      <p>The shorthand was <strong>WYSIWYM over WYSIWYG</strong>: what you see is what you <em>mean</em>, rather than what you get.</p>
 
-      <p>Most tools work against this. Word processors wrap text in formatting that is hard to strip out
-        again. Desktop publishing locks content inside layout files no other workflow can read. WYSIWYG
-        editors bloat text with markup that makes it hard to move. Content in those formats withers where it
-        sits, chained to a file format, a storage method, or a style prison of its own making.</p>
+      <p>Most tools work against this. Word processors wrap text in formatting that is hard to strip out again. Desktop publishing locks content inside layout files no other workflow can read. WYSIWYG editors bloat text with markup that makes it hard to move. Content in those formats withers where it sits, chained to a file format, a storage method, or a style prison of its own making.</p>
 
-      <p>Keep the content pure and the styling becomes an application rather than a property. You can restyle
-        endlessly and never touch the source.</p>
+      <p>Keep the content pure and the styling becomes an application rather than a property. You can restyle endlessly and never touch the source.</p>
 
       <figure>
         <img src="i/case-study-cape/xml-from-indesign.webp" width="1400" height="875"
           alt="A 2014 desktop screenshot: Finder windows open to project folders, an XML file open showing structured markup tags around paragraph text, next to an InDesign layout containing the same text as a formatted essay draft titled “Content is King”"
           loading="lazy" decoding="async">
-        <figcaption>Pure content, pulled out of a locked format — an early example: the same essay as
-          structured XML and as an InDesign layout.</figcaption>
+        <figcaption>Pure content, pulled out of a locked format — an early example: the same essay as structured XML and as an InDesign layout.</figcaption>
       </figure>
 
       <h2>What we actually built</h2>
 
-      <p>CAPE had two halves. The first was a search layer across content feeds — Flickr, Instagram, Dropbox,
-        Google Drive, a Git repository, an inventory system, anything with an API or an RSS feed. You defined
-        sources, built filters, previewed results, and saved the query. A saved query was a live feed, and its
-        results could be reordered, removed, or remixed.</p>
+      <p>CAPE had two halves. The first was a search layer across content feeds — Flickr, Instagram, Dropbox, Google Drive, a Git repository, an inventory system, anything with an API or an RSS feed. You defined sources, built filters, previewed results, and saved the query. A saved query was a live feed, and its results could be reordered, removed, or remixed.</p>
 
-      <p>The second half was what happened to those results. Every query had a live feed and a saved feed,
-        available as XML or JSON, or passed through templates. A page could be assembled from a handful of
-        saved queries and a set of display templates. So could an entire site. So could the booklet.</p>
+      <p>The second half was what happened to those results. Every query had a live feed and a saved feed, available as XML or JSON, or passed through templates. A page could be assembled from a handful of saved queries and a set of display templates. So could an entire site. So could the booklet.</p>
 
-      <p>It generated rather than served. CAPE sat in the background watching feeds, and when something
-        changed it rebuilt the affected pages as static HTML. No database query at request time, no template
-        compile per visitor, nothing to keep warm. Static files on a CDN.</p>
+      <p>It generated rather than served. CAPE sat in the background watching feeds, and when something changed it rebuilt the affected pages as static HTML. No database query at request time, no template compile per visitor, nothing to keep warm. Static files on a CDN.</p>
 
       <h2>Where it came from</h2>
 
-      <p>None of this started as a content-management opinion. In 2006 I was looking for a way to run a car on
-        something other than diesel, which led to a group in Minneapolis called <cite>Sunday’s Energy</cite>
-        running workshops on making biodiesel and converting engines to switch between vegetable oil and
-        diesel. I ended up working there, and then it became a company Kai and I ran. We made biodiesel,
-        websites, and assorted other eco-things.</p>
+      <p>None of this started as a content-management opinion. In 2006 I was looking for a way to run a car on something other than diesel, which led to a group in Minneapolis called <cite>Sunday’s Energy</cite> running workshops on making biodiesel and converting engines to switch between vegetable oil and diesel. I ended up working there, and then it became a company Kai and I ran. We made biodiesel, websites, and assorted other eco-things.</p>
 
-      <p>The websites paid for the biodiesel, and building websites for small organisations that had no
-        budget for a CMS licence, no staff to run one, and content scattered across whatever free tools they
-        already used is what produced CAPE. The constraint came first. The philosophy was the explanation we
-        worked out afterward.</p>
+      <p>The websites paid for the biodiesel, and building websites for small organisations that had no budget for a CMS licence, no staff to run one, and content scattered across whatever free tools they already used is what produced CAPE. The constraint came first. The philosophy was the explanation we worked out afterward.</p>
 
-      <p>It was never only a prototype. Real client web projects ran on it for years — most have since
-        moved off our infrastructure, each migrating in its own way. The philosophy mattered more than
-        the software: whatever someone already used to make content, they kept using it. CAPE only wanted
-        the content. That made it possible to divide content creation by who actually handles each kind
-        of thing, and let each part of a site — text, images, video, data — be managed wherever it was
-        managed best.</p>
+      <p>It was never only a prototype. Real client web projects ran on it for years — most have since moved off our infrastructure, each migrating in its own way. The philosophy mattered more than the software: whatever someone already used to make content, they kept using it. CAPE only wanted the content. That made it possible to divide content creation by who actually handles each kind of thing, and let each part of a site — text, images, video, data — be managed wherever it was managed best.</p>
 
       <h2>The nineteen-year test</h2>
 
-      <p>One site is the whole argument, run long enough to check. <cite>Better Living Through
-        Sustainability</cite> was mine, roughly 2007 to 2010, built on Drupal. It was later archived as a
-        static HTML site. Its contents now live as entries in
-        <a href="https://bjornpaedia.wjerk.shop/">bjornpaedia</a>, a wiki, where they get transcluded into
-        pages that didn’t exist when they were written.</p>
+      <p>One site is the whole argument, run long enough to check. <cite>Better Living Through Sustainability</cite> was mine, roughly 2007 to 2010, built on Drupal. It was later archived as a static HTML site. Its contents now live as entries in <a href="https://bjornpaedia.wjerk.shop/">bjornpaedia</a>, a wiki, where they get transcluded into pages that didn’t exist when they were written.</p>
 
-      <p>Drupal, then static HTML, then a wiki. Three platforms, none of which the content was written for. I
-        let the domain expire in 2026 after paying for it for nineteen years. The writing outlived the
-        database it was born in, the site it was published on, and the address it lived at — which is the
-        only test of pure content that means anything, and it is not a test you can run quickly.</p>
+      <p>Drupal, then static HTML, then a wiki. Three platforms, none of which the content was written for. I let the domain expire in 2026 after paying for it for nineteen years. The writing outlived the database it was born in, the site it was published on, and the address it lived at — which is the only test of pure content that means anything, and it is not a test you can run quickly.</p>
 
       <h2>Afterward</h2>
 
-      <p>Most of this is now ordinary. Contentful and its competitors sell content-as-API. Drupal and
-        WordPress both run headless. Static site generators pulling from remote sources are a default rather
-        than an argument. We were doing it before it was easy, which is a mixed thing to be able to say — the
-        ideas were right and the tooling had to be hand-built every time.</p>
+      <p>Most of this is now ordinary. Contentful and its competitors sell content-as-API. Drupal and WordPress both run headless. Static site generators pulling from remote sources are a default rather than an argument. We were doing it before it was easy, which is a mixed thing to be able to say — the ideas were right and the tooling had to be hand-built every time.</p>
 
-      <p>The part that hasn’t become ordinary is the print output. Generating a press-ready document from the
-        same source that produces the website is still unusual, still mostly hand-rolled, and still the thing
-        that made the whole argument concrete for anyone who had ever maintained the same information twice.</p>
+      <p>The part that hasn’t become ordinary is the print output. Generating a press-ready document from the same source that produces the website is still unusual, still mostly hand-rolled, and still the thing that made the whole argument concrete for anyone who had ever maintained the same information twice.</p>
 
-      <p>The argument got its airing as a paper called <cite>Towards Purer Content</cite>, at
-        <cite>Web Archives 2015: Capture, Curate, Analyze</cite> at the University of Michigan in November
-        2015. A room of archivists and librarians turned out to be the right audience for it. They deal
-        daily with content that has to outlive the system it was made in — which is the whole problem,
-        held by people who have it professionally rather than rhetorically. The proposal put it plainly:
-        impure content <q>withers and dies, chained into a file format, storage method, or self-imposed
-        style prison.</q></p>
+      <p>The argument got its airing as a paper called <cite>Towards Purer Content</cite>, at <cite>Web Archives 2015: Capture, Curate, Analyze</cite> at the University of Michigan in November 2015. A room of archivists and librarians turned out to be the right audience for it. They deal daily with content that has to outlive the system it was made in — which is the whole problem, held by people who have it professionally rather than rhetorically. The proposal put it plainly: impure content <q>withers and dies, chained into a file format, storage method, or self-imposed style prison.</q></p>
 
-      <p>The principle outlived the software, and it is visible in most of what came after. This site is
-        generated from templates. The notes at <a href="https://bjornpaedia.wjerk.shop/">bjornpaedia</a> are
-        rendered from a wiki whose entries are written once and transcluded into many pages. The argument in
-        <a href="case-study-libre-designer.html">The Libre Designer</a> — that a tool you cannot get your work
-        back out of is a risk rather than an inconvenience — is the same argument arriving from the direction
-        of software instead of structure.</p>
+      <p>The principle outlived the software, and it is visible in most of what came after. This site is generated from templates. The notes at <a href="https://bjornpaedia.wjerk.shop/">bjornpaedia</a> are rendered from a wiki whose entries are written once and transcluded into many pages. The argument in <a href="case-study-libre-designer.html">The Libre Designer</a> — that a tool you cannot get your work back out of is a risk rather than an inconvenience — is the same argument arriving from the direction of software instead of structure.</p>
 
       <p>Write it once. Style it as many times as you like. Leave the original alone.</p>
     </article>
