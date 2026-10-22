@@ -36,6 +36,9 @@ const arenaCache = fs.existsSync('arena-cache.json')
   : {};
 
 const isAmazon = (url) => /^https?:\/\/(amzn\.to|(www\.)?amazon\.com)\//.test(url);
+// Bookshop.org affiliate links carry the shop ID in the path: /a/129137/ISBN.
+const isBookshop = (url) => /^https?:\/\/(www\.)?bookshop\.org\/a\//.test(url);
+const isAffiliate = (url) => isAmazon(url) || isBookshop(url);
 
 function essayUrl(title) {
   // The static export's filenames contain literal "%20" etc., so the server
@@ -61,7 +64,7 @@ function renderRows(entry) {
     rows.push(`<li><span class="elsewhereLabel">Live</span> <a href="${escapeHtml(entry.live)}">${escapeHtml(entry.live.replace(/^https?:\/\//, '').replace(/\/$/, ''))}</a></li>`);
   }
   for (const s of entry.shop ?? []) {
-    const rel = isAmazon(s.url) ? ' rel="sponsored"' : '';
+    const rel = isAffiliate(s.url) ? ' rel="sponsored"' : '';
     rows.push(`<li><span class="elsewhereLabel">Get it</span> <a href="${escapeHtml(s.url)}"${rel}>${escapeHtml(s.label)}</a></li>`);
   }
   const tiddlers = Array.isArray(entry.tiddler) ? entry.tiddler : entry.tiddler ? [entry.tiddler] : [];
@@ -73,6 +76,9 @@ function renderRows(entry) {
   for (const a of entry.arena ?? []) {
     const row = renderArenaRow(a);
     if (row) rows.push(row);
+  }
+  if ((entry.shop ?? []).some((s) => isBookshop(s.url))) {
+    rows.push('<li class="affiliateNote">As a Bookshop.org affiliate, I earn from qualifying purchases. Bookshop.org shares its profits with independent bookstores.</li>');
   }
   if ((entry.shop ?? []).some((s) => isAmazon(s.url))) {
     rows.push('<li class="affiliateNote">As an Amazon Associate I earn from qualifying purchases.</li>');
