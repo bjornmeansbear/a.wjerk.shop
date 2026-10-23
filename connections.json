@@ -45,6 +45,18 @@
         "label": "The logo on front, the process explained on back"
       }
     ],
+    "links": [
+      {
+        "label": "Writeup",
+        "text": "Chris Attenborough on 3P",
+        "url": "https://www.chrisattenborough.org/people-processing-plastic"
+      },
+      {
+        "label": "Follow",
+        "text": "@people_processing_plastic on Instagram",
+        "url": "https://www.instagram.com/people_processing_plastic/"
+      }
+    ],
     "arena": [
       {
         "slug": "wjerk-precious-plastics",

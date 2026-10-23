@@ -98,7 +98,7 @@ everything downstream of that is mechanical.
   which stays the narrative "why" doc). Keyed by slug
   (`case-study-<slug>.html` → key `<slug>`). Only include the fields that
   exist for that project: `live` (string), `shop` (`[{url, label}]`),
-  `tiddler` (string or array of strings), `arena` (`[{slug, role, note?}]`).
+  `tiddler` (string or array of strings), `arena` (`[{slug, role, note?}]`), `links` (`[{label, text, url}]` — plain outbound links such as a collaborator’s writeup or an Instagram account; `label` is the small tag, `text` the link; added 2026-10-22 so calls to action leave the prose).
   `shop` isn't scoped to `stuff.wjerk.shop` — it's any "get it" link,
   including third-party ones (Erin Barach's site, a Fourthwall store).
 - **`arena-sync.js`** — run by hand (`node arena-sync.js`), same shape as

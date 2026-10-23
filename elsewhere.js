@@ -67,6 +67,11 @@ function renderRows(entry) {
     const rel = isAffiliate(s.url) ? ' rel="sponsored"' : '';
     rows.push(`<li><span class="elsewhereLabel">Get it</span> <a href="${escapeHtml(s.url)}"${rel}>${escapeHtml(s.label)}</a></li>`);
   }
+  // Plain outbound links (a collaborator's writeup, an Instagram account):
+  // label is the small-caps tag, text is the link. Not affiliate, so no rel.
+  for (const l of entry.links ?? []) {
+    rows.push(`<li><span class="elsewhereLabel">${escapeHtml(l.label)}</span> <a href="${escapeHtml(l.url)}">${escapeHtml(l.text)}</a></li>`);
+  }
   const tiddlers = Array.isArray(entry.tiddler) ? entry.tiddler : entry.tiddler ? [entry.tiddler] : [];
   for (const title of tiddlers) {
     // Just the title: a case study can list several wiki pages, and some are
