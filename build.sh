@@ -30,6 +30,8 @@ rm "$BUILD_DIR/case-study-template.html"
 cp style.css "$BUILD_DIR"/
 cp _headers "$BUILD_DIR"/
 cp favicon.ico apple-touch-icon.png "$BUILD_DIR"/
+# Chair-ness projection has its own icon (see CHAIRNESS-PROJECTION.md, private repo).
+cp Chairness.svg Chairness.png Chairness-apple-touch-icon.png "$BUILD_DIR"/
 cp -R i "$BUILD_DIR"/
 
 # ============================================================================
