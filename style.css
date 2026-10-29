@@ -752,11 +752,6 @@ footer ul p { margin: 0; }
 
 .worksTable .links a + a { margin-left: 1rem; }
 
-.worksIndex .affiliateNote {
-  font-size: 0.75rem;
-  margin-top: 1.5rem;
-}
-
 @media (min-width: 55rem) {
   .worksTable { display: table; }
   .worksTable thead { display: table-header-group; }

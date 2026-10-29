@@ -21,7 +21,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { escapeHtml, isAmazon, isBookshop, isAffiliate, AFFILIATE_NOTE } from './lib.js';
+import { escapeHtml, isAffiliate } from './lib.js';
 
 const BUILD_DIR = process.argv[2] ?? 'build';
 const PAGE = 'works.html';
@@ -67,15 +67,17 @@ function credits(w) {
 function links(w) {
   const out = [];
   const add = (label, url, text) => {
-    const rel = isAffiliate(url) ? ' rel="sponsored"' : '';
+    // Affiliate links stay on the case study, beside the disclosure the
+    // affiliate agreements require. Listing them here would mean carrying
+    // that disclosure on this page too.
+    if (isAffiliate(url)) return;
     const full = escapeHtml(`${label}: ${text}`);
-    out.push(`<a href="${escapeHtml(url)}"${rel} aria-label="${full}" title="${full}">${escapeHtml(label)}<span aria-hidden="true"> →</span></a>`);
+    out.push(`<a href="${escapeHtml(url)}" aria-label="${full}" title="${full}">${escapeHtml(label)}<span aria-hidden="true"> →</span></a>`);
   };
   const bare = (url) => url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
-  const store = (url) => (isAmazon(url) ? 'Amazon' : isBookshop(url) ? 'Bookshop.org' : bare(url).split('/')[0]);
   // The site is already the title link when there's no case study.
   if (w.site && w.caseStudy) add('Live', w.site, bare(w.site));
-  if (w.shop) add('Get it', w.shop, store(w.shop));
+  if (w.shop) add('Get it', w.shop, bare(w.shop).split('/')[0]);
   if (w.repo) add('Source', w.repo, bare(w.repo));
   if (w.archive) add('Archived', w.archive, 'Wayback Machine copy');
   // Only as a separate link when the title already goes somewhere else.
@@ -105,11 +107,6 @@ function renderWork(w) {
 }
 
 const sorted = [...works].sort((a, b) => when(b).localeCompare(when(a)) || a.title.localeCompare(b.title));
-const shops = works.flatMap((w) => [w.shop, ...(w.links ?? []).map((l) => l.url)]).filter(Boolean);
-const notes = [
-  shops.some(isBookshop) && AFFILIATE_NOTE.bookshop,
-  shops.some(isAmazon) && AFFILIATE_NOTE.amazon,
-].filter(Boolean);
 
 // The page's inline script turns the headers with data-sort into sort
 // buttons once list.js loads. Without it they stay plain headers, and
@@ -129,7 +126,6 @@ const block = [
   `        ${sorted.map(renderWork).join('\n        ')}`,
   `        </tbody>`,
   `      </table>`,
-  ...notes.map((n) => `      <p class="affiliateNote">${n}</p>`),
 ].join('\n');
 
 const file = path.join(BUILD_DIR, PAGE);
