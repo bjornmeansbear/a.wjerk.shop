@@ -17,7 +17,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { escapeHtml } from './lib.js';
+import { escapeHtml, isAmazon, isBookshop, isAffiliate, AFFILIATE_NOTE } from './lib.js';
 
 const BUILD_DIR = process.argv[2] ?? 'build';
 const TOKEN = '%ELSEWHERE%';
@@ -34,11 +34,6 @@ const connections = JSON.parse(fs.readFileSync('connections.json', 'utf8'));
 const arenaCache = fs.existsSync('arena-cache.json')
   ? JSON.parse(fs.readFileSync('arena-cache.json', 'utf8'))
   : {};
-
-const isAmazon = (url) => /^https?:\/\/(amzn\.to|(www\.)?amazon\.com)\//.test(url);
-// Bookshop.org affiliate links carry the shop ID in the path: /a/129137/ISBN.
-const isBookshop = (url) => /^https?:\/\/(www\.)?bookshop\.org\/a\//.test(url);
-const isAffiliate = (url) => isAmazon(url) || isBookshop(url);
 
 function essayUrl(title) {
   // The static export's filenames contain literal "%20" etc., so the server
@@ -83,10 +78,10 @@ function renderRows(entry) {
     if (row) rows.push(row);
   }
   if ((entry.shop ?? []).some((s) => isBookshop(s.url))) {
-    rows.push('<li class="affiliateNote">As a Bookshop.org affiliate, I earn from qualifying purchases. Bookshop.org shares its profits with independent bookstores.</li>');
+    rows.push(`<li class="affiliateNote">${AFFILIATE_NOTE.bookshop}</li>`);
   }
   if ((entry.shop ?? []).some((s) => isAmazon(s.url))) {
-    rows.push('<li class="affiliateNote">As an Amazon Associate I earn from qualifying purchases.</li>');
+    rows.push(`<li class="affiliateNote">${AFFILIATE_NOTE.amazon}</li>`);
   }
   return rows;
 }

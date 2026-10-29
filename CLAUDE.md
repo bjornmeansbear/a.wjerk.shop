@@ -129,6 +129,16 @@ everything downstream of that is mechanical.
   `.tid` filenames sometimes substitute characters (`:` → `_`) that the real
   `title:` field and published filename still use.
 
+## Works index (Notion → works.json → works.html)
+
+Established 2026-10-29. `works.html` lists every public project, 2003 on, newest first. The source of truth is two Notion databases, edited by hand: **Works** (data source `4babdc43-0cf3-4915-bfed-2b86c9d4fd27`, one row per project) and **People & Organizations** (`fb80530d-6bab-4550-b20a-025d5838d276`). Both sit under the “Portfolio Index” page.
+
+- **`works-sync.js`**: run it by hand (`node works-sync.js`), the same way as `arena-sync.js`, never from `build.sh`. It reads `NOTION_TOKEN` from `.env`. That's a read-only internal integration called “wjerk-sync”, and both databases have to be shared with it, because credits resolve through People. It writes `works.json` (checked in) with **only** rows whose Visibility is Public and only the fields in `publicRow()`. Notes and the Old/working fields never leave Notion. A credit shows only when that People row has “OK to name” checked. A Public row with no Year is left out, with a warning. It writes the full snapshot to `../a.wjerk.shop-private/works-snapshot.json`. Re-run it after editing Notion, before the next deploy.
+- **`works.js`**: build step 5a. It reads `works.json` and replaces the `%WORKS%` and `%WORKS_COUNT%` tokens in `works.html`. Never write either token literally anywhere else in that file, comments included: the first match gets replaced.
+- **Search and sort** come from `vendor/list.min.js` (List.js 2.3.1, the same file bjornpaedia uses; see `vendor/README.md`). The controls are `hidden` in source and only shown once the script loads.
+- **Sorting:** by the end year, then by `Completed` when Works’ “Date precision” isn't “Year only”. Many Completed dates were read from Dropbox folder names on 2026-10-28/29, and “Date precision” says how far to trust each one.
+- **The Notion API** here uses version `2025-09-03`: query `POST /v1/data_sources/{id}/query`, not the old `/databases/{id}/query`.
+
 ## Related repos
 
 - `~/Code/sentence-a-day` — TiddlyWiki source for bjornpaedia.wjerk.shop; also

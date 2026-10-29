@@ -33,6 +33,9 @@ cp favicon.ico apple-touch-icon.png "$BUILD_DIR"/
 # Chair-ness projection has its own icon (see CHAIRNESS-PROJECTION.md, private repo).
 cp Chairness.svg Chairness.png Chairness-apple-touch-icon.png "$BUILD_DIR"/
 cp -R i "$BUILD_DIR"/
+# list.js for works.html search/sort (see vendor/README.md).
+mkdir "$BUILD_DIR/vendor"
+cp vendor/*.js "$BUILD_DIR/vendor/"
 
 # ============================================================================
 # STEP 2a: Fill images.html with a text list of every image file and its
@@ -77,11 +80,19 @@ node page-weight.js "$BUILD_DIR"
 node elsewhere.js "$BUILD_DIR"
 
 # ============================================================================
+# STEP 5a: Fill works.html with every public project from works.json, newest
+# first. Reads a checked-in file — never calls Notion itself (see
+# works-sync.js, run by hand separately). Source keeps the literal %WORKS%
+# token forever.
+# ============================================================================
+node works.js "$BUILD_DIR"
+
+# ============================================================================
 # STEP 6: Fail if any step left a token behind (a typo'd or unfilled token
 # would otherwise ship as literal text). Skips the deliberately self-contained
 # projection deck.
 # ============================================================================
-LEFT=$(grep -lE '%(FOOTER|PAGE_WEIGHT|SITE_WEIGHT|ELSEWHERE|IMAGE_INDEX)%' "$BUILD_DIR"/*.html || true)
+LEFT=$(grep -lE '%(FOOTER|PAGE_WEIGHT|SITE_WEIGHT|ELSEWHERE|IMAGE_INDEX|WORKS|WORKS_COUNT)%' "$BUILD_DIR"/*.html || true)
 if [ -n "$LEFT" ]; then
   echo "✗ Unfilled tokens left in:" >&2
   echo "$LEFT" >&2

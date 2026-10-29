@@ -169,7 +169,8 @@ header .blurb p {
 /* images.html lists the site's images and loads none, so its header has no
    logo. The blurb's border was the divider between logo and blurb; with no
    logo there is nothing to divide. */
-.imageIndex header .blurb {
+.imageIndex header .blurb,
+.worksIndex header .blurb {
   border: 0;
 }
 
@@ -581,6 +582,132 @@ footer ul p { margin: 0; }
 
 .caseStudyBody dd {
   margin: 0.25rem 0 0;
+}
+
+/* works.html: every public project, rendered by works.js from works.json.
+   A plain list with a rule between entries, so it reads top to bottom on a
+   phone; no grid to collapse. The search/sort controls are hidden in the
+   source and shown only once list.js loads. */
+.worksControls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0 0 1.5rem;
+}
+
+.worksControls[hidden] { display: none; }
+
+.worksControls label {
+  font-weight: bold;
+}
+
+.worksControls input {
+  font: inherit;
+  color: inherit;
+  background: var(--wjerk-white);
+  border: 1px solid;
+  border-radius: 0;
+  padding: 0.5rem 0.75rem;
+}
+
+/* Browser-default placeholder gray is 4.35:1 on the ground — just under AA.
+   Ink at 70%, the figcaption tone, is 5.33:1. */
+.worksControls input::placeholder {
+  color: var(--wjerk-black);
+  opacity: 0.7;
+}
+
+.worksSort {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.worksSort button {
+  font: inherit;
+  font-size: 0.875rem;
+  color: inherit;
+  background: var(--wjerk-white);
+  border: 1px solid;
+  border-radius: 0;
+  padding: 0.375rem 0.75rem;
+  cursor: pointer;
+}
+
+/* Kit compact-button size (about 32px tall, over WCAG 2.2's 24px target).
+   Pressed = inverted, ink ground and light text (13.73:1), per the kit: no
+   accent fill for “selected”; pink stays for the focus ring. */
+.worksSort button[aria-pressed="true"] {
+  background: var(--wjerk-black);
+  color: var(--wjerk-white);
+}
+
+.worksControls input:focus-visible,
+.worksSort button:focus-visible {
+  outline: 0.25rem solid var(--pink-5);
+  outline-offset: 2px;
+}
+
+.worksStatus {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.worksStatus:empty { display: none; }
+
+.worksList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid;
+}
+
+.worksList .work {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid;
+}
+
+.worksList .workMeta {
+  margin: 0 0 0.25rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.worksList .title {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.worksList .oneLiner,
+.worksList .credits {
+  margin: 0.5rem 0 0;
+}
+
+.worksList .credits {
+  font-size: 0.875rem;
+}
+
+/* Same small-caps label rows as a case study's Elsewhere block. */
+.worksList .elsewhere {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.worksList .elsewhereLabel {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  margin-right: 0.5em;
+}
+
+.worksIndex .affiliateNote {
+  font-size: 0.75rem;
 }
 
 /* Ongoing/process-log pattern: a repeatable dated-entry list for projects
