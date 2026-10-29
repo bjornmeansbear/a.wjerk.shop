@@ -45,18 +45,12 @@
       </div>
     </section>
 
-    <article class="caseStudyBody" id="works">
-      <!-- Search and sort need list.js; until it loads they stay hidden and
-           the full list below is the page. -->
+    <article class="worksBody" id="works">
+      <!-- Search needs list.js; until it loads it stays hidden and the full
+           table below is the page. -->
       <div class="worksControls" hidden>
         <label for="worksSearch">Search all %WORKS_COUNT% projects</label>
         <input class="search" id="worksSearch" type="search" placeholder="A title, a kind, a client…">
-        <div class="worksSort" role="group" aria-label="Sort by">
-          <button type="button" data-sort="newest" aria-pressed="true">Newest</button>
-          <button type="button" data-sort="oldest" aria-pressed="false">Oldest</button>
-          <button type="button" data-sort="title" aria-pressed="false">A–Z</button>
-          <button type="button" data-sort="kind" aria-pressed="false">Kind</button>
-        </div>
         <p class="worksStatus" aria-live="polite"></p>
       </div>
 
@@ -81,24 +75,40 @@
     var controls = box.querySelector(".worksControls");
     var input = box.querySelector(".search");
     var status = box.querySelector(".worksStatus");
-    var buttons = box.querySelectorAll(".worksSort button");
     var list = new List("works", {
       listClass: "worksList",
       valueNames: ["title", "kind", "years", "oneLiner", "credits", { data: ["when"] }]
     });
     controls.hidden = false;
 
-    var orders = {
-      newest: ["when", "desc"],
-      oldest: ["when", "asc"],
-      title: ["title", "asc"],
-      kind: ["kind", "asc"]
-    };
-    buttons.forEach(function (b) {
+    // Sortable headers become buttons. First click on Year sorts newest
+    // first, on Title or Kind A–Z; clicking the current one flips it.
+    // aria-sort lives on the header, where screen readers announce it.
+    // Rows with no kind (or no value) go last either way round — list.js
+    // flips the result for "desc", so undo that for the empties. Ties fall
+    // back to newest first.
+    function byField(a, b, opts) {
+      var f = opts.valueName, x = a.values()[f] || "", y = b.values()[f] || "";
+      var flip = opts.order === "desc" ? -1 : 1;
+      if (!x !== !y) return (x ? -1 : 1) * flip;
+      return x.localeCompare(y, undefined, { numeric: true }) ||
+        (b.values().when || "").localeCompare(a.values().when || "") * flip;
+    }
+
+    var heads = box.querySelectorAll("th[data-sort]");
+    heads.forEach(function (th) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.textContent = th.textContent;
+      th.textContent = "";
+      th.appendChild(b);
       b.addEventListener("click", function () {
-        var o = orders[b.dataset.sort];
-        list.sort(o[0], { order: o[1] });
-        buttons.forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+        var cur = th.getAttribute("aria-sort");
+        var first = th.dataset.sort === "when" ? "descending" : "ascending";
+        var next = cur ? (cur === "ascending" ? "descending" : "ascending") : first;
+        list.sort(th.dataset.sort, { order: next === "ascending" ? "asc" : "desc", sortFunction: byField });
+        heads.forEach(function (h) { h.removeAttribute("aria-sort"); });
+        th.setAttribute("aria-sort", next);
       });
     });
 

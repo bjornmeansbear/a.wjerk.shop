@@ -8,10 +8,10 @@
  * written by the hand-run works-sync.js — this script never calls Notion,
  * so a deploy never depends on it.
  *
- * The rendered list is the whole page: with scripts off a visitor gets
- * every project, newest first. list.js (vendor/list.min.js, the copy
- * bjornpaedia uses) only adds search and re-sorting on top, and the
- * controls for those stay hidden until it loads.
+ * The rendered table is the whole page: with scripts off a visitor gets
+ * every project, newest first, one row each. list.js (vendor/list.min.js,
+ * the copy bjornpaedia uses) only adds search and click-to-sort headers on
+ * top; the search box stays hidden until it loads.
  *
  * Zero dependencies — node:fs and node:path only.
  *
@@ -51,11 +51,18 @@ function credits(w) {
   return parts.join(' · ');
 }
 
+/**
+ * The Links column shows only the short label (“Get it →”), so a row stays
+ * one line. The full description goes in aria-label and title; the label
+ * starts with the visible text, so voice control can still find the link
+ * by what it says on screen (WCAG 2.5.3).
+ */
 function links(w) {
   const out = [];
   const add = (label, url, text) => {
     const rel = isAffiliate(url) ? ' rel="sponsored"' : '';
-    out.push(`<li><span class="elsewhereLabel">${escapeHtml(label)}</span> <a href="${escapeHtml(url)}"${rel}>${escapeHtml(text)}</a></li>`);
+    const full = escapeHtml(`${label}: ${text}`);
+    out.push(`<a href="${escapeHtml(url)}"${rel} aria-label="${full}" title="${full}">${escapeHtml(label)}<span aria-hidden="true"> →</span></a>`);
   };
   const bare = (url) => url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
   const store = (url) => (isAmazon(url) ? 'Amazon' : isBookshop(url) ? 'Bookshop.org' : bare(url).split('/')[0]);
@@ -68,22 +75,24 @@ function links(w) {
   return out;
 }
 
+/** One table row. The class names double as list.js's search/sort fields. */
 function renderWork(w) {
   const href = home(w);
   const title = href ? `<a href="${escapeHtml(href)}">${escapeHtml(w.title)}</a>` : escapeHtml(w.title);
-  const meta = [`<span class="years">${years(w)}</span>`];
-  if (w.kind) meta.push(`<span class="kind">${escapeHtml(w.kind)}</span>`);
   const by = credits(w);
-  const extra = links(w);
+  const about = [
+    w.oneLiner && `<span class="oneLiner">${escapeHtml(w.oneLiner)}</span>`,
+    by && `<span class="credits">${escapeHtml(by)}</span>`,
+  ].filter(Boolean).join(' ');
   return [
-    `<li class="work" data-when="${when(w)}">`,
-    `  <p class="workMeta">${meta.join(' · ')}</p>`,
-    `  <h2 class="title">${title}</h2>`,
-    w.oneLiner && `  <p class="oneLiner">${escapeHtml(w.oneLiner)}</p>`,
-    by && `  <p class="credits">${escapeHtml(by)}</p>`,
-    extra.length && `  <ul class="elsewhere">${extra.join('')}</ul>`,
-    '</li>',
-  ].filter(Boolean).join('\n          ');
+    `<tr data-when="${when(w)}">`,
+    `  <td class="years">${years(w)}</td>`,
+    `  <th scope="row" class="title">${title}</th>`,
+    `  <td class="kind">${escapeHtml(w.kind ?? '')}</td>`,
+    `  <td class="about">${about}</td>`,
+    `  <td class="links">${links(w).join(' ')}</td>`,
+    '</tr>',
+  ].join('\n          ');
 }
 
 const sorted = [...works].sort((a, b) => when(b).localeCompare(when(a)) || a.title.localeCompare(b.title));
@@ -93,10 +102,24 @@ const notes = [
   shops.some(isAmazon) && AFFILIATE_NOTE.amazon,
 ].filter(Boolean);
 
+// The page's inline script turns the headers with data-sort into sort
+// buttons once list.js loads. Without it they stay plain headers, and
+// aria-sort still truthfully says the rows are newest first.
 const block = [
-  `<ul class="list worksList">`,
+  `<table class="worksTable">`,
+  `        <thead>`,
+  `          <tr>`,
+  `            <th scope="col" data-sort="when" aria-sort="descending">Year</th>`,
+  `            <th scope="col" data-sort="title">Title</th>`,
+  `            <th scope="col" data-sort="kind">Kind</th>`,
+  `            <th scope="col">About</th>`,
+  `            <th scope="col" class="links">Links</th>`,
+  `          </tr>`,
+  `        </thead>`,
+  `        <tbody class="list worksList">`,
   `        ${sorted.map(renderWork).join('\n        ')}`,
-  `      </ul>`,
+  `        </tbody>`,
+  `      </table>`,
   ...notes.map((n) => `      <p class="affiliateNote">${n}</p>`),
 ].join('\n');
 
