@@ -106,6 +106,8 @@ function publicRow(w, nameable) {
     shop: w.Shop,
     repo: w.Repo,
     archive: w.Archive,
+    // The project's page on the 2003–2011 site, kristian.bjornard.com.
+    oldPortfolio: w['Old portfolio'],
     links: parseLinks(w['Other links']),
     tags: w.Categories ?? [],
     for: names(w.For),

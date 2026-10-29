@@ -34,14 +34,21 @@ const years = (w) => (w.yearEnd && w.yearEnd !== w.year ? `${w.year}–${w.yearE
 /**
  * Sort key, as a string so list.js can compare it directly: the year a
  * project finished (the end of a range), then its Completed date when there
- * is one (works-sync.js only keeps a Completed date that falls in that
- * year). "2025-04-03" sorts after "2025", so dated rows sit above undated
+ * is one and it falls in that year. "2025-04-03" sorts after "2025", so dated rows sit above undated
  * ones from the same year in the default newest-first order.
  */
-const when = (w) => w.completed ?? `${w.yearEnd ?? w.year}`;
+const when = (w) => {
+  const end = `${w.yearEnd ?? w.year}`;
+  // A Completed date from another year (The Libre Designer's is its 2018
+  // start) would move the row out of its year, so it only breaks ties.
+  return w.completed?.startsWith(end) ? w.completed : end;
+};
 
-/** Where the title links: the case study here, else the live site, else nowhere. */
-const home = (w) => (w.caseStudy ? `case-study-${w.caseStudy}.html` : w.site ?? null);
+/**
+ * Where the title links: the case study here, else the live site, else the
+ * project's page on the old portfolio site, else nowhere.
+ */
+const home = (w) => (w.caseStudy ? `case-study-${w.caseStudy}.html` : w.site ?? w.oldPortfolio ?? null);
 
 function credits(w) {
   const parts = [];
@@ -71,6 +78,8 @@ function links(w) {
   if (w.shop) add('Get it', w.shop, store(w.shop));
   if (w.repo) add('Source', w.repo, bare(w.repo));
   if (w.archive) add('Archived', w.archive, 'Wayback Machine copy');
+  // Only as a separate link when the title already goes somewhere else.
+  if (w.oldPortfolio && (w.caseStudy || w.site)) add('Old site', w.oldPortfolio, 'kristian.bjornard.com');
   for (const l of w.links ?? []) add(l.label, l.url, l.text);
   return out;
 }
