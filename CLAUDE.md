@@ -137,6 +137,7 @@ Established 2026-10-29. `works.html` lists every public project, 2003 on, newest
 - **`works.js`**: build step 5a. It reads `works.json` and replaces the `%WORKS%` and `%WORKS_COUNT%` tokens in `works.html`. Never write either token literally anywhere else in that file, comments included: the first match gets replaced.
 - **Search and sort** come from `vendor/list.min.js` (List.js 2.3.1, the same file bjornpaedia uses; see `vendor/README.md`). The controls are `hidden` in source and only shown once the script loads.
 - **Sorting:** by the end year, then by `Completed` when Works’ “Date precision” isn't “Year only”. Many Completed dates were read from Dropbox folder names on 2026-10-28/29, and “Date precision” says how far to trust each one.
+- **Sites** (data source `d7f272d3-9b63-46df-9441-727e4fa30987`, also under Portfolio Index): one row per GitHub Pages repo across all five accounts, surveyed 2026-11-04, with a two-way Work ↔ Sites relation. Its Decision column (Keep / Revive / Active / Archive / Delete) is Kristian's call. The survey scripts and notes are in the private repo, `sites-survey/` and LOG.md. When a Pages site is turned off, delete its ookb.co / wjerk.shop DNS record the same day, or someone else can claim the subdomain.
 - **The Notion API** here uses version `2025-09-03`: query `POST /v1/data_sources/{id}/query`, not the old `/databases/{id}/query`.
 
 ## Related repos
