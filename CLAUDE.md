@@ -12,7 +12,7 @@ The site links out to Are.na research channels, and `connections.md` /
 `arena-inventory.md` track them. Everything below was established 2026-08-27.
 
 **Those two files, plus `CaseStudyIdeation.md`, `CHAIRNESS-PROJECTION.md`, `LOG.md` (running progress log) and
-`_notes/`, live in the private repo `~/Code/a.wjerk.shop-private`**, not here —
+`_notes/`, live in the private repo `~/Code/a.wjerk.shop-private`** (GitHub remote `bjornmeansbear/a.wjerk.shop-private`, private — never make it public; pushed from 2026-11-04), not here —
 this repo is public and `arena-inventory.md` names private channels (clients,
 family, institutional work). Read them there. Regenerate the inventory on any
 machine with the token via `node arena-inventory.js` (it writes into the
