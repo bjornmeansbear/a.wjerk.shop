@@ -238,6 +238,16 @@
       },
       {
         "label": "Live",
+        "text": "Wjaffle",
+        "url": "https://mise-ivory.vercel.app/"
+      },
+      {
+        "label": "Demo",
+        "text": "OneThing",
+        "url": "https://onething-demo.pages.dev/"
+      },
+      {
+        "label": "Live",
         "text": "Oblique",
         "url": "https://oblique.ookb.co/"
       },
