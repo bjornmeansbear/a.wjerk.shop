@@ -213,5 +213,44 @@
   },
   "wjeather": {
     "live": "https://wjeather.wjerk.shop/"
+  },
+  "wjerk-software": {
+    "links": [
+      {
+        "label": "Live",
+        "text": "Wjall",
+        "url": "https://wjall.wjerk.shop/"
+      },
+      {
+        "label": "Live",
+        "text": "Wjord",
+        "url": "https://wjord.wjerk.shop/"
+      },
+      {
+        "label": "Live",
+        "text": "Wjunderkammer",
+        "url": "https://wjunderkammer.wjerk.shop/"
+      },
+      {
+        "label": "Live",
+        "text": "Wjavelength",
+        "url": "https://wjavelength.wjerk.shop/"
+      },
+      {
+        "label": "Live",
+        "text": "Oblique",
+        "url": "https://oblique.ookb.co/"
+      },
+      {
+        "label": "Live",
+        "text": "Trady",
+        "url": "https://trady.ookb.co/"
+      },
+      {
+        "label": "Code",
+        "text": "vinylCutter",
+        "url": "https://github.com/bjornmeansbear/vinylCutter"
+      }
+    ]
   }
 }
